@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="imported">
+      <UniqueIdentifier>{c71446d5-8f1a-44b6-b09f-799d4cd94f49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="objects">
+      <UniqueIdentifier>{eafe8b48-6cf0-448f-b5b8-1f12453d47cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{147e7843-ab07-4502-96a4-a747e8caa478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="components">
+      <UniqueIdentifier>{5ffcd372-b071-4126-97ce-bf5b60298deb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="helper">
+      <UniqueIdentifier>{a255ac25-f3bc-4147-9182-1013f7aa9545}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\components\graphics.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\kinetics.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\sounds.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\component.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\imported\olcPixelGameEngine.h">
+      <Filter>imported</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\imported\olcPGEX_Sound.h">
+      <Filter>imported</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\object.h">
+      <Filter>objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\player.h">
+      <Filter>objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\star.h">
+      <Filter>objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\asteroid.h">
+      <Filter>objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\parser.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\node.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\helper\maths.h">
+      <Filter>helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\helper\exception.h">
+      <Filter>helper</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\components\graphics.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\kinetics.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\sounds.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\bleep.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\player.cpp">
+      <Filter>objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\star.cpp">
+      <Filter>objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\asteroid.cpp">
+      <Filter>objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\object.cpp">
+      <Filter>objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\parser.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\node.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\helper\maths.cpp">
+      <Filter>helper</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
