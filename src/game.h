@@ -1,3 +1,10 @@
+//==============================================================================
+/// \copyright (c) 2021, Benedikt Michael.
+//==============================================================================
+/// \file game.h
+/// \brief Central game class - manages the game flow based on the settings provided by the parser.
+//==============================================================================
+
 #pragma once
 
 #include "object.h"

@@ -1,7 +1,13 @@
+//==============================================================================
+/// \copyright (c) 2021, Benedikt Michael.
+//==============================================================================
+/// \file component.h
+/// \brief Provides an abstract class for all object components.
+//==============================================================================
+
 #pragma once
 #include "object.h"
 
-//abstract class for components
 class CComponent
 {
 public:

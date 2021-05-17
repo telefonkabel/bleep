@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="imported">
-      <UniqueIdentifier>{c71446d5-8f1a-44b6-b09f-799d4cd94f49}</UniqueIdentifier>
-    </Filter>
     <Filter Include="objects">
       <UniqueIdentifier>{eafe8b48-6cf0-448f-b5b8-1f12453d47cc}</UniqueIdentifier>
     </Filter>
@@ -15,6 +12,9 @@
     </Filter>
     <Filter Include="helper">
       <UniqueIdentifier>{a255ac25-f3bc-4147-9182-1013f7aa9545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdParty">
+      <UniqueIdentifier>{c71446d5-8f1a-44b6-b09f-799d4cd94f49}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,12 +33,6 @@
     <ClInclude Include="..\src\game.h">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\imported\olcPixelGameEngine.h">
-      <Filter>imported</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\imported\olcPGEX_Sound.h">
-      <Filter>imported</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\objects\object.h">
       <Filter>objects</Filter>
     </ClInclude>
@@ -54,14 +48,20 @@
     <ClInclude Include="..\src\parser.h">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\node.h">
-      <Filter>game</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\helper\maths.h">
       <Filter>helper</Filter>
     </ClInclude>
     <ClInclude Include="..\src\helper\exception.h">
       <Filter>helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\thirdParty\olcPGEX_Sound.h">
+      <Filter>thirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\thirdParty\olcPixelGameEngine.h">
+      <Filter>thirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\thirdParty\rapidjson\rapidjson.h">
+      <Filter>thirdParty</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -93,9 +93,6 @@
       <Filter>objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\parser.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\node.cpp">
       <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="..\src\helper\maths.cpp">

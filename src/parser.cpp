@@ -13,42 +13,40 @@
 
 
 CParser::CParser() :
-	mSettingsPath(),
-	mRoots(),
-	mInput()
+	mSettingsPath(std::filesystem::current_path().parent_path() / "settings")
+{
+}
+
+bool CParser::parse(rapidjson::Document& settings)
 {
 	try
 	{
-		mSettingsPath = std::filesystem::current_path().parent_path() / "settings";
 		if (!std::filesystem::exists(mSettingsPath))
 			throw CException(mSettingsPath.string() + " doesn't exist.");
-		else
-			readFiles();
+
+		readFiles(settings);
+
+		assert(settings.HasMember("test"));
+
+		return true;
 	}
 	catch (CException& exception)
 	{
 		std::cerr << "Exception in parser: " << exception.msg();
+		return false;
 	}
 	catch (...)
 	{
-		std::cerr << "Unhandled exception in parser.";
+		std::cerr << "ParserUnhandled exception in parser.";
+		return false;
 	}
 }
 
-std::shared_ptr<CNode> CParser::find(std::string name) const
-{
-	for (const auto& node : mRoots)
-		if (node->name() == name)
-			return node;
-
-	throw CException("Rootnode " + name + "can't be found.");
-}
-
-void CParser::readFiles()
+void CParser::readFiles(rapidjson::Document& settings)
 {
 	for (const auto& file : std::filesystem::directory_iterator(mSettingsPath))
-		if (file.path().extension() != ".xml")
-			throw CException("There are non-xml files in the settings directory.");
+		if (file.path().extension() != ".json")
+			throw CException("There are non-json files in the settings directory.");
 		else
 		{
 			std::ifstream inFile(file.path());
@@ -56,9 +54,16 @@ void CParser::readFiles()
 				throw CException("Can't open " + file.path().string());
 			else
 			{
-				std::string contents((std::istreambuf_iterator<char>(inFile)),
-					std::istreambuf_iterator<char>());
-				mInput.push_back(contents);
+				std::string fileData( (std::istreambuf_iterator<char>(inFile)), std::istreambuf_iterator<char>());
+				if (fileData.empty())
+					throw CException(file.path().string() + "hasn't generated any content.");
+
+				settings.Parse(fileData.c_str());
+
+				rapidjson::Document newSetting;
+				const char testing[] = "{ \"hello\" : \"world\", \"t\" : true}";
+				newSetting.Parse(testing);
+				settings.AddMember("test", newSetting, settings.GetAllocator());
 			}
 		}
 }

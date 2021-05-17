@@ -1,3 +1,10 @@
+//==============================================================================
+/// \copyright (c) 2021, Benedikt Michael.
+//==============================================================================
+/// \file sounds.h
+/// \brief Component class which handles all object sounds.
+//==============================================================================
+
 #pragma once
 
 #include "component.h"
@@ -8,7 +15,7 @@
 #include <codeanalysis\warnings.h>
 #pragma warning(push)
 #pragma warning(disable: ALL_CODE_ANALYSIS_WARNINGS)
-#include "imported/olcPGEX_Sound.h"
+#include "thirdParty/olcPGEX_Sound.h"
 #pragma warning(pop)
 
 

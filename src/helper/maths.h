@@ -1,5 +1,12 @@
+//==============================================================================
+/// \copyright (c) 2021, Benedikt Michael.
+//==============================================================================
+/// \file maths.h
+/// \brief Provides often used mathematical calculations.
+//==============================================================================
+
 #pragma once
-#include "imported/olcPixelGameEngine.h"
+#include "thirdParty/olcPixelGameEngine.h"
 
 
 using v2d = olc::vf2d;

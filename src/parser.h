@@ -5,7 +5,7 @@
 /// \brief Loads & checks the settings.
 //==============================================================================
 
-#include "node.h"
+#include "thirdParty/rapidjson/document.h"
 
 #include <filesystem>
 #include <vector>
@@ -15,19 +15,13 @@ class CParser
 {
 public:
 	CParser();
+	
+	//start of parsing. returns true if no exceptions are thrown.
+	bool parse(rapidjson::Document& settings);
 
-	//to find a specific root node
-	std::shared_ptr<CNode> find(std::string name) const;
-
-private:
-	//root elements of the xml files
-	std::vector<std::shared_ptr<CNode>> mRoots;
-
-	//settings path
+private://settings path
 	std::filesystem::path mSettingsPath;
-	//container for all input strings out of the files
-	std::vector<std::string> mInput;
 
 	//read a xml files
-	void readFiles();
+	void readFiles(rapidjson::Document& settings);
 };

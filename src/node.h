@@ -2,7 +2,7 @@
 /// \copyright (c) 2021, Benedikt Michael.
 //==============================================================================
 /// \file node.h
-/// \brief Manages the input out of the xml settings.
+/// \brief Manages the data offered by the parser out of the xml settings.
 //==============================================================================
 
 #include <memory>

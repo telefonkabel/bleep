@@ -1,3 +1,10 @@
+//==============================================================================
+/// \copyright (c) 2021, Benedikt Michael.
+//==============================================================================
+/// \file game.cpp
+/// \brief Central game class - manages the game flow based on the settings provided by the parser.
+//==============================================================================
+
 #include "game.h"
 #include "star.h"
 #include "player.h"
@@ -8,7 +15,7 @@
 #include <codeanalysis\warnings.h>
 #pragma warning(push)
 #pragma warning(disable: ALL_CODE_ANALYSIS_WARNINGS)
-#include "imported/olcPGEX_Sound.h"
+#include "thirdParty/olcPGEX_Sound.h"
 #pragma warning(pop)
 
 
