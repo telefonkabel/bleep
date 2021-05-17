@@ -12,11 +12,7 @@
 
 #include <filesystem>
 
-#include <codeanalysis\warnings.h>
-#pragma warning(push)
-#pragma warning(disable: ALL_CODE_ANALYSIS_WARNINGS)
 #include "thirdParty/olcPGEX_Sound.h"
-#pragma warning(pop)
 
 
 enum class sounds { MUSIC0, JET, CRASH0, count};

@@ -12,11 +12,7 @@
 #include "exception.h"
 #include "components/kinetics.h"
 
-#include <codeanalysis\warnings.h>
-#pragma warning(push)
-#pragma warning(disable: ALL_CODE_ANALYSIS_WARNINGS)
 #include "thirdParty/olcPGEX_Sound.h"
-#pragma warning(pop)
 
 
 
@@ -63,7 +59,7 @@ bool CGame::OnUserCreate()
     initStars();
 
     return true;
-} 
+}
 
 bool CGame::OnUserUpdate(float deltaTime)
 {
@@ -217,7 +213,7 @@ std::string CGame::massInfo(const std::shared_ptr<CObject>& obj, int shownDecima
     {
         powerIndex++;
         shownMass = static_cast<int>(shownMass/10);
-    } 
+    }
 
     return std::to_string(shownMass) + "E" + std::to_string(powerIndex);
 }

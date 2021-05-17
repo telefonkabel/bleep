@@ -15,7 +15,7 @@ std::array<int, static_cast<int>(sounds::count)> CSounds::m_soundIDs = std::arra
 
 CSounds::CSounds(CObject* pObject) :
 	CComponent(pObject),
-	m_soundPath(std::filesystem::current_path().parent_path() / "sounds")
+	m_soundPath(std::filesystem::current_path() / "sounds")
 {
 	if (m_firstInit)
 		initSounds();
@@ -46,5 +46,5 @@ void CSounds::initSound(sounds position, int id)
 
 void CSounds::playSound(sounds position, bool repeat) const
 {
-	m_sound->PlaySample(m_soundIDs.at(static_cast<int>(position)), repeat);
+	m_sound->PlaySample(m_soundIDs.at(static_cast<int>(position)), true);
 }

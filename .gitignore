@@ -5,8 +5,12 @@ Thumbs.db
 *.app
 *.exe
 *.war
+*.o
 
 # VS
 .vs/
 Debug/
 Release
+dist/
+
+bleep

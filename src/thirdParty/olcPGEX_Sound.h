@@ -9,7 +9,7 @@
 	This is an extension to the olcPixelGameEngine, which provides
 	sound generation and wave playing routines.
 	Special Thanks:
-	~~~~~~~~~~~~~~~	
+	~~~~~~~~~~~~~~~
 	Slavka - For entire non-windows system back end!
 	Gorbit99 - Testing, Bug Fixes
 	Cyberdroid - Testing, Bug Fixes
@@ -281,9 +281,9 @@ namespace olc
 		};
 
 		if (pack != nullptr)
-		{			
+		{
 			olc::ResourceBuffer rb = pack->GetFileBuffer(sWavFile);
-			std::istream is(&rb);			
+			std::istream is(&rb);
 			return ReadWave(is);
 		}
 		else
@@ -558,7 +558,7 @@ namespace olc
 					nNewSample = (short)(clip(GetMixerOutput(c, m_fGlobalTime + fTimeStep * (float)n, fTimeStep), 1.0) * fMaxSample);
 					m_pBlockMemory[nCurrentBlock + n + c] = nNewSample;
 					nPreviousSample = nNewSample;
-				}				
+				}
 			}
 
 			m_fGlobalTime = m_fGlobalTime + fTimeStep * (float)m_nBlockSamples;
@@ -687,7 +687,7 @@ namespace olc
 					nNewSample = (short)(GetMixerOutput(c, m_fGlobalTime + fTimeStep * (float)n, fTimeStep), 1.0) * fMaxSample;
 					m_pBlockMemory[n + c] = nNewSample;
 					nPreviousSample = nNewSample;
-				}		
+				}
 			}
 
 			m_fGlobalTime = m_fGlobalTime + fTimeStep * (float)m_nBlockSamples;

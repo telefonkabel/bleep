@@ -5,7 +5,8 @@
 /// \brief Loads & checks the settings.
 //==============================================================================
 
-#include "thirdParty/rapidjson/document.h"
+
+#include <rapidjson/document.h>
 
 #include <filesystem>
 #include <vector>
@@ -15,7 +16,7 @@ class CParser
 {
 public:
 	CParser();
-	
+
 	//start of parsing. returns true if no exceptions are thrown.
 	bool parse(rapidjson::Document& settings);
 

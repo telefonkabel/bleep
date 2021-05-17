@@ -7,7 +7,6 @@
 
 #include "maths.h"
 
-
 float maths::fadeInOut(float x)
 {
     if (x < 0.0f)
@@ -19,7 +18,7 @@ float maths::fadeInOut(float x)
 
 v2d maths::rndCirclePt(const v2d& center, float radius)
 {
-    float rndAngle(rndAngle());
+    float rndAngle{maths::rndAngle()};
     return v2d(center + v2d({ radius * static_cast<float>(cos(rndAngle)), radius * static_cast<float>(sin(rndAngle)) }));
 }
 

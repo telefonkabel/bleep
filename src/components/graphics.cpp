@@ -16,7 +16,7 @@ CGraphics::CGraphics(CObject* pObject) :
 	CComponent(pObject),
 	m_pSprite(nullptr),
 	m_pDecal(nullptr),
-	m_graphicPath(std::filesystem::current_path().parent_path() / "graphics")
+	m_graphicPath(std::filesystem::current_path() / "graphics")
 {
 	if (m_firstInit)
 		initGraphics();
@@ -65,7 +65,7 @@ bool CGraphics::draw() const
 		return true;
 	v2d v2center(v2centroid());
 	object()->game()->DrawDecal(object()->xy() - v2center, m_pDecal, v2d({ 1,1 }), object()->color() * std::min(object()->fogFactor(), 1.0f));
-	
+
 	return true;
 }
 

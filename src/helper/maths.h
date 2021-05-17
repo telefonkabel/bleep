@@ -6,7 +6,7 @@
 //==============================================================================
 
 #pragma once
-#include "thirdParty/olcPixelGameEngine.h"
+#include "olcPixelGameEngine.h"
 
 
 using v2d = olc::vf2d;

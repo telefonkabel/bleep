@@ -13,7 +13,7 @@
 
 
 CParser::CParser() :
-	mSettingsPath(std::filesystem::current_path().parent_path() / "settings")
+	mSettingsPath(std::filesystem::current_path() / "settings")
 {
 }
 
