@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file game.cpp
-/// \brief Central game class - manages the game flow based on the settings provided by the parser.
+/// game.cpp
+/// Central game class - manages the game flow based on the settings provided by the parser.
 //==============================================================================
 
 #include "game.h"

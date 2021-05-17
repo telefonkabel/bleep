@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file graphics.h
-/// \brief Component class which handles all object graphics.
+/// graphics.h
+/// Component class which handles all object graphics.
 //==============================================================================
 
 #pragma once

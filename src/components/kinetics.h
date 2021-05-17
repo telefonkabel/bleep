@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file kinetics.h
-/// \brief Component class which handles all object kinetics.
+/// kinetics.h
+/// Component class which handles all object kinetics.
 //==============================================================================
 
 #pragma once

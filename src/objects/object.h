@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file object.h
-/// \brief Abstract class for all game objects.
+/// object.h
+/// Abstract class for all game objects.
 //==============================================================================
 
 #pragma once

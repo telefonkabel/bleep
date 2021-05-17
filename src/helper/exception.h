@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file exception.h
-/// \brief Offers a catchable exception object what creates it's throw msg at initialization time.
+/// exception.h
+/// Offers a catchable exception object what creates it's throw msg at initialization time.
 //==============================================================================
 
 #pragma once

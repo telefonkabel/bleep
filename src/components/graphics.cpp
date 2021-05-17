@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file graphics.cpp
-/// \brief Component class which handles all object graphics.
+/// graphics.cpp
+/// Component class which handles all object graphics.
 //==============================================================================
 
 #include "graphics.h"

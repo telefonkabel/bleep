@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file maths.h
-/// \brief Provides often used mathematical calculations.
+/// maths.h
+/// Provides often used mathematical calculations.
 //==============================================================================
 
 #pragma once

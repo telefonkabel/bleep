@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file parser.cpp
-/// \brief Loads & checks the settings.
+/// parser.cpp
+/// Loads & checks the settings.
 //==============================================================================
 
 #include "parser.h"
@@ -37,7 +37,7 @@ bool CParser::parse(rapidjson::Document& settings)
 	}
 	catch (...)
 	{
-		std::cerr << "ParserUnhandled exception in parser.";
+		std::cerr << "Unhandled exception in parser.";
 		return false;
 	}
 }

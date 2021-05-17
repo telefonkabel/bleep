@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file kinetics.cpp
-/// \brief Component class which handles all object kinetics.
+/// kinetics.cpp
+/// Component class which handles all object kinetics.
 //==============================================================================
 
 #include "kinetics.h"

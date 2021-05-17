@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file component.h
-/// \brief Provides an abstract class for all object components.
+/// component.h
+/// Provides an abstract class for all object components.
 //==============================================================================
 
 #pragma once

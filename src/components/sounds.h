@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file sounds.h
-/// \brief Component class which handles all object sounds.
+/// sounds.h
+/// Component class which handles all object sounds.
 //==============================================================================
 
 #pragma once

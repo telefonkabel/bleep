@@ -1,8 +1,8 @@
 //==============================================================================
-/// \copyright (c) 2021, Benedikt Michael.
+/// 2021, Benedikt Michael.
 //==============================================================================
-/// \file maths.cpp
-/// \brief Provides often used mathematical calculations.
+/// maths.cpp
+/// Provides often used mathematical calculations.
 //==============================================================================
 
 #include "maths.h"
