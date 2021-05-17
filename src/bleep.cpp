@@ -41,8 +41,6 @@ int main()
             ;//throw
         else
             currentPath = { buffer.data(), buffer.size() };
-
-        std::wcout << currentPath;
     }
     #else
     {
@@ -58,10 +56,13 @@ int main()
         else
         {
             std::string path{ buffer.data(), buffer.size() };
-            currentPath = { path.begin(), path.end() }
+            currentPath = { path.begin(), path.end() };
         }
+
     }
     #endif
+
+    std::wcout << currentPath;
 
     //setting up rand() - that rng is good enough for this purpose
     srand(static_cast<unsigned int>(time(0)));
