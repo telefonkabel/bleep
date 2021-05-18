@@ -10,16 +10,23 @@
 
 #ifdef _WIN32
     #define USE_WINDOWS
-    #include <locale>
-    #include <codecvt>
+    #include <codeanalysis\warnings.h>
+    #pragma warning(push)
+    #pragma warning(disable: ALL_CODE_ANALYSIS_WARNINGS)
+        #include <locale>
+        #include <codecvt>
+
+        #include "rapidjson/document.h"
+        #include "olcPixelGameEngine.h"
+        #include "olcPGEX_Sound.h"
+    #pragma warning(pop)
 #else
     #include <unistd.h>
+
+    #include "rapidjson/document.h"
+    #include "olcPixelGameEngine.h"
+    #include "olcPGEX_Sound.h"
 #endif
-
-#include "rapidjson/document.h"
-
-#include "thirdParty/olcPixelGameEngine.h"
-#include "thirdParty/olcPGEX_Sound.h"
 
 #include "game.h"
 #include "parser.h"
@@ -27,21 +34,21 @@
 
 #include <filesystem>
 
+
 int main()
 {
     try
     {
         //get the current path of the executable platform-independently
-        std::size_t len{};
         std::wstring wPath{};
-
 #ifdef USE_WINDOWS
         {
             std::vector<wchar_t> buffer(0);
+            DWORD len{};
             do
             {
                 buffer.resize(buffer.size() + 1);
-                len = GetModuleFileName(NULL, &buffer.at(0), buffer.size());
+                len = GetModuleFileName(NULL, &buffer.at(0), static_cast<DWORD>(buffer.size()));
             } while (buffer.size() == len);
 
             if (len == 0)
@@ -52,6 +59,7 @@ int main()
 #else
         {
             std::vector<char> buffer(0);
+            std::size_t len{};
             do
             {
                 buffer.resize(buffer.size() + 1);
