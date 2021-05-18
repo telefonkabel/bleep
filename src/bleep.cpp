@@ -76,6 +76,7 @@ int main()
         }
 #endif
         std::filesystem::path currentPath{ wPath };
+        currentPath = currentPath.parent_path();
         if (!std::filesystem::exists(currentPath))
             throw CException(currentPath.string() + " doesn't exist.");
 
@@ -85,11 +86,11 @@ int main()
 
         //load settings
         rapidjson::Document settings;
-        CParser parser;
+        CParser parser(currentPath);
         parser.parse(settings);
 
         //start game
-        CGame game("Bleep", olc::DARK_MAGENTA, 1000000, 640, 480, 2, 2, true);
+        CGame game(currentPath, "Bleep", olc::DARK_MAGENTA, 1000000, 640, 480, 2, 2, true);
         game.Start();
     }
     catch (CException& exception)

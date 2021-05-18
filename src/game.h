@@ -11,11 +11,13 @@
 #include "maths.h"
 #include "asteroid.h"
 
+#include <filesystem>
+
 
 class CGame : public olc::PixelGameEngine
 {
 public:
-    CGame(std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen);
+    CGame(std::filesystem::path& currentPath, std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen);
     ~CGame();
 
     v2d velocity() const;
@@ -26,6 +28,7 @@ public:
     int radiusMap() const;
     int fog() const;
     olc::Pixel playerColor() const;
+    std::filesystem::path currentPath() const;
 
     //whenever the mass of an object is needed as output in scientific notation with shown decimals as parameter
     std::string massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const;
@@ -52,6 +55,8 @@ private:
     float m_maxSpeed2;
 
     int m_starCardinality;
+
+    std::filesystem::path m_currentPath;
 
     //all active objects seperated into types
     std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)> m_objects;

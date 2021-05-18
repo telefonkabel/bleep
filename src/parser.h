@@ -15,13 +15,13 @@
 class CParser
 {
 public:
-	CParser();
+	CParser(std::filesystem::path& currentPath);
 
 	//start of parsing. returns true if no exceptions are thrown.
 	bool parse(rapidjson::Document& settings);
 
 private://settings path
-	std::filesystem::path mSettingsPath;
+	std::filesystem::path m_SettingsPath;
 
 	//read a xml files
 	void readFiles(rapidjson::Document& settings);

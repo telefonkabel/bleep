@@ -16,7 +16,7 @@ CGraphics::CGraphics(CObject* pObject) :
 	CComponent(pObject),
 	m_pSprite(nullptr),
 	m_pDecal(nullptr),
-	m_graphicPath(std::filesystem::current_path() / "graphics")
+	m_graphicPath(pObject->game()->currentPath() / "graphics")
 {
 	if (m_firstInit)
 		initGraphics();

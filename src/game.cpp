@@ -16,7 +16,8 @@
 
 
 
-CGame::CGame(std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen) :
+CGame::CGame(std::filesystem::path& currentPath, std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen) :
+    m_currentPath(currentPath),
     m_objects(),
     m_velocity({ 0.0f, 30.0f }),
     m_accelerationX({ 500.0f, 0.0f }),
@@ -52,6 +53,7 @@ v2d CGame::accelerationY() const { return m_accelerationY; };
 int CGame::radiusView() const { return m_radiusView; };
 int CGame::radiusMap() const { return m_radiusMap; };
 int CGame::fog() const { return m_fogOfWar; };
+std::filesystem::path CGame::currentPath() const { return m_currentPath; }
 
 bool CGame::OnUserCreate()
 {
