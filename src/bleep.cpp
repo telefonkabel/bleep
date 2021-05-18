@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// bleep.cpp
 /// Provides the main function for this game.
@@ -52,7 +52,7 @@ int main()
             } while (buffer.size() == len);
 
             if (len == 0)
-                throw CException("GetModuleFileName doesn't get any path.");
+                throw CException{ "GetModuleFileName doesn't get any path." };
             else
                 wPath = { buffer.data(), buffer.size() };
         }
@@ -67,7 +67,7 @@ int main()
             } while (buffer.size() == len);
 
             if (len == 0)
-                throw CException("readlink doesn't get any path.");
+                throw CException{ "readlink doesn't get any path." };
             else
             {
                 std::string path{ buffer.data(), buffer.size() };
@@ -78,19 +78,19 @@ int main()
         std::filesystem::path currentPath{ wPath };
         currentPath = currentPath.parent_path();
         if (!std::filesystem::exists(currentPath))
-            throw CException(currentPath.string() + " doesn't exist.");
+            throw CException{ currentPath.string() + " doesn't exist." };
 
 
         //setting up rand() - that rng is good enough for this purpose
         srand(static_cast<unsigned int>(time(0)));
 
         //load settings
-        rapidjson::Document settings;
-        CParser parser(currentPath);
+        rapidjson::Document settings{};
+        CParser parser{ currentPath };
         parser.parse(settings);
 
         //start game
-        CGame game(currentPath, "Bleep", olc::DARK_MAGENTA, 1000000, 640, 480, 2, 2, true);
+        CGame game{ currentPath, "Bleep", olc::DARK_MAGENTA, 1000000, 640, 480, 2, 2, true };
         game.Start();
     }
     catch (CException& exception)

@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// component.h
 /// Provides an abstract class for all object components.
@@ -11,9 +11,7 @@
 class CComponent
 {
 public:
-	CComponent(CObject* pObject) :
-		m_pObject(pObject)
-	{};
+	CComponent(CObject* pObject) : m_pObject{ pObject } {};
 	virtual ~CComponent() = default;
 
 	virtual void update(float deltaTime) = 0;

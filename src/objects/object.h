@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// object.h
 /// Abstract class for all game objects.
@@ -39,6 +39,7 @@ public:
 	//has to calculate the collsion boundary of the object in a straight line to another one
 	virtual float edge() const = 0;
 
+	//set & get
 	void x(float x);
 	void y(float y);
 	float x() const;
@@ -59,23 +60,25 @@ public:
 
 	objectTypes type() const;
 
+	bool isEatable() const;
+	void eatable(bool eatable);
+
 	CGame* const game() const;
 
 	//shortcut to the player object
 	std::shared_ptr<CPlayer> player() const;
 
+	//hook a component onto the object
 	void addComponent(std::shared_ptr<CComponent> component);
 
 	//checks whether the object (or a point as parameter) is in the viewable map
 	bool isInView() const;
 	bool isInView(v2d pos) const;
 
+	//the density of the fog of war
 	float fogFactor() const;
 
-	bool isEatable() const;
-	void eatable(bool eatable);
-
-	//makeshift for collsision - has to be implemented properly
+	//makeshift for collsision - has to be implemented properly yet
 	CKinetics* m_pKineticsObj;
 	CSounds* m_pSoundsObj;
 
@@ -83,9 +86,10 @@ private:
 	v2d m_pos;
 	colors m_color;
 	int m_mass;
-	//whether this object could be eaten by a black hole
+	//determines whether the object could be sucked into black hole
 	bool m_eatable;
 
+	//the type and state of the object
 	objectTypes m_type;
 	objectStates m_state;
 

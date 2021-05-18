@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// game.h
 /// Central game class - manages the game flow based on the settings provided by the parser.
@@ -20,6 +20,7 @@ public:
     CGame(std::filesystem::path& currentPath, std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen);
     ~CGame();
 
+    //set & get
     v2d velocity() const;
     v2d center() const;
     v2d accelerationX() const;
@@ -30,7 +31,7 @@ public:
     olc::Pixel playerColor() const;
     std::filesystem::path currentPath() const;
 
-    //whenever the mass of an object is needed as output in scientific notation with shown decimals as parameter
+    //provides the mass of an object for possible outputs in scientific notation with the amount of shown decimals as parameter
     std::string massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const;
 
     //provides a handle to the player object specifically and all objects
@@ -56,6 +57,7 @@ private:
 
     int m_starCardinality;
 
+    //the path where the prog is executed
     std::filesystem::path m_currentPath;
 
     //all active objects seperated into types
@@ -78,11 +80,12 @@ private:
     float m_effectEatenTime;
     void effectEaten(float deltaTime);
 
-    //need to be overridden for olc game engine:
+    ////needs to be overridden for olc game engine:
     //initialization
     bool OnUserCreate() override;
     //game loop
     bool OnUserUpdate(float deltaTime) override;
 
+    //draws the UI
     void drawUI();
 };

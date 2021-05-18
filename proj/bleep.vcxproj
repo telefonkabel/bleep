@@ -33,7 +33,6 @@
     <ClInclude Include="..\src\parser.h" />
     <ClInclude Include="..\src\thirdParty\olcPGEX_Sound.h" />
     <ClInclude Include="..\src\thirdParty\olcPixelGameEngine.h" />
-    <ClInclude Include="..\src\thirdParty\rapidjson\rapidjson.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\bleep.cpp" />

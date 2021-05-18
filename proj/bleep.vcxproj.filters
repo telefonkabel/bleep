@@ -60,9 +60,6 @@
     <ClInclude Include="..\src\thirdParty\olcPixelGameEngine.h">
       <Filter>thirdParty</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\thirdParty\rapidjson\rapidjson.h">
-      <Filter>thirdParty</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\components\graphics.cpp">

@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// game.cpp
 /// Central game class - manages the game flow based on the settings provided by the parser.
@@ -12,30 +12,30 @@
 #include "exception.h"
 #include "components/kinetics.h"
 
-#include "thirdParty/olcPGEX_Sound.h"
+#include "olcPGEX_Sound.h"
 
 
 
 CGame::CGame(std::filesystem::path& currentPath, std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen) :
-    m_currentPath(currentPath),
-    m_objects(),
-    m_velocity({ 0.0f, 30.0f }),
-    m_accelerationX({ 500.0f, 0.0f }),
-    m_accelerationY({ 0.0f, 500.0f }),
-    m_center({ static_cast<float>(screen_w) / 2, static_cast<float>(screen_h) / 2 }),
-    m_radiusView(static_cast<int>(screen_h) / 2),
-    m_radiusMap(static_cast<int>(m_radiusView * 1.5f)),
-    m_fogOfWar(static_cast<int>(0.2f * m_radiusView)),
-    m_maxSpeed(150.0f),
-    m_maxSpeed2(static_cast<float>(std::pow(m_maxSpeed, 2))),
-    m_starCardinality(1500),
-    m_debrisChance(0.6f),
-    m_debrisTimer(),
-    m_debrisTimerReload(0.2f),
-    m_effectEaten(),
-    m_effectEatenTime(0.2f),
-    m_playerColor(playerColor),
-    m_startMass(startMass)
+    m_currentPath{ currentPath },
+    m_objects{},
+    m_velocity{ 0.0f, 30.0f },
+    m_accelerationX{ 500.0f, 0.0f },
+    m_accelerationY{ 0.0f, 500.0f },
+    m_center{ static_cast<float>(screen_w) / 2, static_cast<float>(screen_h) / 2 },
+    m_radiusView{ static_cast<int>(screen_h) / 2 },
+    m_radiusMap{ static_cast<int>(m_radiusView * 1.5f) },
+    m_fogOfWar{ static_cast<int>(0.2f * m_radiusView) },
+    m_maxSpeed{ 150.0f },
+    m_maxSpeed2{ static_cast<float>(std::pow(m_maxSpeed, 2)) },
+    m_starCardinality{ 1500 },
+    m_debrisChance{ 0.6f },
+    m_debrisTimer{},
+    m_debrisTimerReload{ 0.2f },
+    m_effectEaten{},
+    m_effectEatenTime{ 0.2f },
+    m_playerColor{ playerColor },
+    m_startMass{ startMass }
 {
     sAppName = gameName;
     Construct(screen_w, screen_h, pixel_w, pixel_h, fullscreen);
@@ -156,7 +156,7 @@ void CGame::addObject(const std::shared_ptr<CObject>&& object)
 
 void CGame::initStars()
 {
-    for (size_t i = 0; i < m_starCardinality; ++i)
+    for (size_t i{ 0 }; i < m_starCardinality; ++i)
     {
         v2d starPos(static_cast<float>(rand() % ScreenWidth()), static_cast<float>(rand() % ScreenHeight()));
 
@@ -170,7 +170,7 @@ void CGame::initStars()
         else
             starColor = olc::VERY_DARK_GREY;
 
-        auto star = std::make_shared<CStar>(this, objectTypes::STAR, starPos, 0, starColor);
+        std::shared_ptr<CStar> star{ std::make_shared<CStar>(this, objectTypes::STAR, starPos, 0, starColor) };
         if ((center() - starPos).mag() <= radiusView())
         {
             star->kinetics()->speedFactor((1.5f - static_cast<float>(std::log10(m_starCardinality - i + 1) / std::log10(m_starCardinality + 1))) * 0.5f);
@@ -181,7 +181,7 @@ void CGame::initStars()
 
 void CGame::initPlayer()
 {
-    auto player = std::make_shared<CPlayer>(this, objectTypes::BLACKHOLE, center(), m_startMass, m_playerColor);
+    std::shared_ptr<CPlayer> player{ std::make_shared<CPlayer>(this, objectTypes::BLACKHOLE, center(), m_startMass, m_playerColor) };
     addObject(std::move(player));
 }
 
@@ -195,7 +195,7 @@ void CGame::spawnDebris(float deltaTime)
             //dice not more than once per time unit
             m_debrisTimer = m_debrisTimerReload;
 
-            auto debris = std::make_shared<CAsteroid>(this, objectTypes::DEBRIS);
+            std::shared_ptr<CAsteroid> debris{ std::make_shared<CAsteroid>(this, objectTypes::DEBRIS) };
             addObject(std::move(debris));
         }
     }
@@ -209,8 +209,8 @@ void CGame::drawUI()
 
 std::string CGame::massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const
 {
-    int shownMass(obj->mass());
-    int powerIndex(0);
+    int shownMass{ obj->mass() };
+    int powerIndex{ 0 };
     while(shownMass >= pow(10, shownDecimals))
     {
         powerIndex++;

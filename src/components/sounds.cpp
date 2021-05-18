@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// sounds.cpp
 /// Component class which handles all object sounds.
@@ -9,13 +9,13 @@
 
 
 //initialization of static members
-bool CSounds::m_firstInit = true;
-olc::SOUND* CSounds::m_sound;
-std::array<int, static_cast<int>(sounds::count)> CSounds::m_soundIDs = std::array<int, static_cast<int>(sounds::count)>();
+bool CSounds::m_firstInit{ true };
+olc::SOUND* CSounds::m_sound{};
+std::array<int, static_cast<int>(sounds::count)> CSounds::m_soundIDs{ std::array<int, static_cast<int>(sounds::count)>() };
 
 CSounds::CSounds(CObject* pObject) :
-	CComponent(pObject),
-	m_soundPath(pObject->game()->currentPath() / "sounds")
+	CComponent{ pObject },
+	m_soundPath{ pObject->game()->currentPath() / "sounds" }
 {
 	if (m_firstInit)
 		initSounds();

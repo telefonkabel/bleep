@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// kinetics.h
 /// Component class which handles all object kinetics.
@@ -11,6 +11,7 @@
 
 #include <deque>
 
+
 class CKinetics : public CComponent
 {
 public:
@@ -18,9 +19,7 @@ public:
 
 	void update(float deltaTime) override;
 
-	//returns the plain speed
-	float speed() const;
-
+	//set & get
 	void speedFactor(float fac);
 	float speedFactor() const;
 
@@ -30,16 +29,20 @@ public:
 	v2d acceleration() const;
 	void acceleration(v2d acceleration);
 
+	//returns the plain speed
+	float speed() const;
+
 private:
 	v2d m_velocity;
 	v2d m_acceleration;
 
-	//additional speed factor for simulating the 3D-deepth
+	//constant speed factor (f.e. to simulate depth)
 	float m_speedFactor;
 
 	//brings inertia and other velocities/accelerations together
 	void calcVelocity(float deltaTime);
 
+	//makeshift function which handels all kinds of collision -> should be reworked
 	void collision();
 
 	//helper function to apply gravity and game velocity

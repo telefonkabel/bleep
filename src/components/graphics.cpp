@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// graphics.cpp
 /// Component class which handles all object graphics.
@@ -9,14 +9,15 @@
 
 
 //init static member
-bool CGraphics::m_firstInit = true;
-std::array<std::vector<std::filesystem::path>, static_cast<int>(objectTypes::count)> CGraphics::m_graphics = std::array<std::vector<std::filesystem::path>, static_cast<int>(objectTypes::count)>();
+bool CGraphics::m_firstInit{ true };
+std::array<std::vector<std::filesystem::path>, static_cast<int>(objectTypes::count)> CGraphics::m_graphics
+	{ std::array<std::vector<std::filesystem::path>, static_cast<int>(objectTypes::count)>() };
 
 CGraphics::CGraphics(CObject* pObject) :
-	CComponent(pObject),
-	m_pSprite(nullptr),
-	m_pDecal(nullptr),
-	m_graphicPath(pObject->game()->currentPath() / "graphics")
+	CComponent{ pObject },
+	m_pSprite{ nullptr },
+	m_pDecal{ nullptr },
+	m_graphicPath{ pObject->game()->currentPath() / "graphics" }
 {
 	if (m_firstInit)
 		initGraphics();
@@ -46,13 +47,13 @@ void CGraphics::update(float deltaTime)
 
 void CGraphics::sprite(objectTypes type, graphics gfx)
 {
-	std::string file = m_graphics.at(static_cast<int>(type)).at(static_cast<int>(gfx)).string();
+	std::string file{ m_graphics.at(static_cast<int>(type)).at(static_cast<int>(gfx)).string() };
 	if (!file.empty())
 	{
 		if (std::filesystem::exists(file))
 		{
-			olc::Sprite* m_pSprite(new olc::Sprite(file));
-			m_pDecal = new olc::Decal(m_pSprite);
+			olc::Sprite* m_pSprite{ new olc::Sprite(file) };
+			m_pDecal = new olc::Decal{ m_pSprite };
 		}
 		else
 			; //throw
@@ -63,8 +64,8 @@ bool CGraphics::draw() const
 {
 	if (!object()->isInView())
 		return true;
-	v2d v2center(v2centroid());
-	object()->game()->DrawDecal(object()->xy() - v2center, m_pDecal, v2d({ 1,1 }), object()->color() * std::min(object()->fogFactor(), 1.0f));
+	v2d v2center{ v2centroid() };
+	object()->game()->DrawDecal(object()->xy() - v2center, m_pDecal, v2d{ 1,1 }, object()->color() * std::min(object()->fogFactor(), 1.0f));
 
 	return true;
 }

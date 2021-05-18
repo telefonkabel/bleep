@@ -1,22 +1,20 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// sounds.h
 /// Component class which handles all object sounds.
 //==============================================================================
 
 #pragma once
-
 #include "component.h"
 #include "game.h"
 
-#include <filesystem>
+#include "olcPGEX_Sound.h"
 
-#include "thirdParty/olcPGEX_Sound.h"
+#include <filesystem>
 
 
 enum class sounds { MUSIC0, JET, CRASH0, count};
-
 
 class CSounds : public CComponent
 {

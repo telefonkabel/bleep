@@ -16,6 +16,9 @@
 // Loitsch, Florian. "Printing floating-point numbers quickly and accurately with
 // integers." ACM Sigplan Notices 45.6 (2010): 233-243.
 
+#pragma warning(push)
+#pragma warning(disable: 26451)
+
 #ifndef RAPIDJSON_DIYFP_H_
 #define RAPIDJSON_DIYFP_H_
 
@@ -255,3 +258,5 @@ RAPIDJSON_DIAG_OFF(padded)
 RAPIDJSON_NAMESPACE_END
 
 #endif // RAPIDJSON_DIYFP_H_
+
+#pragma warning(pop)

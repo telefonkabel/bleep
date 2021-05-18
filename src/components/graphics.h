@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// graphics.h
 /// Component class which handles all object graphics.
@@ -25,6 +25,7 @@ public:
 	void sprite(objectTypes type, graphics gfx);
 
 	bool draw() const;
+	//vector to the centroid of the sprite (rectangular simplyfication)
 	v2d v2centroid() const;
 
 private:

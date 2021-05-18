@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// player.h
 /// Player game object.
@@ -20,13 +20,14 @@ public:
 	void update(float deltaTime) override;
 	float edge() const override;
 
-	int radiusEvent() const;
 	int radiusGrav() const;
 
 private:
+	//radius of the black hole
 	int m_radius;
-	int m_radiusEvent;
+	//radius used for lense effect
 	int m_radiusGravity;
+	//timing for the flickering effect of black holes
 	float m_flickerCount;
 
 	std::shared_ptr<CSounds> m_pSounds;

@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// player.cpp
 /// Player game object.
@@ -11,11 +11,10 @@
 
 CPlayer::CPlayer(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
 	CObject(pGame, type, pos, mass, color),
-	m_flickerCount(),
-	m_radiusEvent(0),
-	m_radiusGravity(0),
-	m_radius(0),
-	m_pSounds(std::make_shared<CSounds>(this))
+	m_flickerCount{},
+	m_radiusGravity{},
+	m_radius{},
+	m_pSounds{ std::make_shared<CSounds>(this) }
 {
 	m_pSounds->playSound(sounds::MUSIC0, true);
 }
@@ -24,7 +23,6 @@ void CPlayer::update(float deltaTime)
 {
 	//calculate radii in relation to its mass
 	m_radius = mass() / 100000 + 1;
-	m_radiusEvent = static_cast<int>(m_radius * 1.5f);
 	m_radiusGravity = 5 * m_radius;
 
 	m_flickerCount += deltaTime;
@@ -46,5 +44,4 @@ void CPlayer::draw() const
 }
 
 float CPlayer::edge() const { return static_cast<float>(m_radius); };
-int CPlayer::radiusEvent() const { return m_radiusEvent; };
 int CPlayer::radiusGrav() const { return m_radiusGravity; };

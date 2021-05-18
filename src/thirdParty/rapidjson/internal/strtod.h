@@ -12,6 +12,9 @@
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
 
+#pragma warning(push)
+#pragma warning(disable: 26451)
+
 #ifndef RAPIDJSON_STRTOD_
 #define RAPIDJSON_STRTOD_
 
@@ -288,3 +291,5 @@ inline double StrtodFullPrecision(double d, int p, const char* decimals, size_t 
 RAPIDJSON_NAMESPACE_END
 
 #endif // RAPIDJSON_STRTOD_
+
+#pragma warning(pop)

@@ -12,6 +12,9 @@
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
 
+#pragma warning(push)
+#pragma warning(disable: 26495)
+
 #ifndef RAPIDJSON_IEEE754_
 #define RAPIDJSON_IEEE754_
 
@@ -76,3 +79,5 @@ private:
 RAPIDJSON_NAMESPACE_END
 
 #endif // RAPIDJSON_IEEE754_
+
+#pragma warning(pop)

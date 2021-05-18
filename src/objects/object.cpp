@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// object.cpp
 /// Abstract class for all game objects.
@@ -14,16 +14,16 @@
 
 
 CObject::CObject(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
-    m_pGame(pGame),
-	m_pos(pos),
-    m_mass(mass),
-	m_color(color),
-    m_state(objectStates::ALIVE),
-    m_eatable(false),
-    m_type(type),
+    m_pGame{ pGame },
+    m_pos{ pos },
+    m_mass{ mass },
+    m_color{ color },
+    m_state{ objectStates::ALIVE },
+    m_eatable{ false },
+    m_type{ type },
     //makeshift for collsision - has to be implemented properly
-    m_pKineticsObj(nullptr),
-    m_pSoundsObj(nullptr)
+    m_pKineticsObj{ nullptr },
+    m_pSoundsObj{ nullptr }
 {
 }
 
@@ -56,9 +56,9 @@ objectTypes CObject::type() const { return m_type; };
 void CObject::eatable(bool eatable) { m_eatable = eatable; };
 bool CObject::isEatable() const { return m_eatable; };
 
-
 CGame* const CObject::game() const { return m_pGame; };
 std::shared_ptr<CPlayer> CObject::player() const { return std::static_pointer_cast<CPlayer>(game()->player()); };
+
 
 void CObject::addComponent(std::shared_ptr<CComponent> component)
 { 

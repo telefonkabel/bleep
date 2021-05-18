@@ -1,5 +1,5 @@
 //==============================================================================
-/// 2021, Benedikt Michael.
+/// 2021, Benedikt Michael
 //==============================================================================
 /// star.h
 /// Background star object.
@@ -24,7 +24,7 @@ public:
 private:
 	std::shared_ptr<CKinetics> m_pKinetics;
 
-	//to get a random flickering unrelated of the framerate
+	//to generate a random flickering unrelated to the framerate
 	float m_flickerEffect;
 	float m_flickerEffectTime;
 	float m_flickerTimer;
