@@ -18,7 +18,7 @@
 class CGame : public olc::PixelGameEngine
 {
 public:
-    CGame(const std::shared_ptr<CSounds>& sound, std::filesystem::path& currentPath, std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen);
+    CGame(std::filesystem::path& currentPath, std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen);
     ~CGame();
 
     //set & get
