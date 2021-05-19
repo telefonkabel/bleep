@@ -9,9 +9,6 @@
 #include "game.h"
 
 
-class CGame;
-class CSounds;
-
 class CPlayer : public CObject
 {
 public:
@@ -29,8 +26,6 @@ private:
 	int m_radiusGravity;
 	//timing for the flickering effect of black holes
 	float m_flickerCount;
-
-	std::shared_ptr<CSounds> m_pSounds;
 
 	void draw() const;
 };

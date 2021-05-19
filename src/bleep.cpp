@@ -90,7 +90,8 @@ int main()
         parser.parse(settings);
 
         //start game
-        CGame game{ currentPath, "Bleep", olc::DARK_MAGENTA, 1000000, 640, 480, 2, 2, true };
+        const std::shared_ptr<CSounds>& sound{ std::make_shared<CSounds>(CSounds { currentPath }) };
+        CGame game{ sound, currentPath, "Bleep", olc::DARK_MAGENTA, 1000000, 640, 480, 2, 2, true };
         game.Start();
     }
     catch (CException& exception)

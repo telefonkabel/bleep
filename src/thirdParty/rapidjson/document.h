@@ -13,7 +13,7 @@
 // specific language governing permissions and limitations under the License.
 
 #pragma warning(push)
-#pragma warning(disable: 26451)
+#pragma warning(disable: 26451 26812 33010)
 
 #ifndef RAPIDJSON_DOCUMENT_H_
 #define RAPIDJSON_DOCUMENT_H_

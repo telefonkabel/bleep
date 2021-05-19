@@ -15,8 +15,7 @@
 #include "olcPGEX_Sound.h"
 
 
-
-CGame::CGame(std::filesystem::path& currentPath, std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen) :
+CGame::CGame(const std::shared_ptr<CSounds>& sound, std::filesystem::path& currentPath, std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen) :
     m_currentPath{ currentPath },
     m_objects{},
     m_velocity{ 0.0f, 30.0f },
@@ -35,10 +34,13 @@ CGame::CGame(std::filesystem::path& currentPath, std::string gameName, olc::Pixe
     m_effectEaten{},
     m_effectEatenTime{ 0.2f },
     m_playerColor{ playerColor },
-    m_startMass{ startMass }
+    m_startMass{ startMass },
+    m_sound{ sound }
 {
     sAppName = gameName;
     Construct(screen_w, screen_h, pixel_w, pixel_h, fullscreen);
+
+    m_sound->playSound(sounds::MUSIC0, true);
 }
 
 CGame::~CGame()
@@ -137,6 +139,11 @@ void CGame::effectEaten(float deltaTime)
 olc::Pixel CGame::playerColor() const
 {
     return m_playerColor;
+}
+
+const std::shared_ptr<CSounds>& CGame::sound() const
+{
+    return m_sound;
 }
 
 const std::shared_ptr<CObject>& CGame::player() const

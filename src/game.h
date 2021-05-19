@@ -10,6 +10,7 @@
 #include "object.h"
 #include "maths.h"
 #include "asteroid.h"
+#include "sounds.h"
 
 #include <filesystem>
 
@@ -17,7 +18,7 @@
 class CGame : public olc::PixelGameEngine
 {
 public:
-    CGame(std::filesystem::path& currentPath, std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen);
+    CGame(const std::shared_ptr<CSounds>& sound, std::filesystem::path& currentPath, std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen);
     ~CGame();
 
     //set & get
@@ -37,6 +38,9 @@ public:
     //provides a handle to the player object specifically and all objects
     const std::shared_ptr<CObject>& player() const;
     const std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)>& gameObjects() const;
+
+    //provieds a handle to the sound object
+    const std::shared_ptr<CSounds>& sound() const;
 
 
 private:
@@ -59,6 +63,9 @@ private:
 
     //the path where the prog is executed
     std::filesystem::path m_currentPath;
+
+    //ptr to object that handles all sounds for the game
+    std::shared_ptr<CSounds> m_sound;
 
     //all active objects seperated into types
     std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)> m_objects;

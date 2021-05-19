@@ -24,9 +24,6 @@
     <ClInclude Include="..\src\components\kinetics.h">
       <Filter>components</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\components\sounds.h">
-      <Filter>components</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\components\component.h">
       <Filter>components</Filter>
     </ClInclude>
@@ -60,15 +57,12 @@
     <ClInclude Include="..\src\thirdParty\olcPixelGameEngine.h">
       <Filter>thirdParty</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\sounds.h">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\components\graphics.cpp">
-      <Filter>components</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\components\kinetics.cpp">
-      <Filter>components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\components\sounds.cpp">
       <Filter>components</Filter>
     </ClCompile>
     <ClCompile Include="..\src\game.cpp">
@@ -94,6 +88,12 @@
     </ClCompile>
     <ClCompile Include="..\src\helper\maths.cpp">
       <Filter>helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sounds.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\graphics.cpp">
+      <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

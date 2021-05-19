@@ -22,7 +22,6 @@
     <ClInclude Include="..\src\components\component.h" />
     <ClInclude Include="..\src\components\graphics.h" />
     <ClInclude Include="..\src\components\kinetics.h" />
-    <ClInclude Include="..\src\components\sounds.h" />
     <ClInclude Include="..\src\game.h" />
     <ClInclude Include="..\src\helper\exception.h" />
     <ClInclude Include="..\src\helper\maths.h" />
@@ -31,6 +30,7 @@
     <ClInclude Include="..\src\objects\player.h" />
     <ClInclude Include="..\src\objects\star.h" />
     <ClInclude Include="..\src\parser.h" />
+    <ClInclude Include="..\src\sounds.h" />
     <ClInclude Include="..\src\thirdParty\olcPGEX_Sound.h" />
     <ClInclude Include="..\src\thirdParty\olcPixelGameEngine.h" />
   </ItemGroup>
@@ -38,7 +38,6 @@
     <ClCompile Include="..\src\bleep.cpp" />
     <ClCompile Include="..\src\components\graphics.cpp" />
     <ClCompile Include="..\src\components\kinetics.cpp" />
-    <ClCompile Include="..\src\components\sounds.cpp" />
     <ClCompile Include="..\src\game.cpp" />
     <ClCompile Include="..\src\helper\maths.cpp" />
     <ClCompile Include="..\src\objects\asteroid.cpp" />
@@ -46,6 +45,7 @@
     <ClCompile Include="..\src\objects\player.cpp" />
     <ClCompile Include="..\src\objects\star.cpp" />
     <ClCompile Include="..\src\parser.cpp" />
+    <ClCompile Include="..\src\sounds.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

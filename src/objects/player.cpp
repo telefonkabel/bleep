@@ -6,18 +6,14 @@
 //==============================================================================
 
 #include "player.h"
-#include "components/sounds.h"
 
 
 CPlayer::CPlayer(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
 	CObject(pGame, type, pos, mass, color),
 	m_flickerCount{},
 	m_radiusGravity{},
-	m_radius{},
-	m_pSounds{ std::make_shared<CSounds>(this) }
-{
-	m_pSounds->playSound(sounds::MUSIC0, true);
-}
+	m_radius{}
+{}
 
 void CPlayer::update(float deltaTime)
 {

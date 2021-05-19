@@ -12,7 +12,6 @@
 class CGame;
 class CKinetics;
 class CGraphics;
-class CSounds;
 
 class CAsteroid : public CObject
 {
@@ -26,7 +25,6 @@ public:
 private:
 	std::shared_ptr<CKinetics> m_pKinetics;
 	std::shared_ptr<CGraphics> m_pGraphics;
-	std::shared_ptr<CSounds> m_pSounds;
 
 	int m_maxStartSpeed;
 

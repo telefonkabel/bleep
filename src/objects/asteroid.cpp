@@ -10,19 +10,16 @@
 #include "player.h"
 #include "components/kinetics.h"
 #include "components/graphics.h"
-#include "components/sounds.h"
 
 
 CAsteroid::CAsteroid(CGame* const pGame, objectTypes type, int mass, v2d pos, colors color) :
     CObject{ pGame, type, pos, mass, color },
     m_pKinetics{ std::make_shared<CKinetics>(this) },
     m_pGraphics{ std::make_shared<CGraphics>(this) },
-    m_pSounds{ std::make_shared<CSounds>(this) },
     m_maxStartSpeed{ 200 }
 {
 	addComponent(m_pKinetics);
 	addComponent(m_pGraphics);
-	addComponent(m_pSounds);
 
 	initAsteroid();
      
@@ -37,7 +34,7 @@ CAsteroid::~CAsteroid()
     if (state() == objectStates::EATEN)
     {
         player()->mass(player()->mass() + mass());
-        m_pSounds->playSound(sounds::JET, false);
+        game()->sound()->playSound(sounds::JET, false);
     }
 }
 

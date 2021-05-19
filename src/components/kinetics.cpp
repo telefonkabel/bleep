@@ -106,7 +106,7 @@ void CKinetics::collision()
 
 					//play sound if in view
 					if(object()->isInView())
-						object()->m_pSoundsObj->playSound(sounds::CRASH0, false);
+						object()->game()->sound()->playSound(sounds::CRASH0, false);
 				}
 			}
 		}
