@@ -7,6 +7,8 @@
 
 #include "graphics.h"
 
+#include <filesystem>
+
 
 //init static member
 bool CGraphics::m_firstInit{ true };
@@ -39,17 +41,11 @@ void CGraphics::update(float deltaTime)
 
 void CGraphics::sprite(objectTypes type, graphics gfx)
 {
-	std::string file{ m_graphics.at(static_cast<int>(type)).at(static_cast<int>(gfx)).string() };
-	if (!file.empty())
-	{
-		if (std::filesystem::exists(file))
-		{
-			std::unique_ptr<olc::Sprite> test{ new olc::Sprite{ file } };
-			m_renderable.Load(file);
-		}
-		else
-			; //throw
-	}
+	std::filesystem::path file{ m_graphics.at(static_cast<int>(type)).at(static_cast<int>(gfx)) };
+	if (std::filesystem::exists(file))
+		m_renderable.Load(file.string());
+	else
+		throw CException{ file.string() + " doesn't exist.", INFO };
 }
 
 bool CGraphics::draw() const

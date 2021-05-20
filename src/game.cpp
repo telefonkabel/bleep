@@ -119,7 +119,7 @@ bool CGame::OnUserUpdate(float deltaTime)
     }
     catch(CException& exception)
     {
-        std::cerr << "Exception in OnUserUpdate: " << exception.msg();
+        std::cerr << exception.msg();
         return false;
     }
     catch (...)

@@ -16,27 +16,17 @@ CSounds::CSounds(std::filesystem::path currentPath) :
 	m_pSound{ nullptr },
 	m_soundIDs{}
 {
-	try
-	{
-		olc::SOUND::InitialiseAudio();
-		initSound(sounds::MUSIC0, m_pSound->LoadAudioSample((m_soundPath / "music0.wav").string()));
-		initSound(sounds::JET, m_pSound->LoadAudioSample((m_soundPath / "jet.wav").string()));
-		initSound(sounds::CRASH0, m_pSound->LoadAudioSample((m_soundPath / "crash0.wav").string()));
-	}
-	catch (CException& exception)
-	{
-		std::cerr << "Exception in sounds: " << exception.msg();
-	}
-	catch (...)
-	{
-		std::cerr << "Unhandled exception in sounds.";
-	}
+	olc::SOUND::InitialiseAudio();
+	initSound(sounds::MUSIC0, m_pSound->LoadAudioSample((m_soundPath / "music0.wav").string()));
+	initSound(sounds::JET, m_pSound->LoadAudioSample((m_soundPath / "jet.wav").string()));
+	initSound(sounds::CRASH0, m_pSound->LoadAudioSample((m_soundPath / "crash0.wav").string()));
+
 }
 
 void CSounds::initSound(sounds index, int id)
 {
 	if (static_cast<int>(id) == -1)
-		throw CException{ "olcPGEX_Sound can't load audio sample with sound ID: " + std::to_string(id) };
+		throw CException{ "olcPGEX_Sound can't load audio sample with sound ID: " + std::to_string(id), INFO };
 	else
 		m_soundIDs.at(static_cast<int>(index)) = id;
 }

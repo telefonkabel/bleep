@@ -17,7 +17,7 @@ public:
 	CParser(std::filesystem::path& currentPath);
 
 	//start of parsing - returns true if no exceptions are thrown.
-	bool parse(rapidjson::Document& settings);
+	void parse(rapidjson::Document& settings);
 
 private:
 	//settings path
