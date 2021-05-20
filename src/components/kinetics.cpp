@@ -19,10 +19,8 @@ CKinetics::CKinetics(CObject* pObject) :
 	m_velocity{},
 	m_speedFactor{ 1.0f },
 	m_acceleration{},
-	m_pGameObjects{ nullptr }
-{
-	m_pGameObjects = &object()->game()->gameObjects();
-}
+	m_pGameObjects{ object()->game()->gameObjects() }
+{}
 
 void CKinetics::update(float deltaTime)
 {
@@ -78,7 +76,7 @@ void CKinetics::collision()
 		{
 			if (object()->isEatable())
 			{
-				for (auto& obj : m_pGameObjects->at(listID))
+				for (auto& obj : m_pGameObjects.at(listID))
 					if ((object()->xy() - obj->xy()).mag() <= /*object()->edge() +*/ obj->edge())
 						object()->state(objectStates::EATEN);
 			}
@@ -86,7 +84,7 @@ void CKinetics::collision()
 		//collision with other objects
 		else if (listID == static_cast<int>(objectTypes::DEBRIS) || listID == static_cast<int>(objectTypes::ENEMY))
 		{
-			for (auto& obj : m_pGameObjects->at(listID))
+			for (auto& obj : m_pGameObjects.at(listID))
 			{
 				float distance{ (object()->xy() - obj->xy()).mag() };
 				float touchDistance{ object()->edge() + obj->edge() };
@@ -98,11 +96,11 @@ void CKinetics::collision()
 					obj->xy(obj->xy() - (object()->xy() - obj->xy()).norm() * ((touchDistance - distance) / 2));
 
 					//apply collision velocities
-					v2d objVel{ obj->m_pKineticsObj->velocity() };
+					v2d objVel{ obj->kinetics()->velocity() };
 					v2d velNeu{ maths::elasticDiskImpact(m_velocity, static_cast<float>(object()->mass()), objVel, static_cast<float>(obj->mass())) };
 					v2d objVelNeu{ maths::elasticDiskImpact(objVel, static_cast<float>(obj->mass()), m_velocity, static_cast<float>(object()->mass())) };
 					velocity(velNeu);
-					obj->m_pKineticsObj->velocity(objVelNeu);
+					obj->kinetics()->velocity(objVelNeu);
 
 					//play sound if in view
 					if(object()->isInView())

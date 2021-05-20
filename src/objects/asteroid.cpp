@@ -5,28 +5,23 @@
 /// Asteroid game object.
 //==============================================================================
 
+#include "components/graphics.h"
+#include "components/kinetics.h"
 #include "asteroid.h"
 #include "game.h"
 #include "player.h"
-#include "components/kinetics.h"
-#include "components/graphics.h"
 
 
 CAsteroid::CAsteroid(CGame* const pGame, objectTypes type, int mass, v2d pos, colors color) :
     CObject{ pGame, type, pos, mass, color },
-    m_pKinetics{ std::make_shared<CKinetics>(this) },
-    m_pGraphics{ std::make_shared<CGraphics>(this) },
     m_maxStartSpeed{ 200 }
 {
-	addComponent(m_pKinetics);
-	addComponent(m_pGraphics);
+	addComponent(components::kinetics);
+	addComponent(components::graphics);
 
 	initAsteroid();
      
 	eatable(true);
-
-    //makeshift for collusion - needs to be implemented properly
-    m_pKineticsObj = m_pKinetics.get();
 }
 
 CAsteroid::~CAsteroid()
@@ -42,35 +37,35 @@ void CAsteroid::initAsteroid()
 {
     //asteroid type
     int rdn{ rand() % 100 };
-    graphics gfx{};
+    sprites gfx{};
     if (rdn < 35)
     {
         mass(10000);
-        gfx = graphics::ASTR_SMALL1;
+        gfx = sprites::ASTR_SMALL1;
     }
     else if (rdn < 70)
     {
         mass(10000);
-        gfx = graphics::ASTR_SMALL2;
+        gfx = sprites::ASTR_SMALL2;
     }
     else if (rdn < 95)
     {
         mass(20000);
-        gfx = graphics::ASTR_MEDIUM;
+        gfx = sprites::ASTR_MEDIUM;
     }
     else
     {
         mass(40000);
-        gfx = graphics::ASTR_BIG;
+        gfx = sprites::ASTR_BIG;
     }
-    m_pGraphics->sprite(objectTypes::DEBRIS, gfx);
+    graphics()->sprite(objectTypes::DEBRIS, gfx);
 
     //start point
     xy(maths::rndCirclePt(game()->center(), static_cast<float>(game()->radiusMap())));
     //start velocity
     float rndAngle{ maths::rndAngle() };
     int startSpeed{ rand() % m_maxStartSpeed };
-    m_pKinetics->velocity(v2d{ startSpeed * static_cast<float>(cos(rndAngle)), startSpeed * static_cast<float>(sin(rndAngle)) });
+    kinetics()->velocity(v2d{ startSpeed * static_cast<float>(cos(rndAngle)), startSpeed * static_cast<float>(sin(rndAngle)) });
 }
 
 void CAsteroid::update(float deltaTime)
@@ -78,7 +73,7 @@ void CAsteroid::update(float deltaTime)
 	CObject::update(deltaTime);
 }
 
-float CAsteroid::edge() const
+float CAsteroid::edge()
 {
-    return static_cast<float>(m_pGraphics->width() + m_pGraphics->height()) / 4.0f;
+    return static_cast<float>(graphics()->width() + graphics()->height()) / 4.0f;
 }

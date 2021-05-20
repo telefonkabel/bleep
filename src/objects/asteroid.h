@@ -10,8 +10,6 @@
 
 
 class CGame;
-class CKinetics;
-class CGraphics;
 
 class CAsteroid : public CObject
 {
@@ -20,12 +18,9 @@ public:
 	~CAsteroid();
 
 	void update(float deltaTime) override;
-	float edge() const override;
+	float edge() override;
 
 private:
-	std::shared_ptr<CKinetics> m_pKinetics;
-	std::shared_ptr<CGraphics> m_pGraphics;
-
 	int m_maxStartSpeed;
 
 	void initAsteroid();

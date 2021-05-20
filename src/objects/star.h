@@ -17,13 +17,9 @@ public:
 	CStar(CGame* const pGame, objectTypes type, v2d pos = { 0.0f, 0.0f }, int mass = 0, colors color = olc::WHITE);
 
 	void update(float deltaTime) override;
-	float edge() const override;
-
-	std::shared_ptr<CKinetics> kinetics() const;
+	float edge() override;
 
 private:
-	std::shared_ptr<CKinetics> m_pKinetics;
-
 	//to generate a random flickering unrelated to the framerate
 	float m_flickerEffect;
 	float m_flickerEffectTime;

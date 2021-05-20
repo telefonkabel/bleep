@@ -15,7 +15,7 @@ public:
 	CPlayer(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color);
 
 	void update(float deltaTime) override;
-	float edge() const override;
+	float edge() override;
 
 	int radiusGrav() const;
 

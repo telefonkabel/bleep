@@ -10,7 +10,7 @@
 #include "game.h"
 
 
-enum class graphics { ASTR_SMALL1, ASTR_SMALL2, ASTR_MEDIUM, ASTR_BIG, count };
+enum class sprites { ASTR_SMALL1, ASTR_SMALL2, ASTR_MEDIUM, ASTR_BIG, count };
 
 class CGraphics : public CComponent
 {
@@ -21,7 +21,7 @@ public:
 
 	int32_t width() const;
 	int32_t height() const;
-	void sprite(objectTypes type, graphics gfx);
+	void sprite(objectTypes type, sprites gfx);
 
 	bool draw() const;
 	//vector to the centroid of the sprite (rectangular simplyfication)

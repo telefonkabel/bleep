@@ -6,7 +6,9 @@
 //==============================================================================
 
 #pragma once
-#include "object.h"
+
+class CObject;
+enum class components { kinetics, graphics };
 
 class CComponent
 {

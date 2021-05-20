@@ -27,11 +27,11 @@ CGraphics::CGraphics(CObject* pObject) :
 void CGraphics::initGraphics()
 {
 	m_firstInit = false;
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).resize(static_cast<int>(graphics::count));
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(graphics::ASTR_SMALL1)) = m_graphicPath / "astr0.png";
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(graphics::ASTR_SMALL2)) = m_graphicPath / "astr1.png";
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(graphics::ASTR_MEDIUM)) = m_graphicPath / "astr2.png";
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(graphics::ASTR_BIG)) = m_graphicPath / "astr3.png";
+	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).resize(static_cast<int>(sprites::count));
+	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_SMALL1)) = m_graphicPath / "astr0.png";
+	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_SMALL2)) = m_graphicPath / "astr1.png";
+	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_MEDIUM)) = m_graphicPath / "astr2.png";
+	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_BIG)) = m_graphicPath / "astr3.png";
 }
 
 void CGraphics::update(float deltaTime)
@@ -39,7 +39,7 @@ void CGraphics::update(float deltaTime)
 	draw();
 }
 
-void CGraphics::sprite(objectTypes type, graphics gfx)
+void CGraphics::sprite(objectTypes type, sprites gfx)
 {
 	std::filesystem::path file{ m_graphics.at(static_cast<int>(type)).at(static_cast<int>(gfx)) };
 	if (std::filesystem::exists(file))

@@ -39,5 +39,5 @@ void CPlayer::draw() const
 	game()->FillCircle(game()->center(), m_radius - 3, olc::BLACK);
 }
 
-float CPlayer::edge() const { return static_cast<float>(m_radius); };
+float CPlayer::edge() { return static_cast<float>(m_radius); };
 int CPlayer::radiusGrav() const { return m_radiusGravity; };

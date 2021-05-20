@@ -5,11 +5,11 @@
 /// Abstract class for all game objects.
 //==============================================================================
 
+#include "components/graphics.h"
+#include "components/kinetics.h"
 #include "object.h"
 #include "exception.h"
-
 #include "game.h"
-#include "components/component.h"
 #include "player.h"
 
 
@@ -21,16 +21,25 @@ CObject::CObject(CGame* const pGame, objectTypes type, v2d pos, int mass, colors
     m_state{ objectStates::ALIVE },
     m_eatable{ false },
     m_type{ type },
-    //makeshift for collsision - has to be implemented properly
-    m_pKineticsObj{ nullptr },
-    m_pSoundsObj{ nullptr }
+    m_pKinetics{},
+    m_pGraphics{}
 {
 }
 
 void CObject::update(float deltaTime)
 {
-    for (auto& comp : m_pComponents)
-        comp->update(deltaTime);
+    for (components component : m_components)
+    {
+        switch (component)
+        {
+        case components::kinetics:
+            m_pKinetics->update(deltaTime);
+            break;
+        case components::graphics:
+            m_pGraphics->update(deltaTime);
+            break;
+        }
+    }
 }
 
 void CObject::x(float x) { m_pos.x = x; };
@@ -60,11 +69,26 @@ CGame* const CObject::game() const { return m_pGame; };
 std::shared_ptr<CPlayer> CObject::player() const { return std::static_pointer_cast<CPlayer>(m_pGame->player()); };
 
 
-void CObject::addComponent(std::shared_ptr<CComponent> component)
+void CObject::addComponent(components component)
 { 
-    //create a true copy of the shared pointer
-    m_pComponents.insert(component); 
+    m_components.insert(component);
 };
+
+std::unique_ptr<CKinetics>& CObject::kinetics()
+{
+    if (m_pKinetics)
+        return m_pKinetics;
+    else
+        throw CException{ "Tried to grab a nullptr.", INFO };
+}
+
+std::unique_ptr<CGraphics>& CObject::graphics()
+{
+    if (m_pGraphics)
+        return m_pGraphics;
+    else
+        throw CException{ "Tried to grab a nullptr.", INFO };
+}
 
 bool CObject::isInView() const
 {

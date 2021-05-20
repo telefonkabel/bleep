@@ -13,7 +13,7 @@
 
 CSounds::CSounds(std::filesystem::path currentPath) :
 	m_soundPath{currentPath / "sounds" },
-	m_pSound{ nullptr },
+	m_pSound{},
 	m_soundIDs{}
 {
 	olc::SOUND::InitialiseAudio();

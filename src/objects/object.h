@@ -8,17 +8,18 @@
 #pragma once
 #include "maths.h"
 #include "exception.h"
+#include "components/component.h"
 
 #include <utility>
 #include <set>
+#include <variant>
 
 
+class CGraphics;
+class CKinetics;
 class CGame;
 class CComponent;
 class CPlayer;
-//makeshift for collusion
-class CKinetics;
-class CSounds;
 
 using colors = olc::Pixel;
 
@@ -37,7 +38,7 @@ public:
 	//function to update the object on each tick
 	virtual void update(float deltaTime);
 	//has to calculate the collsion boundary of the object in a straight line to another one
-	virtual float edge() const = 0;
+	virtual float edge() = 0;
 
 	//set & get
 	void x(float x);
@@ -69,7 +70,10 @@ public:
 	std::shared_ptr<CPlayer> player() const;
 
 	//hook a component onto the object
-	void addComponent(std::shared_ptr<CComponent> component);
+	void addComponent(components component);
+	//handles to the components
+	std::unique_ptr<CKinetics>& kinetics();
+	std::unique_ptr<CGraphics>& graphics();
 
 	//checks whether the object (or a point as parameter) is in the viewable map
 	bool isInView() const;
@@ -78,23 +82,22 @@ public:
 	//the density of the fog of war
 	float fogFactor() const;
 
-	//makeshift for collsision - has to be implemented properly yet
-	CKinetics* m_pKineticsObj;
-	CSounds* m_pSoundsObj;
-
 private:
 	v2d m_pos;
 	colors m_color;
 	int m_mass;
-	//determines whether the object could be sucked into black hole
+	//determines whether the object could be sucked into a black hole
 	bool m_eatable;
 
 	//the type and state of the object
 	objectTypes m_type;
 	objectStates m_state;
 
-	//pointer to the game
+	//pointer to the game object
 	CGame* const m_pGame;
-	//set of pointers to all used components
-	std::set<std::shared_ptr<CComponent>> m_pComponents;
+
+	//handling of components
+	std::unique_ptr<CKinetics> m_pKinetics;
+	std::unique_ptr<CGraphics> m_pGraphics;
+	std::set<components> m_components;
 };

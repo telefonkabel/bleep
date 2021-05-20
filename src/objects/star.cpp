@@ -8,17 +8,16 @@
 #include "star.h"
 #include "game.h"
 #include "player.h"
-#include "components/kinetics.h"
+#include "components/component.h"
 
 CStar::CStar(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
 	CObject{ pGame, type, pos, mass, color },
-	m_pKinetics{ std::make_shared<CKinetics>(this) },
 	m_flickerEffect{},
 	m_flickerEffectTime{ 0.3f },
 	m_flickerTimer{},
 	m_flickerTimerReload{ 0.01f }
 {
-	addComponent(m_pKinetics);
+	addComponent(components::kinetics);
 }
 
 void CStar::update(float deltaTime)
@@ -74,6 +73,4 @@ void CStar::draw() const
 	}
 }
 
-float CStar::edge() const { return 0.0f; };
-
-std::shared_ptr<CKinetics> CStar::kinetics() const { return m_pKinetics; };
+float CStar::edge() { return 0.0f; };

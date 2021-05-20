@@ -48,6 +48,6 @@ private:
 	//helper function to apply gravity and game velocity
 	v2d applyVelocities(float deltaTime);
 
-	//pointer to all game objects
-	const std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)>* m_pGameObjects;
+	//reference to all game objects
+	const std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)>& m_pGameObjects;
 };
