@@ -57,7 +57,7 @@ void CObject::eatable(bool eatable) { m_eatable = eatable; };
 bool CObject::isEatable() const { return m_eatable; };
 
 CGame* const CObject::game() const { return m_pGame; };
-std::shared_ptr<CPlayer> CObject::player() const { return std::static_pointer_cast<CPlayer>(game()->player()); };
+std::shared_ptr<CPlayer> CObject::player() const { return std::static_pointer_cast<CPlayer>(m_pGame->player()); };
 
 
 void CObject::addComponent(std::shared_ptr<CComponent> component)
@@ -68,14 +68,14 @@ void CObject::addComponent(std::shared_ptr<CComponent> component)
 
 bool CObject::isInView() const
 {
-    return ((game()->center() - xy()).mag() < game()->radiusView()) ? true : false;
+    return ((m_pGame->center() - xy()).mag() < m_pGame->radiusView()) ? true : false;
 }
 bool CObject::isInView(v2d pos) const
 {
-    return ((game()->center() - pos).mag() < game()->radiusView()) ? true : false;
+    return ((m_pGame->center() - pos).mag() < m_pGame->radiusView()) ? true : false;
 }
 
 float CObject::fogFactor() const
 {
-    return (game()->radiusView() - (game()->center() - xy()).mag()) / game()->fog();
+    return (m_pGame->radiusView() - (m_pGame->center() - xy()).mag()) / m_pGame->fog();
 }

@@ -40,7 +40,7 @@ public:
     const std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)>& gameObjects() const;
 
     //provieds a handle to the sound object
-    const std::shared_ptr<CSounds>& sound() const;
+    const std::unique_ptr<CSounds>& sound() const;
 
 
 private:
@@ -65,7 +65,7 @@ private:
     std::filesystem::path m_currentPath;
 
     //ptr to object that handles all sounds for the game
-    std::shared_ptr<CSounds> m_sound;
+    std::unique_ptr<CSounds> m_sound;
 
     //all active objects seperated into types
     std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)> m_objects;

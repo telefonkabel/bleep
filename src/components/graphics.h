@@ -16,7 +16,6 @@ class CGraphics : public CComponent
 {
 public:
 	CGraphics(CObject* pObject);
-	~CGraphics();
 
 	void update(float deltaTime) override;
 
@@ -29,8 +28,7 @@ public:
 	v2d v2centroid() const;
 
 private:
-	olc::Sprite* m_pSprite;
-	olc::Decal* m_pDecal;
+	olc::Renderable m_renderable;
 
 	std::filesystem::path m_graphicPath;
 

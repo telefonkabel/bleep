@@ -93,7 +93,7 @@
       <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="..\src\components\graphics.cpp">
-      <Filter>game</Filter>
+      <Filter>components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

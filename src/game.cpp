@@ -35,7 +35,7 @@ CGame::CGame(std::filesystem::path& currentPath, std::string gameName, olc::Pixe
     m_effectEatenTime{ 0.2f },
     m_playerColor{ playerColor },
     m_startMass{ startMass },
-    m_sound{ std::make_shared<CSounds>(CSounds { currentPath }) }
+    m_sound{ std::make_unique<CSounds>(CSounds { currentPath }) }
 {
     sAppName = gameName;
     Construct(screen_w, screen_h, pixel_w, pixel_h, fullscreen);
@@ -69,7 +69,14 @@ bool CGame::OnUserUpdate(float deltaTime)
 {
     try
     {
-        //world input
+        ////world input
+        //close game
+        if (GetKey(olc::ESCAPE).bHeld)
+        {
+            std::cout << "Bleep terminated with escape." << std::endl;
+            return false;
+        }
+        //move player
         if (GetKey(olc::W).bHeld)
             m_velocity += m_accelerationY * deltaTime;
         if (GetKey(olc::S).bHeld)
@@ -141,7 +148,7 @@ olc::Pixel CGame::playerColor() const
     return m_playerColor;
 }
 
-const std::shared_ptr<CSounds>& CGame::sound() const
+const std::unique_ptr<CSounds>& CGame::sound() const
 {
     return m_sound;
 }

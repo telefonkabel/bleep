@@ -13,15 +13,15 @@
 
 CSounds::CSounds(std::filesystem::path currentPath) :
 	m_soundPath{currentPath / "sounds" },
-	m_sound{},
+	m_pSound{ nullptr },
 	m_soundIDs{}
 {
 	try
 	{
 		olc::SOUND::InitialiseAudio();
-		initSound(sounds::MUSIC0, m_sound->LoadAudioSample((m_soundPath / "music0.wav").string()));
-		initSound(sounds::JET, m_sound->LoadAudioSample((m_soundPath / "jet.wav").string()));
-		initSound(sounds::CRASH0, m_sound->LoadAudioSample((m_soundPath / "crash0.wav").string()));
+		initSound(sounds::MUSIC0, m_pSound->LoadAudioSample((m_soundPath / "music0.wav").string()));
+		initSound(sounds::JET, m_pSound->LoadAudioSample((m_soundPath / "jet.wav").string()));
+		initSound(sounds::CRASH0, m_pSound->LoadAudioSample((m_soundPath / "crash0.wav").string()));
 	}
 	catch (CException& exception)
 	{
@@ -43,5 +43,5 @@ void CSounds::initSound(sounds index, int id)
 
 void CSounds::playSound(sounds index, bool repeat) const
 {
-	m_sound->PlaySample(m_soundIDs.at(static_cast<int>(index)), repeat);
+	m_pSound->PlaySample(m_soundIDs.at(static_cast<int>(index)), repeat);
 }

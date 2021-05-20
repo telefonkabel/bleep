@@ -15,19 +15,11 @@ std::array<std::vector<std::filesystem::path>, static_cast<int>(objectTypes::cou
 
 CGraphics::CGraphics(CObject* pObject) :
 	CComponent{ pObject },
-	m_pSprite{ nullptr },
-	m_pDecal{ nullptr },
+	m_renderable{},
 	m_graphicPath{ pObject->game()->currentPath() / "graphics" }
 {
 	if (m_firstInit)
 		initGraphics();
-}
-
-
-CGraphics::~CGraphics()
-{
-	delete m_pSprite;
-	delete m_pDecal;
 }
 
 void CGraphics::initGraphics()
@@ -52,8 +44,8 @@ void CGraphics::sprite(objectTypes type, graphics gfx)
 	{
 		if (std::filesystem::exists(file))
 		{
-			olc::Sprite* m_pSprite{ new olc::Sprite(file) };
-			m_pDecal = new olc::Decal{ m_pSprite };
+			std::unique_ptr<olc::Sprite> test{ new olc::Sprite{ file } };
+			m_renderable.Load(file);
 		}
 		else
 			; //throw
@@ -65,15 +57,15 @@ bool CGraphics::draw() const
 	if (!object()->isInView())
 		return true;
 	v2d v2center{ v2centroid() };
-	object()->game()->DrawDecal(object()->xy() - v2center, m_pDecal, v2d{ 1,1 }, object()->color() * std::min(object()->fogFactor(), 1.0f));
+	object()->game()->DrawDecal(object()->xy() - v2center, m_renderable.Decal(), v2d{ 1,1 }, object()->color() * std::min(object()->fogFactor(), 1.0f));
 
 	return true;
 }
 
 v2d CGraphics::v2centroid() const
 {
-	return m_pDecal == nullptr ? object()->xy() : v2d{ static_cast<float>(m_pDecal->sprite->width) / 2, static_cast<float>(m_pDecal->sprite->height) / 2 };
+	return m_renderable.Decal() == nullptr ? object()->xy() : v2d{ static_cast<float>(width()) / 2, static_cast<float>(height()) / 2 };
 }
 
-int32_t CGraphics::width() const { return m_pDecal->sprite->width; };
-int32_t CGraphics::height() const { return m_pDecal->sprite->height; };
+int32_t CGraphics::width() const { return m_renderable.Sprite()->width; };
+int32_t CGraphics::height() const { return m_renderable.Sprite()->height; };

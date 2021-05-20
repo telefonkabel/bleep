@@ -5,9 +5,11 @@
 /// Provides the main function for this game.
 //==============================================================================
 
+//defines for third party
 #define OLC_PGE_APPLICATION
 #define OLC_PGEX_SOUND
 
+//crossplatform
 #ifdef _WIN32
     #define USE_WINDOWS
     #include <codeanalysis\warnings.h>
@@ -27,6 +29,7 @@
     #include "olcPixelGameEngine.h"
     #include "olcPGEX_Sound.h"
 #endif
+
 
 #include "game.h"
 #include "parser.h"
@@ -90,7 +93,7 @@ int main()
         parser.parse(settings);
 
         //start game
-        CGame game{ currentPath, "Bleep", olc::DARK_MAGENTA, 1000000, 640, 480, 2, 2, true };
+        CGame game{ currentPath, "Bleep", olc::DARK_MAGENTA, 1000000, 640, 480, 2, 2, false };
         game.Start();
     }
     catch (CException& exception)

@@ -25,7 +25,7 @@ public:
 private:
 	std::filesystem::path m_soundPath;
 
-	olc::SOUND* m_sound;
+	std::unique_ptr<olc::SOUND> m_pSound;
 	//wraps the int IDs of olc for better readability
 	std::array<int, static_cast<int>(sounds::count)> m_soundIDs;
 

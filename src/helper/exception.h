@@ -12,11 +12,15 @@
 class CException : public std::exception
 {
 public:
-	CException(std::string info) : infomsg{ info } {}
+	CException(std::string info) : m_infomsg{ info } {}
 	~CException() throw () {}
 
-	const char* msg() const throw() { return infomsg.c_str(); }
+	const char* msg() throw()
+	{
+		m_infomsg += "\n";
+		return m_infomsg.c_str();
+	}
 
 private:
-	std::string infomsg;
+	std::string m_infomsg;
 };

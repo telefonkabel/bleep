@@ -110,6 +110,5 @@ void CKinetics::collision()
 				}
 			}
 		}
-
 	}
 }
