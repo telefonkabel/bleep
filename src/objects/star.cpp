@@ -9,6 +9,8 @@
 #include "game.h"
 #include "player.h"
 #include "components/component.h"
+#include "components/graphics.h"
+#include "components/kinetics.h"
 
 CStar::CStar(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
 	CObject{ pGame, type, pos, mass, color },

@@ -59,8 +59,21 @@ std::filesystem::path CGame::currentPath() const { return m_currentPath; }
 
 bool CGame::OnUserCreate()
 {
-    initPlayer();
-    initStars();
+    try
+    {
+        initPlayer();
+        initStars();
+    }
+    catch (CException& exception)
+    {
+        std::cerr << exception.msg();
+        return false;
+    }
+    catch (...)
+    {
+        std::cerr << "Unhandled exception in OnUserCreate.";
+        return false;
+    }
 
     return true;
 }

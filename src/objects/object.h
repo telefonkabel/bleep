@@ -8,7 +8,6 @@
 #pragma once
 #include "maths.h"
 #include "exception.h"
-#include "components/component.h"
 
 #include <utility>
 #include <set>
@@ -20,6 +19,7 @@ class CKinetics;
 class CGame;
 class CComponent;
 class CPlayer;
+enum class components;
 
 using colors = olc::Pixel;
 

@@ -5,11 +5,11 @@
 /// Asteroid game object.
 //==============================================================================
 
-#include "components/graphics.h"
-#include "components/kinetics.h"
 #include "asteroid.h"
 #include "game.h"
 #include "player.h"
+#include "components/graphics.h"
+#include "components/kinetics.h"
 
 
 CAsteroid::CAsteroid(CGame* const pGame, objectTypes type, int mass, v2d pos, colors color) :

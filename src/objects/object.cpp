@@ -5,12 +5,12 @@
 /// Abstract class for all game objects.
 //==============================================================================
 
-#include "components/graphics.h"
-#include "components/kinetics.h"
 #include "object.h"
 #include "exception.h"
 #include "game.h"
 #include "player.h"
+#include "components/graphics.h"
+#include "components/kinetics.h"
 
 
 CObject::CObject(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
@@ -24,22 +24,6 @@ CObject::CObject(CGame* const pGame, objectTypes type, v2d pos, int mass, colors
     m_pKinetics{},
     m_pGraphics{}
 {
-}
-
-void CObject::update(float deltaTime)
-{
-    for (components component : m_components)
-    {
-        switch (component)
-        {
-        case components::kinetics:
-            m_pKinetics->update(deltaTime);
-            break;
-        case components::graphics:
-            m_pGraphics->update(deltaTime);
-            break;
-        }
-    }
 }
 
 void CObject::x(float x) { m_pos.x = x; };
@@ -69,9 +53,34 @@ CGame* const CObject::game() const { return m_pGame; };
 std::shared_ptr<CPlayer> CObject::player() const { return std::static_pointer_cast<CPlayer>(m_pGame->player()); };
 
 
+void CObject::update(float deltaTime)
+{
+    for (components component : m_components)
+    {
+        switch (component)
+        {
+        case components::kinetics:
+            m_pKinetics->update(deltaTime);
+            break;
+        case components::graphics:
+            m_pGraphics->update(deltaTime);
+            break;
+        }
+    }
+}
+
 void CObject::addComponent(components component)
 { 
     m_components.insert(component);
+    switch (component)
+    {
+    case components::kinetics:
+        m_pKinetics = std::make_unique<CKinetics>(this);
+        break;
+    case components::graphics:
+        m_pGraphics = std::make_unique<CGraphics>(this);
+        break;
+    }
 };
 
 std::unique_ptr<CKinetics>& CObject::kinetics()
@@ -79,7 +88,10 @@ std::unique_ptr<CKinetics>& CObject::kinetics()
     if (m_pKinetics)
         return m_pKinetics;
     else
-        throw CException{ "Tried to grab a nullptr.", INFO };
+    {
+        throw CException{ "Tried to grab a nullptr.", "test" };
+        std::cout << "test";
+    }
 }
 
 std::unique_ptr<CGraphics>& CObject::graphics()

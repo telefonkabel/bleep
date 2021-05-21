@@ -6,6 +6,8 @@
 //==============================================================================
 
 #include "player.h"
+#include "components/graphics.h"
+#include "components/kinetics.h"
 
 
 CPlayer::CPlayer(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
