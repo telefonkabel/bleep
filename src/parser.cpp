@@ -28,13 +28,13 @@ void CParser::parse(rapidjson::Document& settings)
 	}
 	catch (CException& exception)
 	{
-		std::cerr << "Error while parsing - defaults will be used";
-		std::cerr << exception.msg();
+		std::cerr << "Error while parsing - defaults will be used" << std::endl;
+		exception.print();
 	}
 	catch (...)
 	{
-		std::cerr << "Error while parsing - defaults will be used";
-		std::cerr << "Unhandled exception in parser.";
+		std::cerr << "Error while parsing - defaults will be used" << std::endl;
+		std::cerr << "Unhandled exception in " << S(__FILE__);
 	}
 }
 

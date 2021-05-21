@@ -66,12 +66,12 @@ bool CGame::OnUserCreate()
     }
     catch (CException& exception)
     {
-        std::cerr << exception.msg();
+        exception.print();
         return false;
     }
     catch (...)
     {
-        std::cerr << "Unhandled exception in OnUserCreate.";
+        std::cerr << "Unhandled exception in " << S(__FILE__);
         return false;
     }
 
@@ -130,14 +130,14 @@ bool CGame::OnUserUpdate(float deltaTime)
 
         SetPixelMode(olc::Pixel::NORMAL);
     }
-    catch(CException& exception)
+    catch (CException& exception)
     {
-        std::cerr << exception.msg();
+        exception.print();
         return false;
     }
     catch (...)
     {
-        std::cerr << "Unhandled exception in OnUserUpdate.";
+        std::cerr << "Unhandled exception in " << S(__FILE__);
         return false;
     }
 

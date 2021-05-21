@@ -66,7 +66,7 @@ void CObject::update(float deltaTime)
             m_pGraphics->update(deltaTime);
             break;
         default:
-            throw CException{ "Case for component with int value " + std::to_string(static_cast<int>(component)) + " has to be implemented here.", INFO };
+            throw CException{ "Case for component with enum value " + std::to_string(static_cast<int>(component)) + " has to be implemented here.", INFO };
             break;
         }
     }
@@ -84,7 +84,7 @@ void CObject::addComponent(components component)
         m_pGraphics = std::make_unique<CGraphics>(this);
         break;
     default:
-        throw CException{ "Case for component with int value " + std::to_string(static_cast<int>(component)) + " has to be implemented here.", INFO };
+        throw CException{ "Case for component with enum value " + std::to_string(static_cast<int>(component)) + " has to be implemented here.", INFO };
         break;
     }
 };

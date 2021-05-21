@@ -7,22 +7,26 @@
 
 #pragma once
 //macro for info message
-#define INFO ((std::string)("\nFile: ") + __FILE__ + (std::string)("\nLine: ") + std::to_string(__LINE__) + (std::string)("\n"))
+#define S(x) (std::string)(x)
+#define TS(x) (std::to_string)(x)
+#define INFO (S("File: ") + __FILE__ + S(" Line: ") + TS(__LINE__))
 
 #include <exception>
 #include <string>
+#include <iostream>
+
 
 class CException : public std::exception
 {
 public:
-	CException(std::string msg, std::string info) : m_infomsg{} 
+	CException(std::string msg, std::string info) : m_sStream{}
 	{
-		m_infomsg = "Exception: " + msg + info;
+		m_sStream << "Exception: " << msg << std::endl << info << std::endl;
 	}
 	~CException() throw () {}
 
-	const char* msg() throw() {	return m_infomsg.c_str(); }
+	void print() throw() { std::cerr << m_sStream.str(); }
 
 private:
-	std::string m_infomsg;
+	std::stringstream m_sStream;
 };

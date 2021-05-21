@@ -98,11 +98,11 @@ int main()
     }
     catch (CException& exception)
     {
-        std::cerr << exception.msg();
+        exception.print();
     }
     catch (...)
     {
-        std::cerr << "Unhandled exception in bleep.cpp.";
+        std::cerr << "Unhandled exception in " << S(__FILE__);
     }
 
     return 0;
