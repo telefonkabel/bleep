@@ -65,6 +65,9 @@ void CObject::update(float deltaTime)
         case components::graphics:
             m_pGraphics->update(deltaTime);
             break;
+        default:
+            throw CException{ "Case for component with int value " + std::to_string(static_cast<int>(component)) + " has to be implemented here.", INFO };
+            break;
         }
     }
 }
@@ -80,6 +83,9 @@ void CObject::addComponent(components component)
     case components::graphics:
         m_pGraphics = std::make_unique<CGraphics>(this);
         break;
+    default:
+        throw CException{ "Case for component with int value " + std::to_string(static_cast<int>(component)) + " has to be implemented here.", INFO };
+        break;
     }
 };
 
@@ -88,10 +94,7 @@ std::unique_ptr<CKinetics>& CObject::kinetics()
     if (m_pKinetics)
         return m_pKinetics;
     else
-    {
-        throw CException{ "Tried to grab a nullptr.", "test" };
-        std::cout << "test";
-    }
+        throw CException{ "Tried to grab a nullptr.", INFO };
 }
 
 std::unique_ptr<CGraphics>& CObject::graphics()
