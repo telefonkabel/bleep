@@ -7,7 +7,7 @@
 
 #include "asteroid.h"
 #include "game.h"
-#include "player.h"
+#include "blackHole.h"
 #include "components/graphics.h"
 #include "components/kinetics.h"
 

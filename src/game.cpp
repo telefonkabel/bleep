@@ -7,7 +7,7 @@
 
 #include "game.h"
 #include "star.h"
-#include "player.h"
+#include "blackHole.h"
 #include "asteroid.h"
 #include "exception.h"
 #include "components/kinetics.h"
@@ -166,7 +166,7 @@ const std::unique_ptr<CSounds>& CGame::sound() const
     return m_sound;
 }
 
-const std::shared_ptr<CObject>& CGame::player() const
+const std::shared_ptr<CObject> CGame::player() const
 {
     return m_objects.at(static_cast<int>(objectTypes::BLACKHOLE)).front();
 }
@@ -208,7 +208,7 @@ void CGame::initStars()
 
 void CGame::initPlayer()
 {
-    std::shared_ptr<CPlayer> player{ std::make_shared<CPlayer>(this, objectTypes::BLACKHOLE, center(), m_startMass, m_playerColor) };
+    std::shared_ptr<CBHole> player{ std::make_shared<CBHole>(this, objectTypes::BLACKHOLE, center(), m_startMass, m_playerColor) };
     addObject(std::move(player));
 }
 

@@ -6,7 +6,7 @@
 //==============================================================================
 
 #include "kinetics.h"
-#include "player.h"
+#include "blackHole.h"
 
 #include <numeric>
 

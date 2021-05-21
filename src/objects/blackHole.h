@@ -1,18 +1,18 @@
 //==============================================================================
 /// 2021, Benedikt Michael
 //==============================================================================
-/// player.h
-/// Player game object.
+/// blackHole.h
+/// Black hole game object.
 //==============================================================================
 
 #pragma once
 #include "game.h"
 
 
-class CPlayer : public CObject
+class CBHole : public CObject
 {
 public:
-	CPlayer(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color);
+	CBHole(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color);
 
 	void update(float deltaTime) override;
 	float edge() override;

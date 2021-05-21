@@ -18,7 +18,7 @@ class CGraphics;
 class CKinetics;
 class CGame;
 class CComponent;
-class CPlayer;
+class CBHole;
 enum class components;
 
 using colors = olc::Pixel;
@@ -67,7 +67,7 @@ public:
 	CGame* const game() const;
 
 	//shortcut to the player object
-	std::shared_ptr<CPlayer> player() const;
+	const std::shared_ptr<CBHole> player() const;
 
 	//hook a component onto the object
 	void addComponent(components component);

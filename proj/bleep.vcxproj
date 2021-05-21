@@ -26,8 +26,8 @@
     <ClInclude Include="..\src\helper\exception.h" />
     <ClInclude Include="..\src\helper\maths.h" />
     <ClInclude Include="..\src\objects\asteroid.h" />
+    <ClInclude Include="..\src\objects\blackHole.h" />
     <ClInclude Include="..\src\objects\object.h" />
-    <ClInclude Include="..\src\objects\player.h" />
     <ClInclude Include="..\src\objects\star.h" />
     <ClInclude Include="..\src\parser.h" />
     <ClInclude Include="..\src\sounds.h" />
@@ -41,8 +41,8 @@
     <ClCompile Include="..\src\game.cpp" />
     <ClCompile Include="..\src\helper\maths.cpp" />
     <ClCompile Include="..\src\objects\asteroid.cpp" />
+    <ClCompile Include="..\src\objects\blackHole.cpp" />
     <ClCompile Include="..\src\objects\object.cpp" />
-    <ClCompile Include="..\src\objects\player.cpp" />
     <ClCompile Include="..\src\objects\star.cpp" />
     <ClCompile Include="..\src\parser.cpp" />
     <ClCompile Include="..\src\sounds.cpp" />

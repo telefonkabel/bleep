@@ -1,23 +1,23 @@
 //==============================================================================
 /// 2021, Benedikt Michael
 //==============================================================================
-/// player.cpp
-/// Player game object.
+/// blackHole.cpp
+/// Black hole game object.
 //==============================================================================
 
-#include "player.h"
+#include "blackHole.h"
 #include "components/graphics.h"
 #include "components/kinetics.h"
 
 
-CPlayer::CPlayer(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
+CBHole::CBHole(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
 	CObject(pGame, type, pos, mass, color),
 	m_flickerCount{},
 	m_radiusGravity{},
 	m_radius{}
 {}
 
-void CPlayer::update(float deltaTime)
+void CBHole::update(float deltaTime)
 {
 	//calculate radii in relation to its mass
 	m_radius = mass() / 100000 + 1;
@@ -29,7 +29,7 @@ void CPlayer::update(float deltaTime)
 	draw();
 }
 
-void CPlayer::draw() const
+void CBHole::draw() const
 {
 	float flickerFactor(std::sin(m_flickerCount * 2) + 1.5f);
 	game()->DrawCircle(game()->center(), m_radius + 3, color() * flickerFactor / 8.0f);
@@ -41,5 +41,5 @@ void CPlayer::draw() const
 	game()->FillCircle(game()->center(), m_radius - 3, olc::BLACK);
 }
 
-float CPlayer::edge() { return static_cast<float>(m_radius); };
-int CPlayer::radiusGrav() const { return m_radiusGravity; };
+float CBHole::edge() { return static_cast<float>(m_radius); };
+int CBHole::radiusGrav() const { return m_radiusGravity; };

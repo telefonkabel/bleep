@@ -8,7 +8,7 @@
 #include "object.h"
 #include "exception.h"
 #include "game.h"
-#include "player.h"
+#include "blackHole.h"
 #include "components/graphics.h"
 #include "components/kinetics.h"
 
@@ -50,7 +50,7 @@ void CObject::eatable(bool eatable) { m_eatable = eatable; };
 bool CObject::isEatable() const { return m_eatable; };
 
 CGame* const CObject::game() const { return m_pGame; };
-std::shared_ptr<CPlayer> CObject::player() const { return std::static_pointer_cast<CPlayer>(m_pGame->player()); };
+const std::shared_ptr<CBHole> CObject::player() const { return std::static_pointer_cast<CBHole>(m_pGame->player()); };
 
 
 void CObject::update(float deltaTime)

@@ -36,7 +36,7 @@ public:
     std::string massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const;
 
     //provides a handle to the player object specifically and all objects
-    const std::shared_ptr<CObject>& player() const;
+    const std::shared_ptr<CObject> player() const;
     const std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)>& gameObjects() const;
 
     //provieds a handle to the sound object

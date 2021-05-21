@@ -33,9 +33,6 @@
     <ClInclude Include="..\src\objects\object.h">
       <Filter>objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\objects\player.h">
-      <Filter>objects</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\objects\star.h">
       <Filter>objects</Filter>
     </ClInclude>
@@ -60,6 +57,9 @@
     <ClInclude Include="..\src\sounds.h">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\objects\blackHole.h">
+      <Filter>objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\components\kinetics.cpp">
@@ -70,9 +70,6 @@
     </ClCompile>
     <ClCompile Include="..\src\bleep.cpp">
       <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\objects\player.cpp">
-      <Filter>objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\objects\star.cpp">
       <Filter>objects</Filter>
@@ -94,6 +91,9 @@
     </ClCompile>
     <ClCompile Include="..\src\components\graphics.cpp">
       <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\objects\blackHole.cpp">
+      <Filter>objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
