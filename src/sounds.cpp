@@ -23,6 +23,11 @@ CSounds::CSounds(std::filesystem::path currentPath) :
 
 }
 
+CSounds::~CSounds()
+{
+	olc::SOUND::DestroyAudio();
+}
+
 void CSounds::initSound(sounds index, int id)
 {
 	if (static_cast<int>(id) == -1)

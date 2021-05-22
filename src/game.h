@@ -35,8 +35,7 @@ public:
     //provides the mass of an object for possible outputs in scientific notation with the amount of shown decimals as parameter
     std::string massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const;
 
-    //provides a handle to the player object specifically and all objects
-    const std::shared_ptr<CObject> player() const;
+    //provides a handle to all objects
     const std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)>& gameObjects() const;
 
     //provieds a handle to the sound object
@@ -65,7 +64,7 @@ private:
     std::filesystem::path m_currentPath;
 
     //ptr to object that handles all sounds for the game
-    std::unique_ptr<CSounds> m_sound;
+    std::unique_ptr<CSounds> m_pSound;
 
     //all active objects seperated into types
     std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)> m_objects;

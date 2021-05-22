@@ -42,13 +42,13 @@ void CKinetics::acceleration(v2d acceleration) { m_acceleration = acceleration; 
 
 v2d CKinetics::applyVelocities(float deltaTime)
 {
-	////calculate gravity
-	v2d v2Player{ object()->player()->xy() - object()->xy() };
+	////calculate gravity (for one black hole for now)
+	v2d v2Player{ object()->blackHoles().front()->xy() - object()->xy() };
 	v2d gravity{};
 	if (object()->mass() != 0)
 	{
 		//calculate gravity magnitude
-		gravity = v2Player.norm() * (object()->player()->mass() / v2Player.mag2());
+		gravity = v2Player.norm() * (object()->blackHoles().front()->mass() / v2Player.mag2());
 	}
 	//apply gravity
 	m_velocity += (m_acceleration + gravity) * deltaTime;
@@ -77,7 +77,7 @@ void CKinetics::collision()
 			if (object()->isEatable())
 			{
 				for (auto& obj : m_pGameObjects.at(listID))
-					if ((object()->xy() - obj->xy()).mag() <= /*object()->edge() +*/ obj->edge())
+					if ((object()->xy() - obj->xy()).mag() <= object()->edge() + obj->edge())
 						object()->state(objectStates::EATEN);
 			}
 		}
@@ -102,7 +102,7 @@ void CKinetics::collision()
 					velocity(velNeu);
 					obj->kinetics()->velocity(objVelNeu);
 
-					//play sound if in view
+					//play sound if event is in view
 					if(object()->isInView())
 						object()->game()->sound()->playSound(sounds::CRASH0, false);
 				}

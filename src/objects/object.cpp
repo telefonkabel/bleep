@@ -22,7 +22,8 @@ CObject::CObject(CGame* const pGame, objectTypes type, v2d pos, int mass, colors
     m_eatable{ false },
     m_type{ type },
     m_pKinetics{},
-    m_pGraphics{}
+    m_pGraphics{},
+    m_pBlackHoles{game()->gameObjects().at(static_cast<int>(objectTypes::BLACKHOLE))}
 {
 }
 
@@ -50,7 +51,6 @@ void CObject::eatable(bool eatable) { m_eatable = eatable; };
 bool CObject::isEatable() const { return m_eatable; };
 
 CGame* const CObject::game() const { return m_pGame; };
-const std::shared_ptr<CBHole> CObject::player() const { return std::static_pointer_cast<CBHole>(m_pGame->player()); };
 
 
 void CObject::update(float deltaTime)
@@ -89,7 +89,7 @@ void CObject::addComponent(components component)
     }
 };
 
-std::unique_ptr<CKinetics>& CObject::kinetics()
+const std::unique_ptr<CKinetics>& CObject::kinetics() const
 {
     if (m_pKinetics)
         return m_pKinetics;
@@ -97,12 +97,17 @@ std::unique_ptr<CKinetics>& CObject::kinetics()
         throw CException{ "Tried to grab a nullptr.", INFO };
 }
 
-std::unique_ptr<CGraphics>& CObject::graphics()
+const std::unique_ptr<CGraphics>& CObject::graphics() const
 {
     if (m_pGraphics)
         return m_pGraphics;
     else
         throw CException{ "Tried to grab a nullptr.", INFO };
+}
+
+const std::list<std::shared_ptr<CObject>>& CObject::blackHoles() const
+{
+    return m_pBlackHoles;
 }
 
 bool CObject::isInView() const

@@ -44,13 +44,13 @@ void CStar::update(float deltaTime)
 
 void CStar::draw() const
 {
-	//lens effect near black hole
-	int lensRadius{ player()->radiusGrav() };
-	v2d v2Player{ xy() - player()->xy() };
+	//lens effect near black hole (for one black hole for now)
+	int lensRadius{ std::static_pointer_cast<CBHole>(blackHoles().front())->radiusGrav() };
+	v2d v2Player{ xy() - game()->gameObjects().at(static_cast<int>(objectTypes::BLACKHOLE)).front()->xy() };
 	float dist2Player{ v2Player.mag() };
 	float lensFactor{ 1 - std::min(dist2Player / lensRadius, 1.0f) };
 
-	v2d offset{ v2Player.norm() * static_cast<float>(player()->edge()) * lensFactor };
+	v2d offset{ v2Player.norm() * static_cast<float>(std::static_pointer_cast<CBHole>(blackHoles().front())->edge()) * lensFactor };
 	v2d positionWithLens{ xy() + offset };
 
 	//draw

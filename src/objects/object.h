@@ -66,14 +66,13 @@ public:
 
 	CGame* const game() const;
 
-	//shortcut to the player object
-	const std::shared_ptr<CBHole> player() const;
-
 	//hook a component onto the object
 	void addComponent(components component);
 	//handles to the components
-	std::unique_ptr<CKinetics>& kinetics();
-	std::unique_ptr<CGraphics>& graphics();
+	const std::unique_ptr<CKinetics>& kinetics() const;
+	const std::unique_ptr<CGraphics>& graphics() const;
+	//handle to all black holes
+	const std::list<std::shared_ptr<CObject>>& blackHoles() const;
 
 	//checks whether the object (or a point as parameter) is in the viewable map
 	bool isInView() const;
@@ -93,11 +92,14 @@ private:
 	objectTypes m_type;
 	objectStates m_state;
 
-	//pointer to the game object
+	//pointer to the game object, raw and fast, lifetime is global
 	CGame* const m_pGame;
 
 	//handling of components
 	std::unique_ptr<CKinetics> m_pKinetics;
 	std::unique_ptr<CGraphics> m_pGraphics;
 	std::set<components> m_components;
+
+	//shortcut: handle to black holes as often needed objects
+	const std::list<std::shared_ptr<CObject>>& m_pBlackHoles;
 };

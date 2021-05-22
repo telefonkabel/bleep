@@ -28,7 +28,7 @@ CAsteroid::~CAsteroid()
 {
     if (state() == objectStates::EATEN)
     {
-        player()->mass(player()->mass() + mass());
+        blackHoles().front()->mass(blackHoles().front()->mass() + mass());
         game()->sound()->playSound(sounds::JET, false);
     }
 }
@@ -75,5 +75,6 @@ void CAsteroid::update(float deltaTime)
 
 float CAsteroid::edge()
 {
+    //average boundary
     return static_cast<float>(graphics()->width() + graphics()->height()) / 4.0f;
 }

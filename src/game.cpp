@@ -35,17 +35,16 @@ CGame::CGame(std::filesystem::path& currentPath, std::string gameName, olc::Pixe
     m_effectEatenTime{ 0.2f },
     m_playerColor{ playerColor },
     m_startMass{ startMass },
-    m_sound{ std::make_unique<CSounds>(CSounds { currentPath }) }
+    m_pSound{ std::make_unique<CSounds>(currentPath) }
 {
     sAppName = gameName;
     Construct(screen_w, screen_h, pixel_w, pixel_h, fullscreen);
 
-    m_sound->playSound(sounds::MUSIC0, true);
+    m_pSound->playSound(sounds::MUSIC0, true);
 }
 
 CGame::~CGame()
 {
-    olc::SOUND::DestroyAudio();
 }
 
 v2d CGame::velocity() const { return m_velocity; };
@@ -163,12 +162,10 @@ olc::Pixel CGame::playerColor() const
 
 const std::unique_ptr<CSounds>& CGame::sound() const
 {
-    return m_sound;
-}
-
-const std::shared_ptr<CObject> CGame::player() const
-{
-    return m_objects.at(static_cast<int>(objectTypes::BLACKHOLE)).front();
+    if (m_pSound)
+        return m_pSound;
+    else
+        throw CException("Sound handle points to null - should not happen.", INFO);
 }
 
 const std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)>& CGame::gameObjects() const
@@ -231,7 +228,7 @@ void CGame::spawnDebris(float deltaTime)
 void CGame::drawUI()
 {
     DrawStringDecal(v2d(10, static_cast<float>(ScreenHeight() - 30)), "MASS:", olc::WHITE, v2d(1, 1));
-    DrawStringDecal(v2d(10, static_cast<float>(ScreenHeight() - 10)), massInfo(player(), 5), olc::WHITE, v2d(1, 1));
+    DrawStringDecal(v2d(10, static_cast<float>(ScreenHeight() - 10)), massInfo(m_objects.at(static_cast<int>(objectTypes::BLACKHOLE)).front(), 5), olc::WHITE, v2d(1, 1));
 }
 
 std::string CGame::massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const
