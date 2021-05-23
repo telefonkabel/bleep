@@ -30,10 +30,9 @@ public:
 private:
 	olc::Renderable m_renderable;
 
-	std::filesystem::path m_graphicPath;
-
 	////encapsulates graphics in this component and shares them between all instances
 	static bool m_firstInit;
+	static std::filesystem::path m_graphicPath;
 	static std::array<std::vector<std::filesystem::path>, static_cast<int>(objectTypes::count)> m_graphics;
 
 	void initGraphics();

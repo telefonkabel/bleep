@@ -12,21 +12,24 @@
 
 //init static member
 bool CGraphics::m_firstInit{ true };
+std::filesystem::path CGraphics::m_graphicPath{};
 std::array<std::vector<std::filesystem::path>, static_cast<int>(objectTypes::count)> CGraphics::m_graphics
 	{ std::array<std::vector<std::filesystem::path>, static_cast<int>(objectTypes::count)>() };
 
 CGraphics::CGraphics(CObject* pObject) :
 	CComponent{ pObject },
-	m_renderable{},
-	m_graphicPath{ pObject->game()->currentPath() / "graphics" }
+	m_renderable{}
 {
 	if (m_firstInit)
+	{
+		m_graphicPath = { pObject->game()->currentPath() / "graphics" };
 		initGraphics();
+		m_firstInit = false;
+	}
 }
 
 void CGraphics::initGraphics()
 {
-	m_firstInit = false;
 	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).resize(static_cast<int>(sprites::count));
 	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_SMALL1)) = m_graphicPath / "astr0.png";
 	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_SMALL2)) = m_graphicPath / "astr1.png";
