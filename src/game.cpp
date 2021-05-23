@@ -22,9 +22,9 @@ CGame::CGame(std::filesystem::path& currentPath) :
     m_velocity{ 0.0f, 30.0f },
     m_accelerationX{ 500.0f, 0.0f },
     m_accelerationY{ 0.0f, 500.0f },
-    m_center{ m_CParser.parse<parser::Game, parser::Game::ScreenWidth>().GetFloat() / 2,
-        m_CParser.parse<parser::Game, parser::Game::ScreenHeight>().GetFloat() / 2 },
-    m_radiusView{ m_CParser.parse<parser::Game, parser::Game::ScreenHeight>().GetInt() / 2 },
+    m_center{ m_CParser.parse<parser::Window, parser::Window::ScreenWidth>().GetFloat() / 2,
+        m_CParser.parse<parser::Window, parser::Window::ScreenHeight>().GetFloat() / 2 },
+    m_radiusView{ m_CParser.parse<parser::Window, parser::Window::ScreenHeight>().GetInt() / 2 },
     m_radiusMap{ static_cast<int>(m_radiusView * 1.5f) },
     m_fogOfWar{ static_cast<int>(0.2f * m_radiusView) },
     m_maxSpeed{ 150.0f },
@@ -36,13 +36,13 @@ CGame::CGame(std::filesystem::path& currentPath) :
     m_effectEaten{},
     m_effectEatenTime{ 0.2f },
     m_playerColor{ olc::DARK_MAGENTA }, //toDo
-    m_startMass{ m_CParser.parse<parser::Game, parser::Game::StartMass>().GetInt() },
+    m_startMass{ m_CParser.parse<parser::Window, parser::Window::StartMass>().GetInt() },
     m_pSound{ std::make_unique<CSounds>(currentPath) }
 {
-    sAppName = m_CParser.parse<parser::Game, parser::Game::Name>().GetString();
-    Construct(m_CParser.parse<parser::Game, parser::Game::ScreenWidth>().GetInt(), m_CParser.parse<parser::Game, parser::Game::ScreenHeight>().GetInt(),
-        m_CParser.parse<parser::Game, parser::Game::PixelWidth>().GetInt(), m_CParser.parse<parser::Game, parser::Game::PixelHeight>().GetInt(),
-        m_CParser.parse<parser::Game, parser::Game::FullScreen>().GetBool());
+    sAppName = m_CParser.parse<parser::Window, parser::Window::Name>().GetString();
+    Construct(m_CParser.parse<parser::Window, parser::Window::ScreenWidth>().GetInt(), m_CParser.parse<parser::Window, parser::Window::ScreenHeight>().GetInt(),
+        m_CParser.parse<parser::Window, parser::Window::PixelWidth>().GetInt(), m_CParser.parse<parser::Window, parser::Window::PixelHeight>().GetInt(),
+        m_CParser.parse<parser::Window, parser::Window::FullScreen>().GetBool());
 
     m_pSound->playSound(sounds::MUSIC0, true);
 }

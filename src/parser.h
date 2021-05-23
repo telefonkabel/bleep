@@ -17,13 +17,16 @@
 //helper classes for rapidjson wrapper, and for having one place to define all setting keys
 namespace parser
 {
-	struct Game { static constexpr const char* Key{ "game" };
+	struct Window { static constexpr const char* Key{ "window" };
 		struct Name { static constexpr const char* Key{ "name" }; };
 		struct ScreenWidth { static constexpr const char* Key{ "screenWidth" }; };
 		struct ScreenHeight { static constexpr const char* Key{ "screenHeight" }; };
 		struct PixelWidth { static constexpr const char* Key{ "pixelWidth" }; };
 		struct PixelHeight { static constexpr const char* Key{ "pixelHeight" }; };
 		struct FullScreen { static constexpr const char* Key{ "fullScreen" }; };
+		struct StartMass { static constexpr const char* Key{ "startMass" }; };
+	};
+	struct Game { static constexpr const char* Key{ "game" };
 		struct StartMass { static constexpr const char* Key{ "startMass" }; };
 	};
 
