@@ -12,6 +12,9 @@
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
 
+#pragma warning(push)
+#pragma warning(disable: 26439)
+
 #ifndef RAPIDJSON_INTERNAL_STACK_H_
 #define RAPIDJSON_INTERNAL_STACK_H_
 
@@ -230,3 +233,5 @@ RAPIDJSON_DIAG_POP
 #endif
 
 #endif // RAPIDJSON_STACK_H_
+
+#pragma warning(pop)

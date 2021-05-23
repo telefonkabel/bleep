@@ -13,18 +13,20 @@
 
 
 CParser::CParser(std::filesystem::path& currentPath) :
-	m_SettingsPath{ currentPath / "settings" }
+	m_SettingsPath{ currentPath / "settings" },
+	m_settings {}
 {
+	start();
 }
 
-void CParser::parse(rapidjson::Document& settings)
+void CParser::start()
 {
 	try
 	{
 		if (!std::filesystem::exists(m_SettingsPath))
 			throw CException{ m_SettingsPath.string() + " doesn't exist.", INFO };
 
-		readFiles(settings);
+		readFiles();
 	}
 	catch (CException& exception)
 	{
@@ -38,7 +40,7 @@ void CParser::parse(rapidjson::Document& settings)
 	}
 }
 
-void CParser::readFiles(rapidjson::Document& settings)
+void CParser::readFiles()
 {
 	for (const auto& file : std::filesystem::directory_iterator(m_SettingsPath))
 		if (file.path().extension() != ".json")
@@ -54,15 +56,7 @@ void CParser::readFiles(rapidjson::Document& settings)
 				if (fileData.empty())
 					throw CException{ file.path().string() + "hasn't generated any content.", INFO };
 
-				settings.Parse(fileData.c_str());
-
-				//test
-				rapidjson::Document newSetting{};
-				const char testing[]{ "{ \"hello\" : \"world\", \"t\" : true}" };
-				newSetting.Parse(testing);
-				settings.AddMember("test", newSetting, settings.GetAllocator());
-
-				assert(settings.HasMember("test"));
+				m_settings.Parse(fileData.c_str());
 			}
 		}
 }

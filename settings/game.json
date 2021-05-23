@@ -1,0 +1,12 @@
+{
+"game" : {
+    "name": "Bleep",
+	"screenWidth" : 640,
+	"screenHeight" : 480,
+	"pixelWidth" : 2,
+	"pixelHeight" : 2,
+	"fullScreen" : true,
+    "playerColor": "DARK_MAGENTA",
+    "startMass": 1000000
+}
+}

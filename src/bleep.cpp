@@ -87,13 +87,8 @@ int main()
         //setting up rand() - that rng is good enough for this purpose
         srand(static_cast<unsigned int>(time(0)));
 
-        //load settings
-        rapidjson::Document settings{};
-        CParser parser{ currentPath };
-        parser.parse(settings);
-
         //start game
-        CGame game{ currentPath, "Bleep", olc::DARK_MAGENTA, 1000000, 640, 480, 2, 2, true };
+        CGame game{ currentPath };
         game.Start();
     }
     catch (CException& exception)

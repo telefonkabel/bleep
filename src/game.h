@@ -11,6 +11,9 @@
 #include "maths.h"
 #include "asteroid.h"
 #include "sounds.h"
+#include "parser.h"
+
+#include "rapidjson/document.h"
 
 #include <filesystem>
 
@@ -18,7 +21,7 @@
 class CGame : public olc::PixelGameEngine
 {
 public:
-    CGame(std::filesystem::path& currentPath, std::string gameName, olc::Pixel playerColor, int startMass, int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h, bool fullscreen);
+    CGame(std::filesystem::path& currentPath);
     ~CGame();
 
     //set & get
@@ -43,6 +46,12 @@ public:
 
 
 private:
+    //parser class which handles the settings
+    CParser m_CParser;
+
+    //the path where the prog is executed
+    std::filesystem::path m_currentPath;
+
     //world attributes applying to all (moveable) objects
     v2d m_velocity;
     v2d m_accelerationX;
@@ -60,8 +69,6 @@ private:
 
     int m_starCardinality;
 
-    //the path where the prog is executed
-    std::filesystem::path m_currentPath;
 
     //ptr to object that handles all sounds for the game
     std::unique_ptr<CSounds> m_pSound;
