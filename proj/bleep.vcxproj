@@ -137,8 +137,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>RD /S /Q $(OutDir)graphics\ &amp;
@@ -170,8 +169,7 @@ exit 0</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>RD /S /Q $(OutDir)graphics\ &amp;
@@ -199,8 +197,7 @@ exit 0</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>RD /S /Q $(OutDir)graphics\ &amp;
@@ -232,8 +229,7 @@ exit 0</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>RD /S /Q $(OutDir)graphics\ &amp;

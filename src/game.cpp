@@ -23,13 +23,13 @@ CGame::CGame(std::filesystem::path& currentPath) :
     m_velocity{ 0.0f, 30.0f },
     m_accelerationX{ 500.0f, 0.0f },
     m_accelerationY{ 0.0f, 500.0f },
-    m_center{ m_parser.parse<parser::Window, parser::Window::ScreenWidth>().GetFloat() / 2,
-        m_parser.parse<parser::Window, parser::Window::ScreenHeight>().GetFloat() / 2 },
-    m_radiusView{ m_parser.parse<parser::Window, parser::Window::ScreenHeight>().GetInt() / 2 },
+    m_center{ m_parser.getFloat<parser::Window, parser::ScreenWidth>() / 2,
+        m_parser.getFloat<parser::Window, parser::ScreenHeight>() / 2 },
+    m_radiusView{ m_parser.getInt<parser::Window, parser::ScreenHeight>() / 2 },
     m_radiusMap{ static_cast<int>(m_radiusView * 1.5f) },
     m_fogOfWar{ static_cast<int>(0.2f * m_radiusView) },
-    m_playerColor{ m_parser.color(m_parser.parse<parser::Game, parser::Game::Color>().GetString()) },
-    m_startMass{ m_parser.parse<parser::Game, parser::Game::StartMass>().GetInt() },
+    m_playerColor{ m_parser.color(m_parser.getString<parser::Player, parser::Color>()) },
+    m_startMass{ m_parser.getInt<parser::Player, parser::Mass>() },
     m_maxSpeed{ 150.0f },
     m_maxSpeed2{ static_cast<float>(std::pow(m_maxSpeed, 2)) },
     m_starCardinality{ 1500 },
@@ -39,10 +39,10 @@ CGame::CGame(std::filesystem::path& currentPath) :
     m_effectEaten{},
     m_effectEatenTime{ 0.2f }
 {
-    sAppName = m_parser.parse<parser::Window, parser::Window::Name>().GetString();
-    Construct(m_parser.parse<parser::Window, parser::Window::ScreenWidth>().GetInt(), m_parser.parse<parser::Window, parser::Window::ScreenHeight>().GetInt(),
-        m_parser.parse<parser::Window, parser::Window::PixelWidth>().GetInt(), m_parser.parse<parser::Window, parser::Window::PixelHeight>().GetInt(),
-        m_parser.parse<parser::Window, parser::Window::FullScreen>().GetBool());
+    sAppName = m_parser.getString<parser::Window, parser::Name>();
+    Construct(m_parser.getInt<parser::Window, parser::ScreenWidth>(), m_parser.getInt<parser::Window, parser::ScreenHeight>(),
+        m_parser.getInt<parser::Window, parser::PixelWidth>(), m_parser.getInt<parser::Window, parser::PixelHeight>(),
+        m_parser.getBool<parser::Window, parser::FullScreen>());
 
     m_pSound->playSound(sounds::MUSIC0, true);
 }
@@ -154,7 +154,7 @@ void CGame::effectEaten(float deltaTime)
     {
         SetPixelMode(olc::Pixel::ALPHA);
         SetPixelBlend(0.5f * maths::fadeInOut((m_effectEatenTime - m_effectEaten) / m_effectEatenTime));
-        FillRect(0, 0, ScreenWidth(), ScreenHeight(), olc::VERY_DARK_MAGENTA);
+        FillRect(0, 0, ScreenWidth(), ScreenHeight(), m_playerColor / 4);
         SetPixelMode(olc::Pixel::NORMAL);
     }
 }

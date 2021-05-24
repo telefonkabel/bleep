@@ -7,8 +7,11 @@
 	"pixelHeight" : 2,
 	"fullScreen" : true
 },
-"game" : {
-	"startMass" : 1000000,
-	"playerColor": "magenta"
+"game":{
+	"velocity": [0, 30]
+}, 
+"player" : {
+	"mass" : 1000000,
+	"color": "blue"
 }
 }
