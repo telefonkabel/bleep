@@ -20,7 +20,7 @@ CGame::CGame(std::filesystem::path& currentPath) :
     m_parser{ currentPath },
     m_pSound{ std::make_unique<CSounds>(currentPath) },
     m_objects{},
-    m_velocity{ 0.0f, 30.0f },
+    m_velocity{ m_parser.getV2D<parser::Game, parser::Velocity>() },
     m_accelerationX{ 500.0f, 0.0f },
     m_accelerationY{ 0.0f, 500.0f },
     m_center{ m_parser.getFloat<parser::Window, parser::ScreenWidth>() / 2,

@@ -9,6 +9,7 @@
 #pragma once
 
 #include "exception.h"
+#include "maths.h"
 #include "rapidjson/document.h"
 #include "olcPixelGameEngine.h"
 
@@ -49,7 +50,7 @@ namespace parser
 		{"blue", olc::BLUE },
 		{"yellow", olc::YELLOW },
 		{"cyan", olc::CYAN },
-		{"magenta", olc::MAGENTA },
+		{"magenta", olc::MAGENTA }
 	};
 
 } //end of namespace parser
@@ -72,7 +73,7 @@ public:
 	{
 		return m_settings[PARENTKEY::Key].GetObj()[CHILDKEY::Key];
 	}
-	//overwritten/own rapidjson getter
+	//wrapped rapidjson getter
 	template <typename PARENTKEY, typename CHILDKEY>
 	float getFloat() const
 	{
@@ -109,6 +110,34 @@ public:
 
 		return parse<PARENTKEY, CHILDKEY>().GetBool();
 	}
+	//json getter for own types
+	template <typename PARENTKEY, typename CHILDKEY>
+	v2d getV2D() const
+	{
+		checkKeys<PARENTKEY, CHILDKEY>();
+		const auto& value{ parse<PARENTKEY, CHILDKEY>() };
+		if (!value.IsArray())
+			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no array.", INFO };
+		
+		v2d vector{};
+		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
+		{
+			if (i >= 2)
+				//If it is too small, the remaining values will be 0
+				throw CException{ "Array \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is too big for a 2D-Vector.", INFO };
+			else if (!value[i].IsNumber())
+				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
+			else
+			{
+				if (i == 0)
+					vector.x = value[i].GetFloat();
+				else
+					vector.y = value[i].GetFloat();
+			}
+		}
+		return vector;
+	}
+
 	//helper for validity checks
 	template <typename PARENTKEY, typename CHILDKEY>
 	void checkKeys() const
