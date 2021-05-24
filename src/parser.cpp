@@ -60,3 +60,12 @@ void CParser::readFiles()
 			}
 		}
 }
+
+olc::Pixel CParser::color(std::string color) const
+{
+	std::map<std::string, olc::Pixel>::const_iterator tableItr{ parser::colorTable.find(color) };
+	if (tableItr == parser::colorTable.end())
+		throw CException{ "Can't find conversion for color: " + color, INFO };
+	else
+		return tableItr->second;
+}

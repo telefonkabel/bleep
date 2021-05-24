@@ -9,25 +9,36 @@
 #pragma once
 
 #include "rapidjson/document.h"
+#include "olcPixelGameEngine.h"
 
 #include <filesystem>
 #include <vector>
 
 
-//helper classes for rapidjson wrapper, and for having one place to define all setting keys
+//helper objects for rapidjson wrapper, and for having one place to define all setting keys
 namespace parser
 {
-	struct Window { static constexpr const char* Key{ "window" };
+	struct Window { static inline const char* Key{ "window" };
 		struct Name { static constexpr const char* Key{ "name" }; };
 		struct ScreenWidth { static constexpr const char* Key{ "screenWidth" }; };
 		struct ScreenHeight { static constexpr const char* Key{ "screenHeight" }; };
 		struct PixelWidth { static constexpr const char* Key{ "pixelWidth" }; };
 		struct PixelHeight { static constexpr const char* Key{ "pixelHeight" }; };
 		struct FullScreen { static constexpr const char* Key{ "fullScreen" }; };
-		struct StartMass { static constexpr const char* Key{ "startMass" }; };
 	};
 	struct Game { static constexpr const char* Key{ "game" };
+		struct Color { static constexpr const char* Key{ "playerColor" }; };
 		struct StartMass { static constexpr const char* Key{ "startMass" }; };
+	};
+
+	//lookup table for translating strings to olc::Pixel
+	inline const std::map<std::string, olc::Pixel> colorTable{
+		{"red", olc::RED },
+		{"green", olc::GREEN },
+		{"blue", olc::BLUE },
+		{"yellow", olc::YELLOW },
+		{"cyan", olc::CYAN },
+		{"magenta", olc::MAGENTA },
 	};
 
 } //end of namespace parser
@@ -55,6 +66,9 @@ public:
 	{
 		return m_settings[PARENTKEY::Key].GetObj()[CHILDKEY::Key].GetObj()[GRANDCHILDKEY::Key];
 	}
+
+	//helper fct to determine player color
+	olc::Pixel color(std::string color) const;
 
 private:
 	//settings path

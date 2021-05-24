@@ -46,11 +46,18 @@ public:
 
 
 private:
-    //parser class which handles the settings
-    CParser m_CParser;
-
     //the path where the prog is executed
     std::filesystem::path m_currentPath;
+
+    //parser class which handles the settings
+    CParser m_parser;
+
+    //ptr to object that handles all sounds for the game
+    std::unique_ptr<CSounds> m_pSound;
+
+    //all active objects seperated into types
+    std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)> m_objects;
+    void addObject(const std::shared_ptr<CObject>&& object);
 
     //world attributes applying to all (moveable) objects
     v2d m_velocity;
@@ -68,14 +75,6 @@ private:
     float m_maxSpeed2;
 
     int m_starCardinality;
-
-
-    //ptr to object that handles all sounds for the game
-    std::unique_ptr<CSounds> m_pSound;
-
-    //all active objects seperated into types
-    std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)> m_objects;
-    void addObject(const std::shared_ptr<CObject>&& object);
 
     //init objects, player need to be first
     void initPlayer();

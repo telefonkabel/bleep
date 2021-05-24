@@ -5,7 +5,10 @@
 	"screenHeight" : 480,
 	"pixelWidth" : 2,
 	"pixelHeight" : 2,
-	"fullScreen" : true,
-	"startMass" : 1000000
+	"fullScreen" : true
+},
+"game" : {
+	"startMass" : 1000000,
+	"playerColor": "magenta"
 }
 }
