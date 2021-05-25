@@ -40,9 +40,10 @@ void CAsteroid::initAsteroid()
     int rdn{ rand() % 100 };
     sprites gfx{};
 
+    //in the future this (like all objects) should be generated automatically out of the settings
     std::vector<int> masses{ game()->parser().getVInt<parser::Debris, parser::Mass>() };
-    if (masses.size() < static_cast<int>(sprites::count))
-        throw CException{ "Debris should have at least " + std::to_string(static_cast<int>(sprites::count)) + " masses in the settings.", INFO };
+    if (masses.size() < 4)
+        throw CException{ "Debris should have at least " + std::to_string(4) + " masses in the settings.", INFO };
     else if (rdn < 35)
     {
         mass(masses[0]);
