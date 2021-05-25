@@ -69,7 +69,7 @@ public:
 
 	//////wrapper to get a ref to the rapidjason generic object for a specific nested key (implemented depth: 3)
 	//////the first key must always refere to an object
-	//////e.g. syntax für depth 2:  ParserObject.parse<parser::base, parser::base::child>()
+	//////e.g. syntax for depth 2, asking for a float:  ParserObject.getFloat<parser::base, parser::base::child>()
 
 	////depth 2
 	//wrapped rapidjson getter
