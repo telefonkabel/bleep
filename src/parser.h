@@ -24,6 +24,7 @@ namespace parser
 	struct Window { static constexpr const char* Key{ "window" }; };
 	struct Game { static constexpr const char* Key{ "game" }; };
 	struct Player { static constexpr const char* Key{ "player" }; };
+	struct Debris { static constexpr const char* Key{ "debris" }; };
 
 	//window attributes
 	struct ScreenWidth { static constexpr const char* Key{ "screenWidth" }; };
@@ -34,10 +35,16 @@ namespace parser
 
 	//game attributes
 	struct Velocity { static constexpr const char* Key{ "velocity" }; };
+	struct AccX { static constexpr const char* Key{ "accelerationX" }; };
+	struct AccY { static constexpr const char* Key{ "accelerationY" }; };
+	struct MaxSpeed { static constexpr const char* Key{ "maxSpeed" }; };
+	struct StarCard { static constexpr const char* Key{ "starCardinality" }; };
 
 	//object attributes
 	struct Color { static constexpr const char* Key{ "color" }; };
 	struct Mass { static constexpr const char* Key{ "mass" }; };
+	struct SpawnChance { static constexpr const char* Key{ "spawnChance" }; };
+	struct SpawnReload { static constexpr const char* Key{ "spawnReload" }; };
 
 	//other attributes 
 	struct Name { static constexpr const char* Key{ "name" }; };
@@ -110,6 +117,24 @@ public:
 
 		return parse<PARENTKEY, CHILDKEY>().GetBool();
 	}
+	template <typename PARENTKEY, typename CHILDKEY>
+	std::vector<int> getVInt() const
+	{
+		checkKeys<PARENTKEY, CHILDKEY>();
+		const auto& value{ parse<PARENTKEY, CHILDKEY>() };
+		if (!value.IsArray())
+			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no array.", INFO };
+
+		std::vector<int> vec{};
+		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
+		{
+			if (!value[i].IsNumber())
+				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
+			else
+				vec.push_back(value[i].GetInt());
+		}
+		return vec;
+	}
 	//json getter for own types
 	template <typename PARENTKEY, typename CHILDKEY>
 	v2d getV2D() const
@@ -119,7 +144,7 @@ public:
 		if (!value.IsArray())
 			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no array.", INFO };
 		
-		v2d vector{};
+		v2d vec{};
 		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
 		{
 			if (i >= 2)
@@ -130,12 +155,12 @@ public:
 			else
 			{
 				if (i == 0)
-					vector.x = value[i].GetFloat();
+					vec.x = value[i].GetFloat();
 				else
-					vector.y = value[i].GetFloat();
+					vec.y = value[i].GetFloat();
 			}
 		}
-		return vector;
+		return vec;
 	}
 
 	//helper for validity checks

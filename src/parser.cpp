@@ -42,8 +42,12 @@ void CParser::start()
 
 void CParser::readFiles()
 {
+	int itr{ 0 };
 	for (const auto& file : std::filesystem::directory_iterator(m_SettingsPath))
-		if (file.path().extension() != ".json")
+	{
+		if (itr == 1)
+			throw CException{ "Currently only one setting file supported.", INFO };
+		else if (file.path().extension() != ".json")
 			throw CException{ "There are non-json files in the settings directory.", INFO };
 		else
 		{
@@ -57,8 +61,10 @@ void CParser::readFiles()
 					throw CException{ file.path().string() + "hasn't generated any content.", INFO };
 
 				m_settings.Parse(fileData.c_str());
+				itr++;
 			}
 		}
+	}
 }
 
 olc::Pixel CParser::color(std::string color) const

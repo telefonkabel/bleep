@@ -140,10 +140,7 @@
       <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>RD /S /Q $(OutDir)graphics\ &amp;
-RD /S /Q $(OutDir)sounds\ &amp;
-RD /S /Q $(OutDir)settings\ &amp;
-robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
+      <Command>robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
 robocopy $(SolutionDir)sounds $(OutDir)sounds\  /MIR /IS /IT &amp;
 robocopy $(SolutionDir)settings $(OutDir)settings\  /MIR /IS /IT &amp;
 exit 0</Command>
@@ -172,10 +169,7 @@ exit 0</Command>
       <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>RD /S /Q $(OutDir)graphics\ &amp;
-RD /S /Q $(OutDir)sounds\ &amp;
-RD /S /Q $(OutDir)settings\ &amp;
-robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
+      <Command>robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
 robocopy $(SolutionDir)sounds $(OutDir)sounds\  /MIR /IS /IT &amp;
 robocopy $(SolutionDir)settings $(OutDir)settings\  /MIR /IS /IT &amp;
 exit 0</Command>
@@ -200,10 +194,7 @@ exit 0</Command>
       <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>RD /S /Q $(OutDir)graphics\ &amp;
-RD /S /Q $(OutDir)sounds\ &amp;
-RD /S /Q $(OutDir)settings\ &amp;
-robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
+      <Command>robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
 robocopy $(SolutionDir)sounds $(OutDir)sounds\  /MIR /IS /IT &amp;
 robocopy $(SolutionDir)settings $(OutDir)settings\  /MIR /IS /IT &amp;
 exit 0</Command>
@@ -232,10 +223,7 @@ exit 0</Command>
       <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>RD /S /Q $(OutDir)graphics\ &amp;
-RD /S /Q $(OutDir)sounds\ &amp;
-RD /S /Q $(OutDir)settings\ &amp;
-robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
+      <Command>robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
 robocopy $(SolutionDir)sounds $(OutDir)sounds\  /MIR /IS /IT &amp;
 robocopy $(SolutionDir)settings $(OutDir)settings\  /MIR /IS /IT &amp;
 exit 0</Command>

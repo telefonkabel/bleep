@@ -8,13 +8,14 @@
 #include "asteroid.h"
 #include "game.h"
 #include "blackHole.h"
+#include "parser.h"
 #include "components/graphics.h"
 #include "components/kinetics.h"
 
 
 CAsteroid::CAsteroid(CGame* const pGame, objectTypes type, int mass, v2d pos, colors color) :
     CObject{ pGame, type, pos, mass, color },
-    m_maxStartSpeed{ 200 }
+    m_maxStartSpeed{ pGame->parser().getInt<parser::Debris, parser::MaxSpeed>() }
 {
 	addComponent(components::kinetics);
 	addComponent(components::graphics);
@@ -38,24 +39,28 @@ void CAsteroid::initAsteroid()
     //asteroid type
     int rdn{ rand() % 100 };
     sprites gfx{};
-    if (rdn < 35)
+
+    std::vector<int> masses{ game()->parser().getVInt<parser::Debris, parser::Mass>() };
+    if (masses.size() < static_cast<int>(sprites::count))
+        throw CException{ "Debris should have at least " + std::to_string(static_cast<int>(sprites::count)) + " masses in the settings.", INFO };
+    else if (rdn < 35)
     {
-        mass(10000);
+        mass(masses[0]);
         gfx = sprites::ASTR_SMALL1;
     }
     else if (rdn < 70)
     {
-        mass(10000);
+        mass(masses[1]);
         gfx = sprites::ASTR_SMALL2;
     }
     else if (rdn < 95)
     {
-        mass(20000);
+        mass(masses[2]);
         gfx = sprites::ASTR_MEDIUM;
     }
     else
     {
-        mass(40000);
+        mass(masses[3]);
         gfx = sprites::ASTR_BIG;
     }
     graphics()->sprite(objectTypes::DEBRIS, gfx);

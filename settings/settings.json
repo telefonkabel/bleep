@@ -1,0 +1,27 @@
+{
+"window" : {
+	"name": "Bleep",
+	"screenWidth" : 640,
+	"screenHeight" : 480,
+	"pixelWidth" : 2,
+	"pixelHeight" : 2,
+	"fullScreen" : true
+},
+"game":{
+	"velocity": [0, 30],
+	"accelerationX": [500, 0],
+	"accelerationY": [0, 500],
+	"maxSpeed": 150,
+	"starCardinality": 1500
+}, 
+"player" : {
+	"mass" : 1000000,
+	"color": "magenta"
+},
+"debris": {
+	"spawnChance": 0.6,
+	"spawnReload": 0.2,
+	"maxSpeed": 200,
+	"mass": [10000, 10000, 20000, 40000]
+}
+}

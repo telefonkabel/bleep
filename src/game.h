@@ -34,6 +34,7 @@ public:
     int fog() const;
     olc::Pixel playerColor() const;
     std::filesystem::path currentPath() const;
+    const CParser& parser() const;
 
     //provides the mass of an object for possible outputs in scientific notation with the amount of shown decimals as parameter
     std::string massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const;
@@ -63,20 +64,21 @@ private:
     v2d m_velocity;
     v2d m_accelerationX;
     v2d m_accelerationY;
-    v2d m_center;
-
-    int m_radiusView;
-    int m_radiusMap;
-    int m_fogOfWar;
-    olc::Pixel m_playerColor;
-    int m_startMass;
-
     float m_maxSpeed;
     float m_maxSpeed2;
 
-    int m_starCardinality;
+    //view attributes
+    int m_radiusView;
+    int m_radiusMap;
+    int m_fogOfWar;
+    v2d m_center;
+
+    //player attributes
+    olc::Pixel m_playerColor;
+    int m_startMass;
 
     //init objects, player need to be first
+    int m_starCardinality;
     void initPlayer();
     void initStars();
 
