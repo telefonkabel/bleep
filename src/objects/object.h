@@ -23,6 +23,7 @@ enum class components;
 
 using colors = olc::Pixel;
 
+//must not have initializers (and will be replaced in the future)
 enum class objectTypes { BLACKHOLE, STAR, DEBRIS, ENEMY, MISSLE, count };
 enum class objectStates { ALIVE, DESTROYED, EATEN, DELETED, count };
 

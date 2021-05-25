@@ -69,22 +69,8 @@ public:
 	CParser(std::filesystem::path& currentPath);
 
 	//////wrapper to get a ref to the rapidjason generic object for a specific nested key (implemented depth: 3)
-	//e.g. syntax für depth 2:  ParserObject.parse<parser::base, parser::base::child>()
-	template <typename KEY>
-	const rapidjson::Value& parse() const
-	{
-		return m_settings[KEY::Key];
-	}
-	template <typename PARENTKEY, typename CHILDKEY>
-	const rapidjson::Value& parse() const
-	{
-		return m_settings[PARENTKEY::Key].GetObj()[CHILDKEY::Key];
-	}
-	template <typename PARENTKEY, typename CHILDKEY, typename GRANDCHILDKEY>
-	const rapidjson::Value& parse() const
-	{
-		return m_settings[PARENTKEY::Key].GetObj()[CHILDKEY::Key].GetObj()[GRANDCHILDKEY::Key];
-	}
+	//////the first key must always refere to an object
+	//////e.g. syntax für depth 2:  ParserObject.parse<parser::base, parser::base::child>()
 
 	////depth 2
 	//wrapped rapidjson getter
@@ -254,6 +240,27 @@ public:
 		return vec;
 	}
 
+	//helper fct to determine player color
+	olc::Pixel color(std::string color) const;
+
+private:
+	////helper templates
+	//helper to parse for the value
+	template <typename KEY>
+	const rapidjson::Value& parse() const
+	{
+		return m_settings[KEY::Key];
+	}
+	template <typename PARENTKEY, typename CHILDKEY>
+	const rapidjson::Value& parse() const
+	{
+		return m_settings[PARENTKEY::Key].GetObj()[CHILDKEY::Key];
+	}
+	template <typename PARENTKEY, typename CHILDKEY, typename GRANDCHILDKEY>
+	const rapidjson::Value& parse() const
+	{
+		return m_settings[PARENTKEY::Key].GetObj()[CHILDKEY::Key].GetObj()[GRANDCHILDKEY::Key];
+	}
 	//helper for validity checks
 	template <typename PARENTKEY, typename CHILDKEY>
 	void checkKeys() const
@@ -274,10 +281,7 @@ public:
 			throw CException{ "Wrong syntax or can't find key for object \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" in settings file.", INFO };
 	}
 
-	//helper fct to determine player color
-	olc::Pixel color(std::string color) const;
 
-private:
 	//settings path
 	std::filesystem::path m_SettingsPath;
 

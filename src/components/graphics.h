@@ -10,6 +10,7 @@
 #include "game.h"
 
 
+//must not have initializers (and will be replaced in the future)
 enum class sprites { ASTR_SMALL1, ASTR_SMALL2, ASTR_MEDIUM, ASTR_BIG, count };
 
 class CGraphics : public CComponent

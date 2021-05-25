@@ -13,6 +13,7 @@
 #include <filesystem>
 
 
+//must not have initializers (and will be replaced in the future)
 enum class sounds { MUSIC0, JET, CRASH0, count};
 
 class CSounds
