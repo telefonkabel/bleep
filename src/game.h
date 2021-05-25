@@ -27,8 +27,7 @@ public:
     //set & get
     v2d velocity() const;
     v2d center() const;
-    v2d accelerationX() const;
-    v2d accelerationY() const;
+    v2d acceleration() const;
     int radiusView() const;
     int radiusMap() const;
     int fog() const;
@@ -62,8 +61,7 @@ private:
 
     //world attributes applying to all (moveable) objects
     v2d m_velocity;
-    v2d m_accelerationX;
-    v2d m_accelerationY;
+    v2d m_acceleration; //acceleration in x and y component
     float m_maxSpeed;
     float m_maxSpeed2;
 

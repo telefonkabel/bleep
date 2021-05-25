@@ -35,8 +35,7 @@ namespace parser
 
 	//game attributes
 	struct Velocity { static constexpr const char* Key{ "velocity" }; };
-	struct AccX { static constexpr const char* Key{ "accelerationX" }; };
-	struct AccY { static constexpr const char* Key{ "accelerationY" }; };
+	struct Acceleration { static constexpr const char* Key{ "acceleration" }; };
 	struct MaxSpeed { static constexpr const char* Key{ "maxSpeed" }; };
 	struct StarCard { static constexpr const char* Key{ "starCardinality" }; };
 

@@ -21,8 +21,7 @@ CGame::CGame(std::filesystem::path& currentPath) :
     m_pSound{ std::make_unique<CSounds>(currentPath) },
     m_objects{},
     m_velocity{ m_parser.getV2D<parser::Game, parser::Velocity>() },
-    m_accelerationX{ m_parser.getV2D<parser::Game, parser::AccX>() },
-    m_accelerationY{ m_parser.getV2D<parser::Game, parser::AccY>() },
+    m_acceleration{ m_parser.getV2D<parser::Game, parser::Acceleration>() },
     m_maxSpeed{ m_parser.getFloat<parser::Game, parser::MaxSpeed>() },
     m_maxSpeed2{ static_cast<float>(std::pow(m_maxSpeed, 2)) },
     m_radiusView{ m_parser.getInt<parser::Window, parser::ScreenHeight>() / 2 },
@@ -53,8 +52,7 @@ CGame::~CGame()
 
 v2d CGame::velocity() const { return m_velocity; };
 v2d CGame::center() const { return m_center; };
-v2d CGame::accelerationX() const { return m_accelerationX; };
-v2d CGame::accelerationY() const { return m_accelerationY; };
+v2d CGame::acceleration() const { return m_acceleration; };
 int CGame::radiusView() const { return m_radiusView; };
 int CGame::radiusMap() const { return m_radiusMap; };
 int CGame::fog() const { return m_fogOfWar; };
@@ -95,13 +93,13 @@ bool CGame::OnUserUpdate(float deltaTime)
         }
         //move the world relatively to the player
         if (GetKey(olc::W).bHeld)
-            m_velocity += m_accelerationY * deltaTime;
+            m_velocity.y += m_acceleration.y * deltaTime;
         if (GetKey(olc::S).bHeld)
-            m_velocity -= m_accelerationY * deltaTime;
+            m_velocity.y -= m_acceleration.y * deltaTime;
         if (GetKey(olc::A).bHeld)
-            m_velocity += m_accelerationX * deltaTime;
+            m_velocity.x += m_acceleration.x * deltaTime;
         if (GetKey(olc::D).bHeld)
-            m_velocity -= m_accelerationX * deltaTime;
+            m_velocity.x -= m_acceleration.x * deltaTime;
         if (m_velocity.mag2() > m_maxSpeed2)
             m_velocity = m_velocity.norm() * m_maxSpeed;
 

@@ -9,9 +9,8 @@
 },
 "game":{
 	"velocity": [0, 30],
-	"accelerationX": [500, 0],
-	"accelerationY": [0, 500],
-	"maxSpeed": 150,
+	"acceleration": [500, 500],
+	"maxSpeed": 200,
 	"starCardinality": 1500
 }, 
 "player" : {
@@ -21,7 +20,7 @@
 "debris": {
 	"spawnChance": 0.6,
 	"spawnReload": 0.2,
-	"maxSpeed": 200,
+	"maxSpeed": 300,
 	"mass": [10000, 10000, 20000, 40000]
 }
 }
