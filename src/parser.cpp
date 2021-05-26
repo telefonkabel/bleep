@@ -30,12 +30,10 @@ void CParser::start()
 	}
 	catch (CException& exception)
 	{
-		std::cerr << "Error while parsing - defaults will be used" << std::endl;
 		exception.print();
 	}
 	catch (...)
 	{
-		std::cerr << "Error while parsing - defaults will be used" << std::endl;
 		std::cerr << "Unhandled exception in " << S(__FILE__);
 	}
 }

@@ -137,12 +137,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
+      <Command>robocopy "$(OutDir) " "$(SolutionDir) " bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
-robocopy $(SolutionDir)sounds $(OutDir)sounds\  /MIR /IS /IT &amp;
-robocopy $(SolutionDir)settings $(OutDir)settings\  /MIR /IS /IT &amp;
+      <Command>robocopy "$(SolutionDir)graphics " "$(OutDir)graphics\ " /MIR /IS /IT &amp;
+robocopy "$(SolutionDir)sounds " "$(OutDir)sounds\ "  /MIR /IS /IT &amp;
+robocopy "$(SolutionDir)settings " "$(OutDir)settings\ "  /MIR /IS /IT &amp;
 exit 0</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -166,12 +166,12 @@ exit 0</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
+      <Command>robocopy "$(OutDir) " "$(SolutionDir) " bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
-robocopy $(SolutionDir)sounds $(OutDir)sounds\  /MIR /IS /IT &amp;
-robocopy $(SolutionDir)settings $(OutDir)settings\  /MIR /IS /IT &amp;
+      <Command>robocopy "$(SolutionDir)graphics " "$(OutDir)graphics\ " /MIR /IS /IT &amp;
+robocopy "$(SolutionDir)sounds " "$(OutDir)sounds\ "  /MIR /IS /IT &amp;
+robocopy "$(SolutionDir)settings " "$(OutDir)settings\ "  /MIR /IS /IT &amp;
 exit 0</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -191,12 +191,12 @@ exit 0</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
+      <Command>robocopy "$(OutDir) " "$(SolutionDir) " bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
-robocopy $(SolutionDir)sounds $(OutDir)sounds\  /MIR /IS /IT &amp;
-robocopy $(SolutionDir)settings $(OutDir)settings\  /MIR /IS /IT &amp;
+      <Command>robocopy "$(SolutionDir)graphics " "$(OutDir)graphics\ " /MIR /IS /IT &amp;
+robocopy "$(SolutionDir)sounds " "$(OutDir)sounds\ "  /MIR /IS /IT &amp;
+robocopy "$(SolutionDir)settings " "$(OutDir)settings\ "  /MIR /IS /IT &amp;
 exit 0</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -220,12 +220,12 @@ exit 0</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>robocopy $(OutDir) $(SolutionDir) bleep.exe /IS /IT &amp; exit 0</Command>
+      <Command>robocopy "$(OutDir) " "$(SolutionDir) " bleep.exe /IS /IT &amp; exit 0</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>robocopy $(SolutionDir)graphics $(OutDir)graphics\  /MIR /IS /IT &amp;
-robocopy $(SolutionDir)sounds $(OutDir)sounds\  /MIR /IS /IT &amp;
-robocopy $(SolutionDir)settings $(OutDir)settings\  /MIR /IS /IT &amp;
+      <Command>robocopy "$(SolutionDir)graphics " "$(OutDir)graphics\ " /MIR /IS /IT &amp;
+robocopy "$(SolutionDir)sounds " "$(OutDir)sounds\ "  /MIR /IS /IT &amp;
+robocopy "$(SolutionDir)settings " "$(OutDir)settings\ "  /MIR /IS /IT &amp;
 exit 0</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>

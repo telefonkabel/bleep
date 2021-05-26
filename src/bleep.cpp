@@ -57,7 +57,7 @@ int main()
             if (len == 0)
                 throw CException{ "GetModuleFileName doesn't get any path.", INFO };
             else
-                wPath = { buffer.data(), buffer.size() };
+                wPath = { buffer.data() };
         }
 #else
         {
@@ -73,7 +73,7 @@ int main()
                 throw CException{ "readlink doesn't get any path.", INFO };
             else
             {
-                std::string path{ buffer.data(), buffer.size() };
+                std::string path{ buffer.data() };
                 wPath = { path.begin(), path.end() };
             }
         }
