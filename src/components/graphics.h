@@ -7,7 +7,11 @@
 
 #pragma once
 #include "component.h"
-#include "game.h"
+#include "objects/object.h"
+#include "thirdParty/olcPixelGameEngine.h"
+
+#include <filesystem>
+#include <array>
 
 
 //must not have initializers (and will be replaced in the future)

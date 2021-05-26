@@ -2,16 +2,16 @@
 //==============================================================================
 /// 2021, Benedikt Michael
 //==============================================================================
-/// parser.h
+/// jsParser.h
 /// Loads & checks the settings.
 //==============================================================================
 
 #pragma once
 
-#include "exception.h"
 #include "maths.h"
-#include "rapidjson/document.h"
-#include "olcPixelGameEngine.h"
+#include "exception.h"
+#include "thirdParty/olcPixelGameEngine.h"
+#include "thirdParty/rapidjson/document.h"
 
 #include <filesystem>
 #include <vector>

@@ -24,12 +24,12 @@
     <ClInclude Include="..\src\components\kinetics.h" />
     <ClInclude Include="..\src\game.h" />
     <ClInclude Include="..\src\helper\exception.h" />
+    <ClInclude Include="..\src\helper\jsParser.h" />
     <ClInclude Include="..\src\helper\maths.h" />
     <ClInclude Include="..\src\objects\asteroid.h" />
     <ClInclude Include="..\src\objects\blackHole.h" />
     <ClInclude Include="..\src\objects\object.h" />
     <ClInclude Include="..\src\objects\star.h" />
-    <ClInclude Include="..\src\parser.h" />
     <ClInclude Include="..\src\sounds.h" />
     <ClInclude Include="..\src\thirdParty\olcPGEX_Sound.h" />
     <ClInclude Include="..\src\thirdParty\olcPixelGameEngine.h" />
@@ -39,12 +39,12 @@
     <ClCompile Include="..\src\components\graphics.cpp" />
     <ClCompile Include="..\src\components\kinetics.cpp" />
     <ClCompile Include="..\src\game.cpp" />
+    <ClCompile Include="..\src\helper\jsParser.cpp" />
     <ClCompile Include="..\src\helper\maths.cpp" />
     <ClCompile Include="..\src\objects\asteroid.cpp" />
     <ClCompile Include="..\src\objects\blackHole.cpp" />
     <ClCompile Include="..\src\objects\object.cpp" />
     <ClCompile Include="..\src\objects\star.cpp" />
-    <ClCompile Include="..\src\parser.cpp" />
     <ClCompile Include="..\src\sounds.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -101,23 +101,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/src;$(SolutionDir)/src/objects;$(SolutionDir)/src/helper;$(SolutionDir)/src/thirdParty</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/src</IncludePath>
     <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/src;$(SolutionDir)/src/objects;$(SolutionDir)/src/helper;$(SolutionDir)/src/thirdParty</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/src</IncludePath>
     <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/src;$(SolutionDir)/src/objects;$(SolutionDir)/src/helper;$(SolutionDir)/src/thirdParty</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/src</IncludePath>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/src;$(SolutionDir)/src/objects;$(SolutionDir)/src/helper;$(SolutionDir)/src/thirdParty</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/src</IncludePath>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
   </PropertyGroup>

@@ -6,6 +6,7 @@
 //==============================================================================
 
 #include "blackHole.h"
+#include "game.h"
 #include "components/graphics.h"
 #include "components/kinetics.h"
 

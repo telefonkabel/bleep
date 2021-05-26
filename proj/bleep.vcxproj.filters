@@ -39,9 +39,6 @@
     <ClInclude Include="..\src\objects\asteroid.h">
       <Filter>objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\parser.h">
-      <Filter>game</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\helper\maths.h">
       <Filter>helper</Filter>
     </ClInclude>
@@ -59,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="..\src\objects\blackHole.h">
       <Filter>objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\helper\jsParser.h">
+      <Filter>helper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -80,9 +80,6 @@
     <ClCompile Include="..\src\objects\object.cpp">
       <Filter>objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\parser.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\helper\maths.cpp">
       <Filter>helper</Filter>
     </ClCompile>
@@ -94,6 +91,9 @@
     </ClCompile>
     <ClCompile Include="..\src\objects\blackHole.cpp">
       <Filter>objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\helper\jsParser.cpp">
+      <Filter>helper</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

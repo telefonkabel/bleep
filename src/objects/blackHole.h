@@ -6,8 +6,10 @@
 //==============================================================================
 
 #pragma once
-#include "game.h"
+#include "object.h"
 
+
+class CGame;
 
 class CBHole : public CObject
 {

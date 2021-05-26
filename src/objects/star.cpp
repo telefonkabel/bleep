@@ -6,9 +6,8 @@
 //==============================================================================
 
 #include "star.h"
-#include "game.h"
 #include "blackHole.h"
-#include "components/component.h"
+#include "game.h"
 #include "components/graphics.h"
 #include "components/kinetics.h"
 

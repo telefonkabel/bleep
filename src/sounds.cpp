@@ -6,7 +6,7 @@
 //==============================================================================
 
 #include "sounds.h"
-#include "exception.h"
+#include "helper/exception.h"
 
 #include <iostream>
 
@@ -20,7 +20,6 @@ CSounds::CSounds(std::filesystem::path currentPath) :
 	initSound(sounds::MUSIC0, m_pSound->LoadAudioSample((m_soundPath / "music0.wav").string()));
 	initSound(sounds::JET, m_pSound->LoadAudioSample((m_soundPath / "jet.wav").string()));
 	initSound(sounds::CRASH0, m_pSound->LoadAudioSample((m_soundPath / "crash0.wav").string()));
-
 }
 
 CSounds::~CSounds()

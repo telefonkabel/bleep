@@ -6,19 +6,15 @@
 //==============================================================================
 
 #pragma once
-#include "maths.h"
-#include "exception.h"
+#include "helper/maths.h"
+#include "helper/exception.h"
 
-#include <utility>
 #include <set>
-#include <variant>
 
 
+class CGame;
 class CGraphics;
 class CKinetics;
-class CGame;
-class CComponent;
-class CBHole;
 enum class components;
 
 using colors = olc::Pixel;

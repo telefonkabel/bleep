@@ -1,12 +1,11 @@
 //==============================================================================
 /// 2021, Benedikt Michael
 //==============================================================================
-/// parser.cpp
+/// jsParser.cpp
 /// Loads & checks the settings.
 //==============================================================================
 
-#include "parser.h"
-#include "exception.h"
+#include "jsParser.h"
 
 #include <iostream>
 #include <fstream>

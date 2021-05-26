@@ -6,8 +6,8 @@
 //==============================================================================
 
 #pragma once
-#include "olcPixelGameEngine.h"
-#include "olcPGEX_Sound.h"
+#include "thirdParty/olcPixelGameEngine.h"
+#include "thirdParty/olcPGEX_Sound.h"
 
 #include <array>
 #include <filesystem>

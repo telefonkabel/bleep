@@ -7,9 +7,7 @@
 
 #pragma once
 #include "component.h"
-#include "game.h"
-
-#include <deque>
+#include "objects/object.h"
 
 
 class CKinetics : public CComponent

@@ -6,12 +6,11 @@
 //==============================================================================
 
 #include "kinetics.h"
-#include "blackHole.h"
+#include "sounds.h"
+#include "game.h"
+#include "objects/blackHole.h"
 
 #include <numeric>
-
-//makeshift for collsision - has to be implemented properly
-#include "sounds.h"
 
 
 CKinetics::CKinetics(CObject* pObject) :
@@ -102,7 +101,6 @@ void CKinetics::collision()
 					velocity(velNeu);
 					obj->kinetics()->velocity(objVelNeu);
 
-					//play sound if event is in view
 					if(object()->isInView())
 						object()->game()->sound()->playSound(sounds::CRASH0, false);
 				}

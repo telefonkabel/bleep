@@ -9,7 +9,7 @@
 #include "object.h"
 
 
-class CKinetics;
+class CGame;
 
 class CStar : public CObject
 {

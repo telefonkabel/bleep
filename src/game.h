@@ -7,16 +7,16 @@
 
 #pragma once
 
-#include "object.h"
-#include "maths.h"
-#include "asteroid.h"
-#include "sounds.h"
-#include "parser.h"
-
-#include "rapidjson/document.h"
+#include "helper/maths.h"
+#include "objects/object.h"
+#include "thirdParty/olcPixelGameEngine.h"
 
 #include <filesystem>
 
+
+class CParser;
+class CSounds;
+class CObject;
 
 class CGame : public olc::PixelGameEngine
 {
@@ -33,7 +33,7 @@ public:
     int fog() const;
     olc::Pixel playerColor() const;
     std::filesystem::path currentPath() const;
-    const CParser& parser() const;
+    const std::unique_ptr<CParser>& parser() const;
 
     //provides the mass of an object for possible outputs in scientific notation with the amount of shown decimals as parameter
     std::string massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const;
@@ -49,8 +49,8 @@ private:
     //the path where the prog is executed
     std::filesystem::path m_currentPath;
 
-    //parser class which handles the settings
-    CParser m_parser;
+    //parser object which handles the settings
+    std::unique_ptr<CParser> m_parser;
 
     //ptr to object that handles all sounds for the game
     std::unique_ptr<CSounds> m_pSound;

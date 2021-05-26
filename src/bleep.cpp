@@ -15,25 +15,24 @@
     #include <codeanalysis\warnings.h>
     #pragma warning(push)
     #pragma warning(disable: ALL_CODE_ANALYSIS_WARNINGS)
+        #include "thirdParty/olcPixelGameEngine.h"
+        #include "thirdParty/olcPGEX_Sound.h"
+        #include "thirdParty/rapidjson/document.h"
+
         #include <locale>
         #include <codecvt>
-
-        #include "rapidjson/document.h"
-        #include "olcPixelGameEngine.h"
-        #include "olcPGEX_Sound.h"
     #pragma warning(pop)
 #else
-    #include <unistd.h>
+    #include "thirdParty/olcPixelGameEngine.h"
+    #include "thirdParty/olcPGEX_Sound.h"
+    #include "thirdParty/rapidjson/document.h"
 
-    #include "rapidjson/document.h"
-    #include "olcPixelGameEngine.h"
-    #include "olcPGEX_Sound.h"
+    #include <unistd.h>
 #endif
 
 
 #include "game.h"
-#include "parser.h"
-#include "exception.h"
+#include "helper/exception.h"
 
 #include <filesystem>
 
