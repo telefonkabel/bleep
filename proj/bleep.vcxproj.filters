@@ -13,9 +13,6 @@
     <Filter Include="helper">
       <UniqueIdentifier>{a255ac25-f3bc-4147-9182-1013f7aa9545}</UniqueIdentifier>
     </Filter>
-    <Filter Include="thirdParty">
-      <UniqueIdentifier>{c71446d5-8f1a-44b6-b09f-799d4cd94f49}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\components\graphics.h">
@@ -45,20 +42,14 @@
     <ClInclude Include="..\src\helper\exception.h">
       <Filter>helper</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\thirdParty\olcPGEX_Sound.h">
-      <Filter>thirdParty</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\thirdParty\olcPixelGameEngine.h">
-      <Filter>thirdParty</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\sounds.h">
-      <Filter>game</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\objects\blackHole.h">
       <Filter>objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\helper\jsParser.h">
       <Filter>helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sound.h">
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -83,7 +74,7 @@
     <ClCompile Include="..\src\helper\maths.cpp">
       <Filter>helper</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\sounds.cpp">
+    <ClCompile Include="..\src\sound.cpp">
       <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="..\src\components\graphics.cpp">

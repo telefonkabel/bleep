@@ -6,8 +6,8 @@
 //==============================================================================
 
 #include "kinetics.h"
-#include "sounds.h"
 #include "game.h"
+#include "sound.h"
 #include "objects/blackHole.h"
 
 #include <numeric>

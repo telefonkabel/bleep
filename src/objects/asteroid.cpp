@@ -8,7 +8,7 @@
 #include "asteroid.h"
 #include "blackHole.h"
 #include "game.h"
-#include "sounds.h"
+#include "sound.h"
 #include "helper/jsParser.h"
 #include "helper/exception.h"
 #include "components/graphics.h"

@@ -1,7 +1,7 @@
 //==============================================================================
 /// 2021, Benedikt Michael
 //==============================================================================
-/// sounds.h
+/// sound.h
 /// Handles all game sounds.
 //==============================================================================
 
@@ -16,11 +16,11 @@
 //must not have initializers (and will be replaced in the future)
 enum class sounds { MUSIC0, JET, CRASH0, count};
 
-class CSounds
+class CSound
 {
 public:
-	CSounds(std::filesystem::path currentPath);
-	~CSounds();
+	CSound(std::filesystem::path currentPath);
+	~CSound();
 
 	void playSound(sounds index, bool repeat) const;
 

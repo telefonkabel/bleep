@@ -30,9 +30,7 @@
     <ClInclude Include="..\src\objects\blackHole.h" />
     <ClInclude Include="..\src\objects\object.h" />
     <ClInclude Include="..\src\objects\star.h" />
-    <ClInclude Include="..\src\sounds.h" />
-    <ClInclude Include="..\src\thirdParty\olcPGEX_Sound.h" />
-    <ClInclude Include="..\src\thirdParty\olcPixelGameEngine.h" />
+    <ClInclude Include="..\src\sound.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\bleep.cpp" />
@@ -45,7 +43,7 @@
     <ClCompile Include="..\src\objects\blackHole.cpp" />
     <ClCompile Include="..\src\objects\object.cpp" />
     <ClCompile Include="..\src\objects\star.cpp" />
-    <ClCompile Include="..\src\sounds.cpp" />
+    <ClCompile Include="..\src\sound.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

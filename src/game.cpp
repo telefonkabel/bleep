@@ -6,7 +6,7 @@
 //==============================================================================
 
 #include "game.h"
-#include "sounds.h"
+#include "sound.h"
 #include "helper/jsParser.h"
 #include "helper/exception.h"
 #include "objects/object.h"
@@ -19,7 +19,7 @@
 CGame::CGame(std::filesystem::path& currentPath) :
     m_currentPath{ currentPath },
     m_parser{ std::make_unique<CParser>(currentPath) },
-    m_pSound{ std::make_unique<CSounds>(currentPath) },
+    m_pSound{ std::make_unique<CSound>(currentPath) },
     m_objects{},
     m_velocity{ m_parser->getV2D<parser::Game, parser::Velocity>() },
     m_acceleration{ m_parser->getV2D<parser::Game, parser::Acceleration>() },
@@ -164,7 +164,7 @@ olc::Pixel CGame::playerColor() const
     return m_playerColor;
 }
 
-const std::unique_ptr<CSounds>& CGame::sound() const
+const std::unique_ptr<CSound>& CGame::sound() const
 {
     if (m_pSound)
         return m_pSound;

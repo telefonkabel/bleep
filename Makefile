@@ -1,5 +1,5 @@
-bleep: jsParser.o game.o object.o star.o maths.o kinetics.o sounds.o asteroid.o graphics.o blackHole.o bleep.o
-	g++ -g -std=c++17 -o bleep ./game.o ./jsParser.o ./kinetics.o ./asteroid.o ./sounds.o ./blackHole.o ./graphics.o ./maths.o ./object.o ./star.o ./bleep.o -lasound -lpthread -lpng -lGL -lX11
+bleep: jsParser.o game.o object.o star.o maths.o kinetics.o sound.o asteroid.o graphics.o blackHole.o bleep.o
+	g++ -g -std=c++17 -o bleep ./game.o ./jsParser.o ./kinetics.o ./asteroid.o ./sound.o ./blackHole.o ./graphics.o ./maths.o ./object.o ./star.o ./bleep.o -lasound -lpthread -lpng -lGL -lX11
 
 bleep.o: ./src/bleep.cpp
 	g++ -g -std=c++17 -c ./src/bleep.cpp -I./src/
@@ -28,14 +28,14 @@ maths.o: ./src/helper/maths.cpp ./src/helper/maths.h
 kinetics.o: ./src/components/kinetics.cpp ./src/components/kinetics.h
 	g++ -g -std=c++17 -c ./src/components/kinetics.cpp -I./src/
 
-sounds.o: ./src/sounds.cpp ./src/sounds.h
-	g++ -g -std=c++17 -c ./src/sounds.cpp -I./src/
+sound.o: ./src/sound.cpp ./src/sound.h
+	g++ -g -std=c++17 -c ./src/sound.cpp -I./src/
 
 graphics.o: ./src/components/graphics.cpp ./src/components/graphics.h
 	g++ -g -std=c++17 -c ./src/components/graphics.cpp -I./src/
 
 clean:
-	rm -f bleep jsParser.o game.o object.o star.o maths.o kinetics.o sounds.o asteroid.o graphics.o blackHole.o bleep.o
+	rm -f bleep jsParser.o game.o object.o star.o maths.o kinetics.o sound.o asteroid.o graphics.o blackHole.o bleep.o
 
 dist-clean: clean
 	rm -rf dist

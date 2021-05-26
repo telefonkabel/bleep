@@ -1,17 +1,17 @@
 //==============================================================================
 /// 2021, Benedikt Michael
 //==============================================================================
-/// sounds.cpp
+/// sound.cpp
 /// Handles all game sounds.
 //==============================================================================
 
-#include "sounds.h"
+#include "sound.h"
 #include "helper/exception.h"
 
 #include <iostream>
 
 
-CSounds::CSounds(std::filesystem::path currentPath) :
+CSound::CSound(std::filesystem::path currentPath) :
 	m_soundPath{currentPath / "sounds" },
 	m_pSound{},
 	m_soundIDs{}
@@ -22,12 +22,12 @@ CSounds::CSounds(std::filesystem::path currentPath) :
 	initSound(sounds::CRASH0, m_pSound->LoadAudioSample((m_soundPath / "crash0.wav").string()));
 }
 
-CSounds::~CSounds()
+CSound::~CSound()
 {
 	olc::SOUND::DestroyAudio();
 }
 
-void CSounds::initSound(sounds index, int id)
+void CSound::initSound(sounds index, int id)
 {
 	if (static_cast<int>(id) == -1)
 		throw CException{ "olcPGEX_Sound can't load audio sample with sound ID: " + std::to_string(id), INFO };
@@ -35,7 +35,7 @@ void CSounds::initSound(sounds index, int id)
 		m_soundIDs.at(static_cast<int>(index)) = id;
 }
 
-void CSounds::playSound(sounds index, bool repeat) const
+void CSound::playSound(sounds index, bool repeat) const
 {
 	m_pSound->PlaySample(m_soundIDs.at(static_cast<int>(index)), repeat);
 }

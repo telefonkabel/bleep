@@ -15,7 +15,7 @@
 
 
 class CParser;
-class CSounds;
+class CSound;
 class CObject;
 
 class CGame : public olc::PixelGameEngine
@@ -42,7 +42,7 @@ public:
     const std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)>& gameObjects() const;
 
     //provieds a handle to the sound object
-    const std::unique_ptr<CSounds>& sound() const;
+    const std::unique_ptr<CSound>& sound() const;
 
 
 private:
@@ -53,7 +53,7 @@ private:
     std::unique_ptr<CParser> m_parser;
 
     //ptr to object that handles all sounds for the game
-    std::unique_ptr<CSounds> m_pSound;
+    std::unique_ptr<CSound> m_pSound;
 
     //all active objects seperated into types
     std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)> m_objects;
