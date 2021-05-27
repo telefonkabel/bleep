@@ -102,7 +102,7 @@ void CKinetics::collision()
 					obj->kinetics()->velocity(objVelNeu);
 
 					if(object()->isInView())
-						object()->game()->sound()->playSound(sounds::CRASH0, false);
+						object()->game()->sound().playSound(sounds::CRASH0, false);
 				}
 			}
 		}

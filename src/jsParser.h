@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "maths.h"
-#include "exception.h"
+#include "helper/maths.h"
+#include "helper/exception.h"
 #include "thirdParty/olcPixelGameEngine.h"
 #include "thirdParty/rapidjson/document.h"
 

@@ -24,8 +24,8 @@
     <ClInclude Include="..\src\components\kinetics.h" />
     <ClInclude Include="..\src\game.h" />
     <ClInclude Include="..\src\helper\exception.h" />
-    <ClInclude Include="..\src\helper\jsParser.h" />
     <ClInclude Include="..\src\helper\maths.h" />
+    <ClInclude Include="..\src\jsParser.h" />
     <ClInclude Include="..\src\objects\asteroid.h" />
     <ClInclude Include="..\src\objects\blackHole.h" />
     <ClInclude Include="..\src\objects\object.h" />
@@ -37,8 +37,8 @@
     <ClCompile Include="..\src\components\graphics.cpp" />
     <ClCompile Include="..\src\components\kinetics.cpp" />
     <ClCompile Include="..\src\game.cpp" />
-    <ClCompile Include="..\src\helper\jsParser.cpp" />
     <ClCompile Include="..\src\helper\maths.cpp" />
+    <ClCompile Include="..\src\jsParser.cpp" />
     <ClCompile Include="..\src\objects\asteroid.cpp" />
     <ClCompile Include="..\src\objects\blackHole.cpp" />
     <ClCompile Include="..\src\objects\object.cpp" />

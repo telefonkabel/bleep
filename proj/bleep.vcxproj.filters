@@ -45,10 +45,10 @@
     <ClInclude Include="..\src\objects\blackHole.h">
       <Filter>objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\helper\jsParser.h">
-      <Filter>helper</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\sound.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\jsParser.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
@@ -83,8 +83,8 @@
     <ClCompile Include="..\src\objects\blackHole.cpp">
       <Filter>objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\helper\jsParser.cpp">
-      <Filter>helper</Filter>
+    <ClCompile Include="..\src\jsParser.cpp">
+      <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include "jsParser.h"
+#include "sound.h"
 #include "helper/maths.h"
 #include "objects/object.h"
 #include "thirdParty/olcPixelGameEngine.h"
@@ -14,8 +16,6 @@
 #include <filesystem>
 
 
-class CParser;
-class CSound;
 class CObject;
 
 class CGame : public olc::PixelGameEngine
@@ -33,7 +33,12 @@ public:
     int fog() const;
     olc::Pixel playerColor() const;
     std::filesystem::path currentPath() const;
-    const std::unique_ptr<CParser>& parser() const;
+
+    //handle to parser obj with static lifetime
+    const CParser& parser() const;
+
+    //handle to sound obj with static lifetime
+    const CSound& sound() const;
 
     //provides the mass of an object for possible outputs in scientific notation with the amount of shown decimals as parameter
     std::string massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const;
@@ -41,19 +46,16 @@ public:
     //provides a handle to all objects
     const std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)>& gameObjects() const;
 
-    //provieds a handle to the sound object
-    const std::unique_ptr<CSound>& sound() const;
-
 
 private:
     //the path where the prog is executed
     std::filesystem::path m_currentPath;
 
     //parser object which handles the settings
-    std::unique_ptr<CParser> m_parser;
+    CParser m_parser;
 
     //ptr to object that handles all sounds for the game
-    std::unique_ptr<CSound> m_pSound;
+    CSound m_sound;
 
     //all active objects seperated into types
     std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)> m_objects;

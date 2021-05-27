@@ -6,8 +6,6 @@
 //==============================================================================
 
 #include "game.h"
-#include "sound.h"
-#include "helper/jsParser.h"
 #include "helper/exception.h"
 #include "objects/object.h"
 #include "objects/star.h"
@@ -18,33 +16,33 @@
 
 CGame::CGame(std::filesystem::path& currentPath) :
     m_currentPath{ currentPath },
-    m_parser{ std::make_unique<CParser>(currentPath) },
-    m_pSound{ std::make_unique<CSound>(currentPath) },
+    m_parser{ CParser(currentPath) },
+    m_sound{ CSound(currentPath) },
     m_objects{},
-    m_velocity{ m_parser->getV2D<parser::Game, parser::Velocity>() },
-    m_acceleration{ m_parser->getV2D<parser::Game, parser::Acceleration>() },
-    m_maxSpeed{ m_parser->getFloat<parser::Game, parser::MaxSpeed>() },
+    m_velocity{ m_parser.getV2D<parser::Game, parser::Velocity>() },
+    m_acceleration{ m_parser.getV2D<parser::Game, parser::Acceleration>() },
+    m_maxSpeed{ m_parser.getFloat<parser::Game, parser::MaxSpeed>() },
     m_maxSpeed2{ static_cast<float>(std::pow(m_maxSpeed, 2)) },
-    m_radiusView{ m_parser->getInt<parser::Window, parser::ScreenHeight>() / 2 },
+    m_radiusView{ m_parser.getInt<parser::Window, parser::ScreenHeight>() / 2 },
     m_radiusMap{ static_cast<int>(m_radiusView * 1.5f) },
     m_fogOfWar{ static_cast<int>(0.2f * m_radiusView) },
-    m_center{ m_parser->getFloat<parser::Window, parser::ScreenWidth>() / 2,
-        m_parser->getFloat<parser::Window, parser::ScreenHeight>() / 2 },
-    m_playerColor{ m_parser->color(m_parser->getString<parser::Player, parser::Color>()) },
-    m_startMass{ m_parser->getInt<parser::Player, parser::Mass>() },
-    m_starCardinality{ m_parser->getInt<parser::Game, parser::StarCard>() },
-    m_debrisChance{ m_parser->getFloat<parser::Debris, parser::SpawnChance>() },
+    m_center{ m_parser.getFloat<parser::Window, parser::ScreenWidth>() / 2,
+        m_parser.getFloat<parser::Window, parser::ScreenHeight>() / 2 },
+    m_playerColor{ m_parser.color(m_parser.getString<parser::Player, parser::Color>()) },
+    m_startMass{ m_parser.getInt<parser::Player, parser::Mass>() },
+    m_starCardinality{ m_parser.getInt<parser::Game, parser::StarCard>() },
+    m_debrisChance{ m_parser.getFloat<parser::Debris, parser::SpawnChance>() },
     m_debrisTimer{},
-    m_debrisTimerReload{ m_parser->getFloat<parser::Debris, parser::SpawnReload>() },
+    m_debrisTimerReload{ m_parser.getFloat<parser::Debris, parser::SpawnReload>() },
     m_effectEaten{},
     m_effectEatenTime{ 0.2f }
 {
-    sAppName = m_parser->getString<parser::Window, parser::Name>();
-    Construct(m_parser->getInt<parser::Window, parser::ScreenWidth>(), m_parser->getInt<parser::Window, parser::ScreenHeight>(),
-        m_parser->getInt<parser::Window, parser::PixelWidth>(), m_parser->getInt<parser::Window, parser::PixelHeight>(),
-        m_parser->getBool<parser::Window, parser::FullScreen>());
+    sAppName = m_parser.getString<parser::Window, parser::Name>();
+    Construct(m_parser.getInt<parser::Window, parser::ScreenWidth>(), m_parser.getInt<parser::Window, parser::ScreenHeight>(),
+        m_parser.getInt<parser::Window, parser::PixelWidth>(), m_parser.getInt<parser::Window, parser::PixelHeight>(),
+        m_parser.getBool<parser::Window, parser::FullScreen>());
 
-    m_pSound->playSound(sounds::MUSIC0, true);
+    m_sound.playSound(sounds::MUSIC0, true);
 }
 
 CGame::~CGame()
@@ -58,7 +56,8 @@ int CGame::radiusView() const { return m_radiusView; };
 int CGame::radiusMap() const { return m_radiusMap; };
 int CGame::fog() const { return m_fogOfWar; };
 std::filesystem::path CGame::currentPath() const { return m_currentPath; };
-const std::unique_ptr<CParser>& CGame::parser() const { return m_parser; };
+const CParser& CGame::parser() const { return m_parser; };
+const CSound& CGame::sound() const { return m_sound; };
 
 bool CGame::OnUserCreate()
 {
@@ -162,14 +161,6 @@ void CGame::effectEaten(float deltaTime)
 olc::Pixel CGame::playerColor() const
 {
     return m_playerColor;
-}
-
-const std::unique_ptr<CSound>& CGame::sound() const
-{
-    if (m_pSound)
-        return m_pSound;
-    else
-        throw CException("Sound handle points to null - should not happen.", INFO);
 }
 
 const std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)>& CGame::gameObjects() const
