@@ -16,6 +16,7 @@ CSound::CSound(std::filesystem::path currentPath) :
 	m_pSound{},
 	m_soundIDs{}
 {
+	std::cout << "Setting up sound." << std::endl;
 	olc::SOUND::InitialiseAudio();
 	initSound(sounds::MUSIC0, m_pSound->LoadAudioSample((m_soundPath / "music0.wav").string()));
 	initSound(sounds::JET, m_pSound->LoadAudioSample((m_soundPath / "jet.wav").string()));

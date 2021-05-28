@@ -15,6 +15,7 @@ CParser::CParser(std::filesystem::path& currentPath) :
 	m_SettingsPath{ currentPath / "settings" },
 	m_settings {}
 {
+	std::cout << "Started parsing." << std::endl;
 	start();
 }
 
@@ -25,6 +26,7 @@ void CParser::start()
 		if (!std::filesystem::exists(m_SettingsPath))
 			throw CException{ m_SettingsPath.string() + " doesn't exist.", INFO };
 
+		m_settings.SetObject();
 		readFiles();
 	}
 	catch (CException& exception)
@@ -39,12 +41,9 @@ void CParser::start()
 
 void CParser::readFiles()
 {
-	int itr{ 0 };
 	for (const auto& file : std::filesystem::directory_iterator(m_SettingsPath))
 	{
-		if (itr == 1)
-			throw CException{ "Currently only one setting file supported.", INFO };
-		else if (file.path().extension() != ".json")
+		if (file.path().extension() != ".json")
 			throw CException{ "There are non-json files in the settings directory.", INFO };
 		else
 		{
@@ -57,10 +56,34 @@ void CParser::readFiles()
 				if (fileData.empty())
 					throw CException{ file.path().string() + "hasn't generated any content.", INFO };
 
-				m_settings.Parse(fileData.c_str());
-				itr++;
+				rapidjson::Document tmpDocument;
+				tmpDocument.Parse(fileData.c_str());
+				merge(m_settings, tmpDocument);
 			}
 		}
+	}
+}
+
+void CParser::merge(rapidjson::Document& settings, rapidjson::Document& document)
+{
+	rapidjson::Document::AllocatorType ac{ settings.GetAllocator() };
+
+	for (auto& obj : document.GetObj())
+	{
+		std::cout << "Parser: Processing " << obj.name.GetString() << std::endl;
+		rapidjson::Value key;
+		key.CopyFrom(obj.name, ac);
+		rapidjson::Value value;
+		value.CopyFrom(obj.value, ac);
+
+		std::string name{ key.GetString() }; //cause AddMember moves key
+		if (settings.FindMember(key) != settings.MemberEnd())
+			throw CException{ "There is already an object named " + name + " in the settings.", INFO };
+		else
+			settings.AddMember(key, value, ac);
+
+		if (settings.FindMember(name.c_str()) == settings.MemberEnd())
+			throw CException { "Object named " + name + " coudn't be added to the settings.", INFO };
 	}
 }
 

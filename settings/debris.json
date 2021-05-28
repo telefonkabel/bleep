@@ -1,0 +1,8 @@
+{
+"debris": {
+	"spawnChance": 0.6,
+	"spawnReload": 0.2,
+	"maxSpeed": 300,
+	"mass": [10000, 10000, 20000, 40000]
+}
+}

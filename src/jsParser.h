@@ -291,4 +291,6 @@ private:
 	void start();
 	//read all setting files and write settings into a rapidjson::Document
 	void readFiles();
+	//merge document into m_settings
+	void merge(rapidjson::Document& settings, rapidjson::Document& document);
 };

@@ -87,6 +87,7 @@ int main()
         srand(static_cast<unsigned int>(time(0)));
 
         //start game
+        std::cout << "Starting game." << std::endl;
         CGame game{ currentPath };
         game.Start();
     }
