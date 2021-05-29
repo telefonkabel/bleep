@@ -15,8 +15,9 @@ CParser::CParser(std::filesystem::path& currentPath) :
 	m_SettingsPath{ currentPath / "settings" },
 	m_settings {}
 {
-	std::cout << "Started parsing." << std::endl;
+	std::cout << std::endl << "Starting parser." << std::endl;
 	start();
+	std::cout << "Parser end." << std::endl << std::endl;
 }
 
 void CParser::start()
@@ -58,6 +59,8 @@ void CParser::readFiles()
 
 				rapidjson::Document tmpDocument;
 				tmpDocument.Parse(fileData.c_str());
+
+				std::cout << "Syntax check of file data:" << std::endl << fileData << std::endl;
 				merge(m_settings, tmpDocument);
 			}
 		}
@@ -68,13 +71,16 @@ void CParser::merge(rapidjson::Document& settings, rapidjson::Document& document
 {
 	rapidjson::Document::AllocatorType ac{ settings.GetAllocator() };
 
-	for (auto& obj : document.GetObj())
+	auto itr = document.MemberBegin();
+	std::cout << "Syntax check OK." << std::endl;
+
+	for (; itr != document.MemberEnd(); ++itr)
 	{
-		std::cout << "Parser: Processing " << obj.name.GetString() << std::endl;
+		std::cout << "Processing \"" << itr->name.GetString() << "\"." << std::endl;
 		rapidjson::Value key;
-		key.CopyFrom(obj.name, ac);
+		key.CopyFrom(itr->name, ac);
 		rapidjson::Value value;
-		value.CopyFrom(obj.value, ac);
+		value.CopyFrom(itr->value, ac);
 
 		std::string name{ key.GetString() }; //cause AddMember moves key
 		if (settings.FindMember(key) != settings.MemberEnd())

@@ -16,11 +16,12 @@ CSound::CSound(std::filesystem::path currentPath) :
 	m_pSound{},
 	m_soundIDs{}
 {
-	std::cout << "Setting up sound." << std::endl;
+	std::cout << std::endl << "Initialize sounds out of " << m_soundPath << std::endl;
 	olc::SOUND::InitialiseAudio();
 	initSound(sounds::MUSIC0, m_pSound->LoadAudioSample((m_soundPath / "music0.wav").string()));
 	initSound(sounds::JET, m_pSound->LoadAudioSample((m_soundPath / "jet.wav").string()));
 	initSound(sounds::CRASH0, m_pSound->LoadAudioSample((m_soundPath / "crash0.wav").string()));
+	std::cout << "All sounds successfully initialized." << std::endl;
 }
 
 CSound::~CSound()

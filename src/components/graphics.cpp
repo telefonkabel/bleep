@@ -24,8 +24,10 @@ CGraphics::CGraphics(CObject* pObject) :
 	if (m_firstInit)
 	{
 		m_graphicPath = { pObject->game()->currentPath() / "graphics" };
+		std::cout << std::endl << "Initialize sprites out of " << m_graphicPath << std::endl;
 		initGraphics();
 		m_firstInit = false;
+		std::cout << "All sprites successfully initialized." << std::endl;
 	}
 }
 
