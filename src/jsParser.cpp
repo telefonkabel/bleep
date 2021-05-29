@@ -60,7 +60,7 @@ void CParser::readFiles()
 				rapidjson::Document tmpDocument;
 				tmpDocument.Parse(fileData.c_str());
 
-				std::cout << "Syntax check of file data:" << std::endl << fileData << std::endl;
+				std::cout << "Try to generate nodes out of:" << std::endl << fileData << std::endl;
 				merge(m_settings, tmpDocument);
 			}
 		}
@@ -72,7 +72,10 @@ void CParser::merge(rapidjson::Document& settings, rapidjson::Document& document
 	rapidjson::Document::AllocatorType ac{ settings.GetAllocator() };
 
 	auto itr = document.MemberBegin();
-	std::cout << "Syntax check OK." << std::endl;
+	if (itr == document.MemberEnd())
+		std::cout << "Warning: No nodes generated - wrong syntax or empty file." << std::endl;
+	else
+		std::cout << "Nodes successfully generated." << std::endl;
 
 	for (; itr != document.MemberEnd(); ++itr)
 	{
