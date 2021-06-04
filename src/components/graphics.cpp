@@ -7,6 +7,7 @@
 
 #include "graphics.h"
 #include "game.h"
+#include "jsParser.h"
 
 #include <filesystem>
 
@@ -33,11 +34,12 @@ CGraphics::CGraphics(CObject* pObject) :
 
 void CGraphics::initGraphics()
 {
+	std::vector<std::string> files{ object()->game()->parser().getVString<parser::Debris, parser::Asteroid, parser::Sprite>() };
 	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).resize(static_cast<int>(sprites::count));
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_SMALL1)) = m_graphicPath / "astr0.png";
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_SMALL2)) = m_graphicPath / "astr1.png";
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_MEDIUM)) = m_graphicPath / "astr2.png";
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_BIG)) = m_graphicPath / "astr3.png";
+	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_SMALL1)) = m_graphicPath / files[0];
+	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_SMALL2)) = m_graphicPath / files[1];
+	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_MEDIUM)) = m_graphicPath / files[2];
+	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_BIG)) = m_graphicPath / files[3];
 }
 
 void CGraphics::update(float deltaTime)

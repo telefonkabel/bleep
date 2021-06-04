@@ -22,7 +22,6 @@ class CGame : public olc::PixelGameEngine
 {
 public:
     CGame(std::filesystem::path& currentPath);
-    ~CGame();
 
     //set & get
     v2d velocity() const;
@@ -54,10 +53,10 @@ private:
     //parser object which handles the settings
     CParser m_parser;
 
-    //ptr to object that handles all sounds for the game
+    //sound object which handles all sounds for the game
     CSound m_sound;
 
-    //all active objects seperated into types
+    //all active objects separated into types
     std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)> m_objects;
     void addObject(const std::shared_ptr<CObject>&& object);
 

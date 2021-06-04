@@ -14,10 +14,12 @@
 #include "components/graphics.h"
 #include "components/kinetics.h"
 
+#include <numeric>
+
 
 CAsteroid::CAsteroid(CGame* const pGame, objectTypes type, int mass, v2d pos, colors color) :
     CObject{ pGame, type, pos, mass, color },
-    m_maxStartSpeed{ pGame->parser().getInt<parser::Debris, parser::MaxSpeed>() }
+    m_maxStartSpeed{}
 {
 	addComponent(components::kinetics);
 	addComponent(components::graphics);
@@ -39,31 +41,37 @@ CAsteroid::~CAsteroid()
 void CAsteroid::initAsteroid()
 {
     //asteroid type
-    int rdn{ rand() % 100 };
+    float rdn{ (rand() % 100) / 100.0f};
     sprites gfx{};
 
     //in the future this (like all objects) should be generated automatically out of the settings
-    std::vector<int> masses{ game()->parser().getVInt<parser::Debris, parser::Mass>() };
-    if (masses.size() < 4)
-        throw CException{ "Debris should have at least " + std::to_string(4) + " masses in the settings.", INFO };
-    else if (rdn < 35)
+    std::vector<float> spawnChances{ game()->parser().getVFloat<parser::Debris, parser::Asteroid, parser::SpawnChance>() };
+    std::vector<int> masses{ game()->parser().getVInt<parser::Debris, parser::Asteroid, parser::Mass>() };
+    std::vector<int> speeds{ game()->parser().getVInt<parser::Debris, parser::Asteroid, parser::MaxSpeed>() };
+    if (spawnChances.size() != masses.size() && masses.size() != speeds.size() && speeds.size() < 4)
+        throw CException{ "Debris should have at least arrays for 4 asteroids in the settings.", INFO };
+    else if (rdn < std::accumulate(spawnChances.begin(), spawnChances.begin() + 1, 0.0f))
     {
         mass(masses[0]);
+        m_maxStartSpeed = speeds[0];
         gfx = sprites::ASTR_SMALL1;
     }
-    else if (rdn < 70)
+    else if (rdn < std::accumulate(spawnChances.begin(), spawnChances.begin() + 2, 0.0f))
     {
         mass(masses[1]);
+        m_maxStartSpeed = speeds[1];
         gfx = sprites::ASTR_SMALL2;
     }
-    else if (rdn < 95)
+    else if (rdn < std::accumulate(spawnChances.begin(), spawnChances.begin() + 3, 0.0f))
     {
         mass(masses[2]);
+        m_maxStartSpeed = speeds[2];
         gfx = sprites::ASTR_MEDIUM;
     }
     else
     {
         mass(masses[3]);
+        m_maxStartSpeed = speeds[3];
         gfx = sprites::ASTR_BIG;
     }
     graphics()->sprite(objectTypes::DEBRIS, gfx);

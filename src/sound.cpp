@@ -6,21 +6,23 @@
 //==============================================================================
 
 #include "sound.h"
+#include "game.h"
 #include "helper/exception.h"
 
 #include <iostream>
 
 
-CSound::CSound(std::filesystem::path currentPath) :
+CSound::CSound(CGame* const pGame, std::filesystem::path currentPath) :
+	m_pGame(pGame),
 	m_soundPath{currentPath / "sounds" },
 	m_pSound{},
 	m_soundIDs{}
 {
 	std::cout << std::endl << "Initialize sounds out of " << m_soundPath << std::endl;
 	olc::SOUND::InitialiseAudio();
-	initSound(sounds::MUSIC0, m_pSound->LoadAudioSample((m_soundPath / "music0.wav").string()));
-	initSound(sounds::JET, m_pSound->LoadAudioSample((m_soundPath / "jet.wav").string()));
-	initSound(sounds::CRASH0, m_pSound->LoadAudioSample((m_soundPath / "crash0.wav").string()));
+	initSound(sounds::MUSIC0, m_pSound->LoadAudioSample((m_soundPath / pGame->parser().getString<parser::Sound, parser::Music>()).string()));
+	initSound(sounds::JET, m_pSound->LoadAudioSample((m_soundPath / pGame->parser().getString<parser::Sound, parser::Jet>()).string()));
+	initSound(sounds::CRASH0, m_pSound->LoadAudioSample((m_soundPath / pGame->parser().getString<parser::Sound, parser::Crash>()).string()));
 	std::cout << "All sounds successfully initialized." << std::endl;
 }
 

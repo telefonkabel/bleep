@@ -13,18 +13,21 @@
 #include <filesystem>
 
 
+class CGame;
+
 //must not have initializers (and will be replaced in the future)
 enum class sounds { MUSIC0, JET, CRASH0, count};
 
 class CSound
 {
 public:
-	CSound(std::filesystem::path currentPath);
+	CSound(CGame* const pGame, std::filesystem::path currentPath);
 	~CSound();
 
 	void playSound(sounds index, bool repeat) const;
 
 private:
+	CGame* const m_pGame;
 	std::filesystem::path m_soundPath;
 
 	//Handle to olc's sound

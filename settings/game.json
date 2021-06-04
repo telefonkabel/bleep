@@ -13,6 +13,11 @@
 	"maxSpeed": 200,
 	"starCardinality": 1500
 }, 
+"sound" : {
+	"music" : "music0.wav",
+	"jet": "jet.wav",
+	"crash": "crash0.wav"
+},
 "player" : {
 	"mass" : 1000000,
 	"color": "magenta"

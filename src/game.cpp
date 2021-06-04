@@ -17,7 +17,7 @@
 CGame::CGame(std::filesystem::path& currentPath) :
     m_currentPath{ currentPath },
     m_parser{ CParser(currentPath) },
-    m_sound{ CSound(currentPath) },
+    m_sound{ CSound(this, currentPath) },
     m_objects{},
     m_velocity{ m_parser.getV2D<parser::Game, parser::Velocity>() },
     m_acceleration{ m_parser.getV2D<parser::Game, parser::Acceleration>() },
@@ -43,10 +43,6 @@ CGame::CGame(std::filesystem::path& currentPath) :
         m_parser.getBool<parser::Window, parser::FullScreen>());
 
     m_sound.playSound(sounds::MUSIC0, true);
-}
-
-CGame::~CGame()
-{
 }
 
 v2d CGame::velocity() const { return m_velocity; };
@@ -106,11 +102,13 @@ bool CGame::OnUserUpdate(float deltaTime)
         ////objects update & display
         spawnDebris(deltaTime);
 
+        //olc - needs to be called before drawing
         Clear(olc::BLACK);
         SetPixelMode(olc::Pixel::MASK);
 
         drawUI();
 
+        //objects update & clean up
         for (auto& objectType : m_objects)
             for (auto objItr = objectType.begin(); objItr != objectType.end(); ++objItr)
             {
@@ -128,8 +126,10 @@ bool CGame::OnUserUpdate(float deltaTime)
                     break;
             }
 
+        ////effects
         effectEaten(deltaTime);
 
+        //olc - needs to be called after drawing
         SetPixelMode(olc::Pixel::NORMAL);
     }
     catch (CException& exception)

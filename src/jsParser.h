@@ -25,6 +25,8 @@ namespace parser
 	struct Game { static constexpr const char* Key{ "game" }; };
 	struct Player { static constexpr const char* Key{ "player" }; };
 	struct Debris { static constexpr const char* Key{ "debris" }; };
+	struct Asteroid { static constexpr const char* Key{ "asteroid" }; };
+	struct Sound { static constexpr const char* Key{ "sound" }; };
 
 	//window attributes
 	struct ScreenWidth { static constexpr const char* Key{ "screenWidth" }; };
@@ -44,6 +46,12 @@ namespace parser
 	struct Mass { static constexpr const char* Key{ "mass" }; };
 	struct SpawnChance { static constexpr const char* Key{ "spawnChance" }; };
 	struct SpawnReload { static constexpr const char* Key{ "spawnReload" }; };
+	struct Sprite { static constexpr const char* Key{ "sprite" }; };
+
+	//sound attributes
+	struct Music { static constexpr const char* Key{ "music" }; };
+	struct Jet { static constexpr const char* Key{ "jet" }; };
+	struct Crash { static constexpr const char* Key{ "crash" }; };
 
 	//other attributes 
 	struct Name { static constexpr const char* Key{ "name" }; };
@@ -110,6 +118,24 @@ public:
 		return parse<PARENTKEY, CHILDKEY>().GetBool();
 	}
 	template <typename PARENTKEY, typename CHILDKEY>
+	std::vector<float> getVFloat() const
+	{
+		checkKeys<PARENTKEY, CHILDKEY>();
+		const auto& value{ parse<PARENTKEY, CHILDKEY>() };
+		if (!value.IsArray())
+			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no array.", INFO };
+
+		std::vector<float> vec{};
+		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
+		{
+			if (!value[i].IsNumber())
+				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
+			else
+				vec.push_back(value[i].GetFloat());
+		}
+		return vec;
+	}
+	template <typename PARENTKEY, typename CHILDKEY>
 	std::vector<int> getVInt() const
 	{
 		checkKeys<PARENTKEY, CHILDKEY>();
@@ -124,6 +150,24 @@ public:
 				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
 			else
 				vec.push_back(value[i].GetInt());
+		}
+		return vec;
+	}
+	template <typename PARENTKEY, typename CHILDKEY>
+	std::vector<std::string> getVString() const
+	{
+		checkKeys<PARENTKEY, CHILDKEY>();
+		const auto& value{ parse<PARENTKEY, CHILDKEY>() };
+		if (!value.IsArray())
+			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no array.", INFO };
+
+		std::vector<std::string> vec{};
+		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
+		{
+			if (!value[i].IsString())
+				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
+			else
+				vec.push_back(value[i].GetString());
 		}
 		return vec;
 	}
@@ -170,7 +214,7 @@ public:
 	int getInt() const
 	{
 		checkKeys<PARENTKEY, CHILDKEY, GRANDCHILDKEY>();
-		if (!parse<PARENTKEY, CHILDKEY>().IsNumber())
+		if (!parse<PARENTKEY, CHILDKEY, GRANDCHILDKEY>().IsNumber())
 			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
 	
 		return parse<PARENTKEY, CHILDKEY, GRANDCHILDKEY>().GetInt();
@@ -179,7 +223,7 @@ public:
 	std::string getString() const
 	{
 		checkKeys<PARENTKEY, CHILDKEY, GRANDCHILDKEY>();
-		if (!parse<PARENTKEY, CHILDKEY>().IsString())
+		if (!parse<PARENTKEY, CHILDKEY, GRANDCHILDKEY>().IsString())
 			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no string.", INFO };
 	
 		return parse<PARENTKEY, CHILDKEY, GRANDCHILDKEY>().GetString();
@@ -192,6 +236,24 @@ public:
 			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no boolean.", INFO };
 	
 		return parse<PARENTKEY, CHILDKEY, GRANDCHILDKEY>().GetBool();
+	}
+	template <typename PARENTKEY, typename CHILDKEY, typename GRANDCHILDKEY>
+	std::vector<float> getVFloat() const
+	{
+		checkKeys<PARENTKEY, CHILDKEY, GRANDCHILDKEY>();
+		const auto& value{ parse<PARENTKEY, CHILDKEY, GRANDCHILDKEY>() };
+		if (!value.IsArray())
+			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no array.", INFO };
+
+		std::vector<float> vec{};
+		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
+		{
+			if (!value[i].IsNumber())
+				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
+			else
+				vec.push_back(value[i].GetFloat());
+		}
+		return vec;
 	}
 	template <typename PARENTKEY, typename CHILDKEY, typename GRANDCHILDKEY>
 	std::vector<int> getVInt() const
@@ -208,6 +270,24 @@ public:
 				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
 			else
 				vec.push_back(value[i].GetInt());
+		}
+		return vec;
+	}
+	template <typename PARENTKEY, typename CHILDKEY, typename GRANDCHILDKEY>
+	std::vector<std::string> getVString() const
+	{
+		checkKeys<PARENTKEY, CHILDKEY, GRANDCHILDKEY>();
+		const auto& value{ parse<PARENTKEY, CHILDKEY, GRANDCHILDKEY>() };
+		if (!value.IsArray())
+			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no array.", INFO };
+
+		std::vector<std::string> vec{};
+		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
+		{
+			if (!value[i].IsString())
+				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
+			else
+				vec.push_back(value[i].GetString());
 		}
 		return vec;
 	}
