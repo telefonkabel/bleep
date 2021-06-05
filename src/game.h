@@ -82,8 +82,9 @@ private:
     void initStars();
 
     ////spawn objects
-	//spawnchance should be in [0, 1]
+	//spawnchance per interval - should be in [0, 1]
     float m_debrisChance;
+    //spawn interval in seconds
     float m_debrisTimer;
     float m_debrisTimerReload;
     void spawnDebris(float deltaTime);

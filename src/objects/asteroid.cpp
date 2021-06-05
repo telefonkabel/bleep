@@ -40,40 +40,24 @@ CAsteroid::~CAsteroid()
 
 void CAsteroid::initAsteroid()
 {
-    //asteroid type
-    float rdn{ (rand() % 100) / 100.0f};
-    sprites gfx{};
-
-    //in the future this (like all objects) should be generated automatically out of the settings
-    std::vector<float> spawnChances{ game()->parser().getVFloat<parser::Debris, parser::Asteroid, parser::SpawnChance>() };
+    //load settings
+    std::vector<int> spawnChances{ game()->parser().getVInt<parser::Debris, parser::Asteroid, parser::SpawnChance>() };
     std::vector<int> masses{ game()->parser().getVInt<parser::Debris, parser::Asteroid, parser::Mass>() };
     std::vector<int> speeds{ game()->parser().getVInt<parser::Debris, parser::Asteroid, parser::MaxSpeed>() };
-    if (spawnChances.size() != masses.size() && masses.size() != speeds.size() && speeds.size() < 4)
-        throw CException{ "Debris should have at least arrays for 4 asteroids in the settings.", INFO };
-    else if (rdn < std::accumulate(spawnChances.begin(), spawnChances.begin() + 1, 0.0f))
-    {
-        mass(masses[0]);
-        m_maxStartSpeed = speeds[0];
-        gfx = sprites::ASTR_SMALL1;
-    }
-    else if (rdn < std::accumulate(spawnChances.begin(), spawnChances.begin() + 2, 0.0f))
-    {
-        mass(masses[1]);
-        m_maxStartSpeed = speeds[1];
-        gfx = sprites::ASTR_SMALL2;
-    }
-    else if (rdn < std::accumulate(spawnChances.begin(), spawnChances.begin() + 3, 0.0f))
-    {
-        mass(masses[2]);
-        m_maxStartSpeed = speeds[2];
-        gfx = sprites::ASTR_MEDIUM;
-    }
-    else
-    {
-        mass(masses[3]);
-        m_maxStartSpeed = speeds[3];
-        gfx = sprites::ASTR_BIG;
-    }
+    std::vector<std::string> sprites{ game()->parser().getVString<parser::Debris, parser::Asteroid, parser::Sprite>() };
+    if (spawnChances.size() != masses.size() != masses.size() != speeds.size() && speeds.size() != sprites.size())
+        throw CException{ "All arrays of asteroid settings need to have the same size.", INFO };
+
+    ////determine asteroid type
+    int rnd{ rand() % std::accumulate(spawnChances.begin(), spawnChances.end(), 0) };
+    int itr{ 0 };
+    while (rnd > std::accumulate(spawnChances.begin(), spawnChances.begin() + itr + 1, 0))
+        ++itr;
+
+    mass(masses[itr]);
+    m_maxStartSpeed = speeds[itr];
+    std::string gfx{ sprites[itr]};
+
     graphics()->sprite(objectTypes::DEBRIS, gfx);
 
     //start point

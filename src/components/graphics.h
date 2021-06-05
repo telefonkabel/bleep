@@ -14,9 +14,6 @@
 #include <array>
 
 
-//must not have initializers (and will be replaced in the future)
-enum class sprites { ASTR_SMALL1, ASTR_SMALL2, ASTR_MEDIUM, ASTR_BIG, count };
-
 class CGraphics : public CComponent
 {
 public:
@@ -26,7 +23,7 @@ public:
 
 	int32_t width() const;
 	int32_t height() const;
-	void sprite(objectTypes type, sprites gfx);
+	void sprite(objectTypes type, std::string file);
 
 	bool draw() const;
 	//vector to the centroid of the sprite (rectangular simplyfication)
@@ -38,7 +35,4 @@ private:
 	////encapsulates graphics in this component and shares them between all instances
 	static bool m_firstInit;
 	static std::filesystem::path m_graphicPath;
-	static std::array<std::vector<std::filesystem::path>, static_cast<int>(objectTypes::count)> m_graphics;
-
-	void initGraphics();
 };

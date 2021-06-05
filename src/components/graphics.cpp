@@ -15,8 +15,6 @@
 //init static member
 bool CGraphics::m_firstInit{ true };
 std::filesystem::path CGraphics::m_graphicPath{};
-std::array<std::vector<std::filesystem::path>, static_cast<int>(objectTypes::count)> CGraphics::m_graphics
-	{ std::array<std::vector<std::filesystem::path>, static_cast<int>(objectTypes::count)>() };
 
 CGraphics::CGraphics(CObject* pObject) :
 	CComponent{ pObject },
@@ -25,21 +23,8 @@ CGraphics::CGraphics(CObject* pObject) :
 	if (m_firstInit)
 	{
 		m_graphicPath = { pObject->game()->currentPath() / "graphics" };
-		std::cout << std::endl << "Initialize sprites out of " << m_graphicPath << std::endl;
-		initGraphics();
 		m_firstInit = false;
-		std::cout << "All sprites successfully initialized." << std::endl;
 	}
-}
-
-void CGraphics::initGraphics()
-{
-	std::vector<std::string> files{ object()->game()->parser().getVString<parser::Debris, parser::Asteroid, parser::Sprite>() };
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).resize(static_cast<int>(sprites::count));
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_SMALL1)) = m_graphicPath / files[0];
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_SMALL2)) = m_graphicPath / files[1];
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_MEDIUM)) = m_graphicPath / files[2];
-	m_graphics.at(static_cast<int>(objectTypes::DEBRIS)).at(static_cast<int>(sprites::ASTR_BIG)) = m_graphicPath / files[3];
 }
 
 void CGraphics::update(float deltaTime)
@@ -47,13 +32,13 @@ void CGraphics::update(float deltaTime)
 	draw();
 }
 
-void CGraphics::sprite(objectTypes type, sprites gfx)
+void CGraphics::sprite(objectTypes type, std::string file)
 {
-	std::filesystem::path file{ m_graphics.at(static_cast<int>(type)).at(static_cast<int>(gfx)) };
-	if (std::filesystem::exists(file))
-		m_renderable.Load(file.string());
+	std::filesystem::path filepath{ m_graphicPath / file };
+	if (std::filesystem::exists(filepath))
+		m_renderable.Load(filepath.string());
 	else
-		throw CException{ file.string() + " doesn't exist.", INFO };
+		throw CException{ filepath.string() + " doesn't exist.", INFO };
 }
 
 bool CGraphics::draw() const
