@@ -14,6 +14,7 @@
 #include "thirdParty/olcPixelGameEngine.h"
 
 #include <filesystem>
+#include <chrono>
 
 
 class CObject;
@@ -45,8 +46,13 @@ public:
     //provides a handle to all objects
     const std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)>& gameObjects() const;
 
+    //runtime of game
+    std::chrono::seconds playtime() const;
 
 private:
+    //to measure game runtime
+    std::chrono::time_point<std::chrono::steady_clock> m_startTime;
+
     //the path where the prog is executed
     std::filesystem::path m_currentPath;
 

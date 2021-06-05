@@ -22,6 +22,16 @@ public:
 
 private:
 	int m_maxStartSpeed;
+	//spawn chances that are currently relevant (dependent on its possible spawn times)
+	std::vector<int> m_relevantSpawnChances;
+
+	////static arrays of settings for all asteroids for auto-creating each instance
+	static bool m_firstInit;
+	static std::vector<int> m_spawnChances;
+	static std::vector<int> m_masses;
+	static std::vector<int> m_speeds;
+	static std::vector<std::string> m_sprites;
+	static std::vector<std::vector<int>> m_spawnTimes;
 
 	void initAsteroid();
 };

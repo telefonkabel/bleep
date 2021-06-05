@@ -46,6 +46,7 @@ namespace parser
 	struct Mass { static constexpr const char* Key{ "mass" }; };
 	struct SpawnChance { static constexpr const char* Key{ "spawnChance" }; };
 	struct SpawnReload { static constexpr const char* Key{ "spawnReload" }; };
+	struct SpawnTime { static constexpr const char* Key{ "spawnTime" }; };
 	struct Sprite { static constexpr const char* Key{ "sprite" }; };
 
 	//sound attributes
@@ -129,7 +130,7 @@ public:
 		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
 		{
 			if (!value[i].IsNumber())
-				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
+				throw CException{ "The " + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
 			else
 				vec.push_back(value[i].GetFloat());
 		}
@@ -147,7 +148,7 @@ public:
 		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
 		{
 			if (!value[i].IsNumber())
-				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
+				throw CException{ "The " + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
 			else
 				vec.push_back(value[i].GetInt());
 		}
@@ -165,9 +166,34 @@ public:
 		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
 		{
 			if (!value[i].IsString())
-				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
+				throw CException{ "The " + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no string.", INFO };
 			else
 				vec.push_back(value[i].GetString());
+		}
+		return vec;
+	}
+	template <typename PARENTKEY, typename CHILDKEY>
+	std::vector<std::vector<int>> getVVInt() const
+	{
+		checkKeys<PARENTKEY, CHILDKEY>();
+		const auto& value{ parse<PARENTKEY, CHILDKEY>() };
+		if (!value.IsArray())
+			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no array.", INFO };
+
+		std::vector<std::vector<int>> vec{};
+		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
+		{
+			if (!value[i].IsArray())
+				throw CException{ "The " + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no array.", INFO };
+			else
+			{
+				vec.resize(vec.size() + 1);
+				for (rapidjson::SizeType j{ 0 }; j < value[i].Size(); ++j)
+				if (!value[i][j].IsNumber())
+					throw CException{ "The " + std::to_string(j) + " value of \"" + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
+				else
+					vec[i].push_back(value[i][j].GetInt());
+			}
 		}
 		return vec;
 	}
@@ -187,7 +213,7 @@ public:
 				//If it is too small, the remaining values will be 0
 				throw CException{ "Array \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is too big for a 2D-Vector.", INFO };
 			else if (!value[i].IsNumber())
-				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
+				throw CException{ "The " + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\" is no number.", INFO };
 			else
 			{
 				if (i == 0)
@@ -249,7 +275,7 @@ public:
 		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
 		{
 			if (!value[i].IsNumber())
-				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
+				throw CException{ "The " + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
 			else
 				vec.push_back(value[i].GetFloat());
 		}
@@ -267,7 +293,7 @@ public:
 		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
 		{
 			if (!value[i].IsNumber())
-				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
+				throw CException{ "The " + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
 			else
 				vec.push_back(value[i].GetInt());
 		}
@@ -285,9 +311,34 @@ public:
 		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
 		{
 			if (!value[i].IsString())
-				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
+				throw CException{ "The " + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no string.", INFO };
 			else
 				vec.push_back(value[i].GetString());
+		}
+		return vec;
+	}
+	template <typename PARENTKEY, typename CHILDKEY, typename GRANDCHILDKEY>
+	std::vector<std::vector<int>> getVVInt() const
+	{
+		checkKeys<PARENTKEY, CHILDKEY, GRANDCHILDKEY>();
+		const auto& value{ parse<PARENTKEY, CHILDKEY, GRANDCHILDKEY>() };
+		if (!value.IsArray())
+			throw CException{ "Value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no array.", INFO };
+
+		std::vector<std::vector<int>> vec{};
+		for (rapidjson::SizeType i{ 0 }; i < value.Size(); ++i)
+		{
+			if (!value[i].IsArray())
+				throw CException{ "The " + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no array.", INFO };
+			else
+			{
+				vec.resize(vec.size() + 1);
+				for (rapidjson::SizeType j{ 0 }; j < value[i].Size(); ++j)
+					if (!value[i][j].IsNumber())
+						throw CException{ "The " + std::to_string(j) + " value of \"" + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
+					else
+						vec[i].push_back(value[i][j].GetInt());
+			}
 		}
 		return vec;
 	}
@@ -307,7 +358,7 @@ public:
 				//If it is too small, the remaining values will be 0
 				throw CException{ "Array \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is too big for a 2D-Vector.", INFO };
 			else if (!value[i].IsNumber())
-				throw CException{ "The " + std::to_string(i) + "value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
+				throw CException{ "The " + std::to_string(i) + " value of \"" + static_cast<std::string>(PARENTKEY::Key) + "\":\"" + static_cast<std::string>(CHILDKEY::Key) + "\":\"" + static_cast<std::string>(GRANDCHILDKEY::Key) + "\" is no number.", INFO };
 			else
 			{
 				if (i == 0)

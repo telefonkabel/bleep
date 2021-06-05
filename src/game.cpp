@@ -15,6 +15,7 @@
 
 
 CGame::CGame(std::filesystem::path& currentPath) :
+    m_startTime{ std::chrono::steady_clock::now() },
     m_currentPath{ currentPath },
     m_parser{ CParser(currentPath) },
     m_sound{ CSound(this, currentPath) },
@@ -237,4 +238,9 @@ std::string CGame::massInfo(const std::shared_ptr<CObject>& obj, int shownDecima
     }
 
     return std::to_string(shownMass) + "E" + std::to_string(powerIndex);
+}
+
+std::chrono::seconds CGame::playtime() const
+{
+    return std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - m_startTime);
 }
