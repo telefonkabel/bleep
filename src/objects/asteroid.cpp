@@ -61,6 +61,11 @@ void CAsteroid::initAsteroid()
         if (asteroidTypes != m_masses.size() && asteroidTypes != m_speeds.size() && asteroidTypes != m_sprites.size()
             && asteroidTypes != m_spawnTimes.size())
             throw CException{ "All arrays of asteroid settings need to have the same size.", INFO };
+
+        //max time interval
+        for (std::vector<int>& interval : m_spawnTimes)
+            if(interval[1] < 0)
+                interval[1] = INT_MAX;
     }
 
     ////determine asteroid type
