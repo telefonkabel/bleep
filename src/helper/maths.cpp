@@ -27,6 +27,12 @@ float maths::rndAngle()
     return static_cast<float>(rand()) / RAND_MAX * 2 * PI;
 }
 
+void maths::rotate(v2d& vec, float angle)
+{
+    vec = v2d{ vec.x * cos(angle) - vec.y * sin(angle),
+        vec.x * sin(angle) + vec.y * cos(angle) };
+}
+
 v2d maths::pointReflection(const v2d& center, const v2d& point, float radius)
 {
     return radius == 0.0f ? (2 * center - point) : (center + (center - point).norm() * radius);

@@ -239,10 +239,9 @@ void CGame::drawUI(float deltaTime)
 
 void CGame::drawCursor(float deltaTime)
 {
-    m_circling = m_circling < 1 ? (m_circling + deltaTime / 1.5f) : 0;
+    m_circling = m_circling < 1 ? (m_circling + deltaTime / 1.5f) : 0; //in interval [0,1[
     v2d circleVec{ 0.0f, 4.0f };
-    circleVec = v2d{ circleVec.x * cos(m_circling * 2 * maths::PI) - circleVec.y * sin(m_circling * 2 * maths::PI),
-        circleVec.x * sin(m_circling * 2 * maths::PI) + circleVec.y * cos(m_circling * 2 * maths::PI) };
+    maths::rotate(circleVec, m_circling * 2 * maths::PI);
     v2d cursor{ getCursor() };
     FillCircle(cursor + circleVec, 1, m_playerColor / 2.0f);
     DrawCircle(cursor + circleVec, 2, m_playerColor / 6.0f);
