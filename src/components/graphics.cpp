@@ -56,5 +56,5 @@ v2d CGraphics::v2centroid() const
 	return m_renderable.Decal() == nullptr ? object()->xy() : v2d{ static_cast<float>(width()) / 2, static_cast<float>(height()) / 2 };
 }
 
-int32_t CGraphics::width() const { return object()->state() != objectStates::DELETED ?  m_renderable.Sprite()->width : 0; };
-int32_t CGraphics::height() const { return object()->state() != objectStates::DELETED ? m_renderable.Sprite()->height : 0; };
+int32_t CGraphics::width() const { return m_renderable.Sprite() ?  m_renderable.Sprite()->width : 0; };
+int32_t CGraphics::height() const { return m_renderable.Sprite() ? m_renderable.Sprite()->height : 0; };

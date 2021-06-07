@@ -44,9 +44,7 @@ void CParser::readFiles()
 {
 	for (const auto& file : std::filesystem::directory_iterator(m_SettingsPath))
 	{
-		if (file.path().extension() != ".json")
-			throw CException{ "There are non-json files in the settings directory.", INFO };
-		else
+		if (file.path().extension() == ".json")
 		{
 			std::ifstream inFile{ file.path() };
 			if (!inFile.is_open())

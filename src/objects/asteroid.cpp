@@ -65,24 +65,22 @@ void CAsteroid::initAsteroid()
 
     ////determine asteroid type
     //determine all relevant asteroid types, dependent on their spawn times
-    int itrChances{};
-    for (auto& chance : m_spawnChances)
+    for (int itr{ 0 }; itr < m_spawnChances.size(); ++itr)
     {
         std::chrono::seconds playedTime{ game()->playtime() };
-        if (playedTime >= std::chrono::seconds(m_spawnTimes[itrChances][0]) && playedTime <= std::chrono::seconds(m_spawnTimes[itrChances][1]))
-            m_relevantSpawnChances.push_back(chance);
+        if (playedTime >= std::chrono::seconds(m_spawnTimes[itr][0]) && playedTime <= std::chrono::seconds(m_spawnTimes[itr][1]))
+            m_relevantSpawnChances.push_back(m_spawnChances[itr]);
         else
             m_relevantSpawnChances.emplace_back( 0 );
-        ++itrChances;
     }
 
     std::string gfx{};
     int relevantChances{ std::accumulate(m_relevantSpawnChances.begin(), m_relevantSpawnChances.end(), 0) };
     if (relevantChances)
     {
-        int rnd{ rand() % std::accumulate(m_relevantSpawnChances.begin(), m_relevantSpawnChances.end(), 0) };
+        int rnd{ rand() % relevantChances };
         int itr{};
-        while (rnd > std::accumulate(m_relevantSpawnChances.begin(), m_relevantSpawnChances.begin() + itr + 1, 0))
+        while (rnd >= std::accumulate(m_relevantSpawnChances.begin(), m_relevantSpawnChances.begin() + itr + 1, 0))
             ++itr;
 
         mass(m_masses[itr]);
