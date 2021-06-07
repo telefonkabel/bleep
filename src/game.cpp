@@ -249,6 +249,9 @@ void CGame::drawCursor(float deltaTime)
     FillCircle(cursor - circleVec, 1, m_playerColor / 2.0f);
     DrawCircle(cursor - circleVec, 2, m_playerColor / 6.0f);
     DrawCircle(cursor - circleVec, 3, m_playerColor / 8.0f);
+    maths::rotate(circleVec, -0.8f);
+    FillCircle(cursor + circleVec, 1, m_playerColor / 6.0f);
+    FillCircle(cursor - circleVec, 1, m_playerColor / 6.0f);
 }
 
 v2d CGame::getCursor() const
