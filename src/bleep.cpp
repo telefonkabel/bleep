@@ -57,6 +57,9 @@ int main()
                 throw CException{ "GetModuleFileName doesn't get any path.", INFO };
             else
                 wPath = { buffer.data() };
+
+            //hide cursor (for windows only for now)
+            ShowCursor(false);
         }
 #else
         {

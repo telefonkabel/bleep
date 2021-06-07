@@ -95,7 +95,8 @@ void CAsteroid::initAsteroid()
         graphics()->sprite(objectTypes::DEBRIS, gfx);
 
         //start point
-        xy(maths::rndCirclePt(game()->center(), static_cast<float>(game()->radiusMap())));
+        if(xy() == v2d{})
+            xy(maths::rndCirclePt(game()->center(), static_cast<float>(game()->radiusMap())));
         //start velocity
         float rndAngle{ maths::rndAngle() };
         int startSpeed{ rand() % m_maxStartSpeed };

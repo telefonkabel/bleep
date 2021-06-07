@@ -18,6 +18,8 @@
 
 
 class CObject;
+class CBHole;
+enum class mouse {LEFT, RIGHT, MIDDLE};
 
 class CGame : public olc::PixelGameEngine
 {
@@ -49,6 +51,12 @@ public:
     //runtime of game
     std::chrono::seconds playtime() const;
 
+    //get position of cursor
+    v2d getCursor() const;
+
+    //add object to object container
+    void addObject(const std::shared_ptr<CObject>&& object);
+
 private:
     //to measure game runtime
     std::chrono::time_point<std::chrono::steady_clock> m_startTime;
@@ -64,7 +72,6 @@ private:
 
     //all active objects separated into types
     std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)> m_objects;
-    void addObject(const std::shared_ptr<CObject>&& object);
 
     //world attributes applying to all (moveable) objects
     v2d m_velocity;
@@ -83,9 +90,10 @@ private:
     int m_startMass;
 
     //init objects, player need to be first
-    int m_starCardinality;
     void initPlayer();
+    std::shared_ptr<CBHole> m_pPlayer; //shortcut to the player object
     void initStars();
+    int m_starCardinality;
 
     ////spawn objects
 	//spawnchance per interval - should be in [0, 1]
@@ -106,6 +114,9 @@ private:
     //game loop
     bool OnUserUpdate(float deltaTime) override;
 
-    //draws the UI
-    void drawUI();
+    ////UI
+    //cursor circling effect
+    float m_circling;
+    void drawUI(float deltaTime);
+    void drawCursor(float deltaTime);
 };

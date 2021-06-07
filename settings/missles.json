@@ -1,0 +1,9 @@
+{
+"missle": {
+	"hawking": {
+		"spawnReload": 0.2,
+		"speed": 300,
+		"mass": 1000
+	}
+}
+}

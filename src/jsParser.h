@@ -26,6 +26,8 @@ namespace parser
 	struct Player { static constexpr const char* Key{ "player" }; };
 	struct Debris { static constexpr const char* Key{ "debris" }; };
 	struct Asteroid { static constexpr const char* Key{ "asteroid" }; };
+	struct Missle { static constexpr const char* Key{ "missle" }; };
+	struct Hawking { static constexpr const char* Key{ "hawking" }; };
 	struct Sound { static constexpr const char* Key{ "sound" }; };
 
 	//window attributes
@@ -44,6 +46,7 @@ namespace parser
 	//object attributes
 	struct Color { static constexpr const char* Key{ "color" }; };
 	struct Mass { static constexpr const char* Key{ "mass" }; };
+	struct Speed { static constexpr const char* Key{ "speed" }; };
 	struct SpawnChance { static constexpr const char* Key{ "spawnChance" }; };
 	struct SpawnReload { static constexpr const char* Key{ "spawnReload" }; };
 	struct SpawnTime { static constexpr const char* Key{ "spawnTime" }; };

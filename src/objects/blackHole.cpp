@@ -10,12 +10,16 @@
 #include "components/graphics.h"
 #include "components/kinetics.h"
 
+#include "asteroid.h"
+
 
 CBHole::CBHole(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
 	CObject(pGame, type, pos, mass, color),
 	m_flickerCount{},
 	m_radiusGravity{},
-	m_radius{}
+	m_radius{},
+	m_hawkingTimer{},
+	m_hawkingTimerReload{ pGame->parser().getFloat<parser::Missle, parser::Hawking, parser::SpawnReload>() }
 {}
 
 void CBHole::update(float deltaTime)
@@ -44,3 +48,15 @@ void CBHole::draw() const
 
 float CBHole::edge() { return static_cast<float>(m_radius); };
 int CBHole::radiusGrav() const { return m_radiusGravity; };
+
+void CBHole::fireHawking(v2d direction, float deltaTime)
+{
+	m_hawkingTimer -= deltaTime;
+	if (m_hawkingTimer <= 0.0f)
+	{
+		m_hawkingTimer = m_hawkingTimerReload;
+		std::shared_ptr<CAsteroid> test{ std::make_shared<CAsteroid>(game(), objectTypes::DEBRIS,  1000, game()->getCursor()) };
+		test->kinetics()->velocity(game()->getCursor() - xy());
+		game()->addObject(std::move(test));
+	}
+}

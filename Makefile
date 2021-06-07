@@ -1,5 +1,5 @@
-bleep: jsParser.o game.o object.o star.o maths.o kinetics.o sound.o asteroid.o graphics.o blackHole.o bleep.o
-	g++ -g -std=c++17 -o bleep ./game.o ./jsParser.o ./kinetics.o ./asteroid.o ./sound.o ./blackHole.o ./graphics.o ./maths.o ./object.o ./star.o ./bleep.o -lasound -lpthread -lpng -lGL -lX11
+bleep: jsParser.o game.o object.o star.o maths.o kinetics.o sound.o asteroid.o missle.o graphics.o blackHole.o bleep.o
+	g++ -g -std=c++17 -o bleep ./game.o ./jsParser.o ./kinetics.o ./asteroid.o ./missle.o ./sound.o ./blackHole.o ./graphics.o ./maths.o ./object.o ./star.o ./bleep.o -lasound -lpthread -lpng -lGL -lX11
 
 bleep.o: ./src/bleep.cpp
 	g++ -g -std=c++17 -c ./src/bleep.cpp -I./src/
@@ -21,6 +21,9 @@ blackHole.o: ./src/objects/blackHole.cpp ./src/objects/blackHole.h
 
 asteroid.o: ./src/objects/asteroid.cpp ./src/objects/asteroid.h
 	g++ -g -std=c++17 -c ./src/objects/asteroid.cpp -I./src/
+	
+missle.o: ./src/objects/missle.cpp ./src/objects/missle.h
+	g++ -g -std=c++17 -c ./src/objects/missle.cpp -I./src/
 
 maths.o: ./src/helper/maths.cpp ./src/helper/maths.h
 	g++ -g -std=c++17 -c ./src/helper/maths.cpp -I./src/
@@ -35,7 +38,7 @@ graphics.o: ./src/components/graphics.cpp ./src/components/graphics.h
 	g++ -g -std=c++17 -c ./src/components/graphics.cpp -I./src/
 
 clean:
-	rm -f bleep jsParser.o game.o object.o star.o maths.o kinetics.o sound.o asteroid.o graphics.o blackHole.o bleep.o
+	rm -f bleep jsParser.o game.o object.o star.o maths.o kinetics.o sound.o asteroid.o missle.o graphics.o blackHole.o bleep.o
 
 dist-clean: clean
 	rm -rf dist

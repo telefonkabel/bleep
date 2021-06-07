@@ -21,6 +21,8 @@ public:
 
 	int radiusGrav() const;
 
+	void fireHawking(v2d direction, float deltaTime);
+
 private:
 	//radius of the black hole
 	int m_radius;
@@ -28,6 +30,10 @@ private:
 	int m_radiusGravity;
 	//timing for the flickering effect of black holes
 	float m_flickerCount;
+
+	//timer for hawking radiation
+	float m_hawkingTimer;
+	float m_hawkingTimerReload;
 
 	void draw() const;
 };

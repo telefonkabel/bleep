@@ -64,8 +64,9 @@ void CKinetics::calcVelocity(float deltaTime)
 void CKinetics::collision()
 {
 	////check vor collision
+	v2d thisPosition{ object()->xy() };
 	//collision with outer boundaries
-	if((object()->xy() - object()->game()->center()).mag() > object()->game()->radiusMap())
+	if((thisPosition - object()->game()->center()).mag() > object()->game()->radiusMap())
 		object()->state(objectStates::DELETED);
 	//collsision with objects
 	for (int listID{ 0 }; listID < static_cast<int>(objectTypes::count); ++listID)
@@ -76,7 +77,7 @@ void CKinetics::collision()
 			if (object()->isEatable())
 			{
 				for (auto& obj : m_pGameObjects.at(listID))
-					if ((object()->xy() - obj->xy()).mag() <= object()->edge() + obj->edge())
+					if ((thisPosition - obj->xy()).mag() <= object()->edge() + obj->edge())
 						object()->state(objectStates::EATEN);
 			}
 		}
@@ -85,13 +86,13 @@ void CKinetics::collision()
 		{
 			for (auto& obj : m_pGameObjects.at(listID))
 			{
-				float distance{ (object()->xy() - obj->xy()).mag() };
+				float distance{ (thisPosition - obj->xy()).mag() };
 				float touchDistance{ object()->edge() + obj->edge() };
 				//"> 0" excludes comparison with itself
 				if (distance > 0.1f && distance < touchDistance)
 				{
 					//set distance to touchDistance after first contact (or initialization) to stop unwanted "repetition" (there should be a better solution)
-					object()->xy(object()->xy() + (object()->xy() - obj->xy()).norm() * ((touchDistance - distance) / 2));
+					object()->xy(thisPosition + (thisPosition - obj->xy()).norm() * ((touchDistance - distance) / 2));
 					obj->xy(obj->xy() - (object()->xy() - obj->xy()).norm() * ((touchDistance - distance) / 2));
 
 					//apply collision velocities

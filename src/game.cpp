@@ -31,12 +31,14 @@ CGame::CGame(std::filesystem::path& currentPath) :
         m_parser.getFloat<parser::Window, parser::ScreenHeight>() / 2 },
     m_playerColor{ m_parser.color(m_parser.getString<parser::Player, parser::Color>()) },
     m_startMass{ m_parser.getInt<parser::Player, parser::Mass>() },
+    m_pPlayer{},
     m_starCardinality{ m_parser.getInt<parser::Game, parser::StarCard>() },
     m_debrisChance{ m_parser.getFloat<parser::Debris, parser::SpawnChance>() },
     m_debrisTimer{},
     m_debrisTimerReload{ m_parser.getFloat<parser::Debris, parser::SpawnReload>() },
     m_effectEaten{},
-    m_effectEatenTime{ 0.2f }
+    m_effectEatenTime{ 0.2f },
+    m_circling{}
 {
     sAppName = m_parser.getString<parser::Window, parser::Name>();
     Construct(m_parser.getInt<parser::Window, parser::ScreenWidth>(), m_parser.getInt<parser::Window, parser::ScreenHeight>(),
@@ -99,6 +101,9 @@ bool CGame::OnUserUpdate(float deltaTime)
             m_velocity.x -= m_acceleration.x * deltaTime;
         if (m_velocity.mag2() > m_maxSpeed2)
             m_velocity = m_velocity.norm() * m_maxSpeed;
+        //mouse input
+        if (GetMouse(static_cast<int>(mouse::LEFT)).bHeld)
+            m_pPlayer->fireHawking(getCursor(), deltaTime);
 
         ////objects update & display
         spawnDebris(deltaTime);
@@ -107,7 +112,8 @@ bool CGame::OnUserUpdate(float deltaTime)
         Clear(olc::BLACK);
         SetPixelMode(olc::Pixel::MASK);
 
-        drawUI();
+        //User interface
+        drawUI(deltaTime);
 
         //objects update & clean up
         for (auto& objectType : m_objects)
@@ -203,6 +209,7 @@ void CGame::initPlayer()
 {
     std::shared_ptr<CBHole> player{ std::make_shared<CBHole>(this, objectTypes::BLACKHOLE, center(), m_startMass, m_playerColor) };
     addObject(std::move(player));
+    m_pPlayer = std::static_pointer_cast<CBHole>(m_objects.at(static_cast<int>(objectTypes::BLACKHOLE)).front());
 }
 
 void CGame::spawnDebris(float deltaTime)
@@ -221,10 +228,33 @@ void CGame::spawnDebris(float deltaTime)
     }
 }
 
-void CGame::drawUI()
+void CGame::drawUI(float deltaTime)
 {
+    //draw cursor
+    drawCursor(deltaTime);
+    //mass info
     DrawStringDecal(v2d(10, static_cast<float>(ScreenHeight() - 30)), "MASS:", olc::WHITE, v2d(1, 1));
     DrawStringDecal(v2d(10, static_cast<float>(ScreenHeight() - 10)), massInfo(m_objects.at(static_cast<int>(objectTypes::BLACKHOLE)).front(), 5), olc::WHITE, v2d(1, 1));
+}
+
+void CGame::drawCursor(float deltaTime)
+{
+    m_circling = m_circling < 1 ? (m_circling + deltaTime / 1.5f) : 0;
+    v2d circleVec{ 0.0f, 4.0f };
+    circleVec = v2d{ circleVec.x * cos(m_circling * 2 * maths::PI) - circleVec.y * sin(m_circling * 2 * maths::PI),
+        circleVec.x * sin(m_circling * 2 * maths::PI) + circleVec.y * cos(m_circling * 2 * maths::PI) };
+    v2d cursor{ getCursor() };
+    FillCircle(cursor + circleVec, 1, m_playerColor / 2.0f);
+    DrawCircle(cursor + circleVec, 2, m_playerColor / 6.0f);
+    DrawCircle(cursor + circleVec, 3, m_playerColor / 8.0f);
+    FillCircle(cursor - circleVec, 1, m_playerColor / 2.0f);
+    DrawCircle(cursor - circleVec, 2, m_playerColor / 6.0f);
+    DrawCircle(cursor - circleVec, 3, m_playerColor / 8.0f);
+}
+
+v2d CGame::getCursor() const
+{
+    return v2d{ static_cast<float>(GetMouseX()), static_cast<float>(GetMouseY()) };
 }
 
 std::string CGame::massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const
