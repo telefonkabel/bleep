@@ -2,7 +2,7 @@
 "missle": {
 	"hawking": {
 		"spawnReload": 0.2,
-		"speed": 300,
+		"speed": 600,
 		"mass": 1000
 	}
 }
