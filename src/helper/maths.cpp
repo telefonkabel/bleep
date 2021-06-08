@@ -27,6 +27,15 @@ float maths::rndAngle()
     return static_cast<float>(rand()) / RAND_MAX * 2 * PI;
 }
 
+float maths::angle(v2d& vec)
+{
+    return atan2(vec.y, vec.x);
+}
+float maths::angle(v2d vec)
+{
+    return atan2(vec.y, vec.x);
+}
+
 void maths::rotate(v2d& vec, float angle)
 {
     vec = v2d{ vec.x * cos(angle) - vec.y * sin(angle),
@@ -43,6 +52,11 @@ v2d maths::elasticDiskImpact(v2d& v1, float m1, v2d& v2, float m2)
     v2d v21(v2 - v1);
     v2d v21orth(v21.perp());
     return v2d((2 * m2 * orthProj(v2, v21) + (m1 - m2) * orthProj(v1, v21orth)) / (m1 + m2));
+}
+
+v2d maths::inelasticDiskImpact(v2d& v1, float m1, v2d& v2, float m2)
+{
+    return v2d((m1 * v1 + m2 * v2) / (m1 + m2));
 }
 
 v2d maths::orthProj(v2d& v, v2d& target)

@@ -42,10 +42,11 @@ void CKinetics::acceleration(v2d acceleration) { m_acceleration = acceleration; 
 v2d CKinetics::applyVelocities(float deltaTime)
 {
 	////calculate gravity (for one black hole for now)
-	v2d v2Player{ object()->blackHoles().front()->xy() - object()->xy() };
 	v2d gravity{};
-	if (object()->mass() != 0)
+	if (object()->mass() != 0 && object()->type() != objectTypes::MISSLE)
 	{
+		//for now for only one black hole
+		v2d v2Player{ object()->blackHoles().front()->xy() - object()->xy() };
 		//calculate gravity magnitude
 		gravity = v2Player.norm() * (object()->blackHoles().front()->mass() / v2Player.mag2());
 	}
@@ -63,6 +64,10 @@ void CKinetics::calcVelocity(float deltaTime)
 
 void CKinetics::collision()
 {
+	//missles are processed through other objects
+	if (object()->type() == objectTypes::MISSLE)
+		return;
+
 	////check vor collision
 	v2d thisPosition{ object()->xy() };
 	//collision with outer boundaries
@@ -81,7 +86,7 @@ void CKinetics::collision()
 						object()->state(objectStates::EATEN);
 			}
 		}
-		//collision with other objects
+		//collision with massive objects
 		else if (listID == static_cast<int>(objectTypes::DEBRIS) || listID == static_cast<int>(objectTypes::ENEMY))
 		{
 			for (auto& obj : m_pGameObjects.at(listID))
@@ -104,6 +109,28 @@ void CKinetics::collision()
 
 					if(object()->isInView())
 						object()->game()->sound().playSound(sounds::CRASH0, false);
+				}
+			}
+		}
+		//collision with missle object
+		else if (listID == static_cast<int>(objectTypes::MISSLE))
+		{
+			for (auto& obj : m_pGameObjects.at(listID))
+			{
+				float distance{ (thisPosition - obj->xy()).mag() };
+				float touchDistance{ object()->edge() + obj->edge() };
+				//"> 0" excludes comparison with itself
+				if (distance > 0.1f && distance < touchDistance)
+				{
+					//apply collision velocities//apply collision velocities
+					v2d objVel{ obj->kinetics()->velocity() };
+					v2d velNeu{ maths::inelasticDiskImpact(m_velocity, static_cast<float>(object()->mass()), objVel, static_cast<float>(obj->mass())) };
+					velocity(velNeu);
+
+					if (object()->isInView())
+						object()->game()->sound().playSound(sounds::CRASH0, false);
+
+					obj->state(objectStates::DELETED);
 				}
 			}
 		}

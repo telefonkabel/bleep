@@ -121,5 +121,5 @@ bool CObject::isInView(v2d pos) const
 
 float CObject::fogFactor() const
 {
-    return (m_pGame->radiusView() - (m_pGame->center() - xy()).mag()) / m_pGame->fog();
+    return std::min((m_pGame->radiusView() - (m_pGame->center() - xy()).mag()) / m_pGame->fog(), 1.0f);
 }

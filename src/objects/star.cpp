@@ -56,7 +56,7 @@ void CStar::draw() const
 	if (!isInView(positionWithLens))
 		return;
 
-	game()->Draw(positionWithLens, color() * std::min(fogFactor(), 1.0f));
+	game()->Draw(positionWithLens, color() * fogFactor());
 
 	//flickering
 	if (m_flickerEffect != 0.0f)

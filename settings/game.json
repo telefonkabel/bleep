@@ -19,7 +19,7 @@
 	"crash": "crash0.wav"
 },
 "player" : {
-	"mass" : 1000000,
+	"mass" : 1020000,
 	"color": "magenta"
 }
 }

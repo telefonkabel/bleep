@@ -46,7 +46,7 @@ bool CGraphics::draw() const
 	if (!object()->isInView())
 		return true;
 	v2d v2center{ v2centroid() };
-	object()->game()->DrawDecal(object()->xy() - v2center, m_renderable.Decal(), v2d{ 1,1 }, object()->color() * std::min(object()->fogFactor(), 1.0f));
+	object()->game()->DrawDecal(object()->xy() - v2center, m_renderable.Decal(), v2d{ 1,1 }, object()->color() * object()->fogFactor());
 
 	return true;
 }

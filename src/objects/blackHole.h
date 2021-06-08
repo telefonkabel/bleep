@@ -34,6 +34,8 @@ private:
 	//timer for hawking radiation
 	float m_hawkingTimer;
 	float m_hawkingTimerReload;
+	int m_hawkingSpeed;
+	int m_hawkingMass;
 
 	void draw() const;
 };

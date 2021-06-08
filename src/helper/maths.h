@@ -28,11 +28,16 @@ v2d rndCirclePt(const v2d& center, float radius);
 //rotate a vector around an angle in radian 
 void rotate(v2d& vec, float angle);
 
+//get angle in radian
+float angle(v2d& vec);
+float angle(v2d vec);
+
 //rotates the point around the center and projects them onto the circle around the center with the radius if wanted
 v2d pointReflection(const v2d& center, const v2d& point, float radius = 0.0f);
 
 //returns the velositiy for disc 1
 v2d elasticDiskImpact(v2d& v1, float m1, v2d& v2, float m2);
+v2d inelasticDiskImpact(v2d& v1, float m1, v2d& v2, float m2);
 
 //orth. projection of v1 onto the target vector
 v2d orthProj(v2d& v1, v2d& target);

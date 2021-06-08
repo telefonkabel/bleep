@@ -5,6 +5,7 @@ The underlying framework already supports all kinds of extensions and adjustment
 
 Control:
 Movement with W-A-S-D
+Shooting with LMB
 Abort with ESC
 
 Settings:

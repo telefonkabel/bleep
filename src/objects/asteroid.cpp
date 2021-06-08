@@ -41,6 +41,7 @@ CAsteroid::~CAsteroid()
 {
     if (state() == objectStates::EATEN)
     {
+        //for now only for one black hole
         blackHoles().front()->mass(blackHoles().front()->mass() + mass());
         game()->sound().playSound(sounds::JET, false);
     }
