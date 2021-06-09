@@ -1,3 +1,6 @@
-https://www.partnersinrhyme.com/midi/Video_Games/Video_Games_Midi_Files/strike47.shtml
-https://de.dreamstime.com/lager-sound-fx-laser-bläser-audio90585964
-https://de.dreamstime.com/lager-sound-fx-bit-explosion-audio111166288
+music0		https://www.partnersinrhyme.com/midi/Video_Games/Video_Games_Midi_Files/strike47.shtml
+jet		https://de.dreamstime.com/lager-sound-fx-laser-bläser-audio90585964
+crash0		https://de.dreamstime.com/lager-sound-fx-bit-explosion-audio111166288
+
+shot0		https://de.dreamstime.com/schneller-passby-hochspannungslaser-wuuusch-soundeffekt-audio207595465
+impact0		https://de.dreamstime.com/schneller-passby-hochspannungslaser-wuuusch-soundeffekt-audio210639783

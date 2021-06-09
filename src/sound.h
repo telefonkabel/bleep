@@ -16,7 +16,7 @@
 class CGame;
 
 //must not have initializers (and will be replaced in the future)
-enum class sounds { MUSIC0, JET, CRASH0, count};
+enum class sounds { MUSIC0, JET, CRASH0, SHOT0, IMPACT0, count};
 
 class CSound
 {
@@ -36,5 +36,6 @@ private:
 	std::array<int, static_cast<int>(sounds::count)> m_soundIDs;
 
 	//initialize individual sounds and links them to their corresponding array index - throws, if olc returns "-1"
-	void initSound(sounds index, int id);
+	//all sounds have to be initialized bevore use
+	void initSound(sounds index, std::string file);
 };

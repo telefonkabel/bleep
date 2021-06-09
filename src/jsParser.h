@@ -28,7 +28,6 @@ namespace parser
 	struct Asteroid { static constexpr const char* Key{ "asteroid" }; };
 	struct Missle { static constexpr const char* Key{ "missle" }; };
 	struct Hawking { static constexpr const char* Key{ "hawking" }; };
-	struct Sound { static constexpr const char* Key{ "sound" }; };
 
 	//window attributes
 	struct ScreenWidth { static constexpr const char* Key{ "screenWidth" }; };
@@ -56,6 +55,8 @@ namespace parser
 	struct Music { static constexpr const char* Key{ "music" }; };
 	struct Jet { static constexpr const char* Key{ "jet" }; };
 	struct Crash { static constexpr const char* Key{ "crash" }; };
+	struct Shot { static constexpr const char* Key{ "shot" }; };
+	struct Impact { static constexpr const char* Key{ "impact" }; };
 
 	//other attributes 
 	struct Name { static constexpr const char* Key{ "name" }; };

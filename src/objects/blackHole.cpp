@@ -12,7 +12,7 @@
 
 #include "missle.h"
 
-
+//for now, there is only one black hole
 CBHole::CBHole(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
 	CObject(pGame, type, pos, mass, color),
 	m_flickerCount{},

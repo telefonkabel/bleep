@@ -127,10 +127,7 @@ void CKinetics::collision()
 					v2d velNeu{ maths::inelasticDiskImpact(m_velocity, static_cast<float>(object()->mass()), objVel, static_cast<float>(obj->mass())) };
 					velocity(velNeu);
 
-					if (object()->isInView())
-						object()->game()->sound().playSound(sounds::CRASH0, false);
-
-					obj->state(objectStates::DELETED);
+					obj->state(objectStates::DESTROYED);
 				}
 			}
 		}

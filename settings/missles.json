@@ -3,7 +3,9 @@
 	"hawking": {
 		"spawnReload": 0.2,
 		"speed": 600,
-		"mass": 1000
+		"mass": 1000,
+		"shot": "shot0.wav",
+		"impact": "impact0.wav"
 	}
 }
 }

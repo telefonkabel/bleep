@@ -7,7 +7,8 @@
 		"spawnTime": [[10, -1], [10, -1], [10, -1], [15, -1]],
 		"maxSpeed": [300, 300, 250, 220],
 		"mass": [10000, 10000, 20000, 40000],
-		"sprite": ["astr0.png", "astr1.png", "astr2.png", "astr3.png"]
+		"sprite": ["astr0.png", "astr1.png", "astr2.png", "astr3.png"],
+		"crash": "crash0.wav"
 	}
 }
 }

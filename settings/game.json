@@ -11,15 +11,12 @@
 	"velocity": [0, 30],
 	"acceleration": [500, 500],
 	"maxSpeed": 200,
-	"starCardinality": 1500
-}, 
-"sound" : {
-	"music" : "music0.wav",
-	"jet": "jet.wav",
-	"crash": "crash0.wav"
+	"starCardinality": 1500,
+	"music" : "music0.wav"
 },
 "player" : {
 	"mass" : 1020000,
-	"color": "magenta"
+	"color": "magenta",
+	"jet": "jet.wav"
 }
 }

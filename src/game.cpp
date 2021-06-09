@@ -56,7 +56,7 @@ int CGame::radiusMap() const { return m_radiusMap; };
 int CGame::fog() const { return m_fogOfWar; };
 std::filesystem::path CGame::currentPath() const { return m_currentPath; };
 const CParser& CGame::parser() const { return m_parser; };
-const CSound& CGame::sound() const { return m_sound; };
+const CSound& CGame::sound() { return m_sound; };
 
 bool CGame::OnUserCreate()
 {
@@ -124,7 +124,7 @@ bool CGame::OnUserUpdate(float deltaTime)
                     objectType.erase(objItr++);
                     m_effectEaten = m_effectEatenTime;
                 }
-                else if ((*objItr)->state() == objectStates::DELETED)
+                else if ((*objItr)->state() == objectStates::DELETED || (*objItr)->state() == objectStates::DESTROYED)
                     objectType.erase(objItr++);
                 else
                     (*objItr)->update(deltaTime);
@@ -243,15 +243,15 @@ void CGame::drawCursor(float deltaTime)
     v2d circleVec{ 0.0f, 4.0f };
     maths::rotate(circleVec, m_circling * 2 * maths::PI);
     v2d cursor{ getCursor() };
-    FillCircle(cursor + circleVec, 1, m_playerColor / 2.0f);
-    DrawCircle(cursor + circleVec, 2, m_playerColor / 6.0f);
-    DrawCircle(cursor + circleVec, 3, m_playerColor / 8.0f);
-    FillCircle(cursor - circleVec, 1, m_playerColor / 2.0f);
-    DrawCircle(cursor - circleVec, 2, m_playerColor / 6.0f);
-    DrawCircle(cursor - circleVec, 3, m_playerColor / 8.0f);
+    FillCircle(cursor + circleVec, 1, m_playerColor);
+    DrawCircle(cursor + circleVec, 2, m_playerColor / 3.0f);
+    DrawCircle(cursor + circleVec, 3, m_playerColor / 6.0f);
+    FillCircle(cursor - circleVec, 1, m_playerColor);
+    DrawCircle(cursor - circleVec, 2, m_playerColor / 3.0f);
+    DrawCircle(cursor - circleVec, 3, m_playerColor / 6.0f);
     maths::rotate(circleVec, -0.8f);
-    FillCircle(cursor + circleVec, 1, m_playerColor / 6.0f);
-    FillCircle(cursor - circleVec, 1, m_playerColor / 6.0f);
+    FillCircle(cursor + circleVec, 1, m_playerColor / 3.0f);
+    FillCircle(cursor - circleVec, 1, m_playerColor / 3.0f);
 }
 
 v2d CGame::getCursor() const

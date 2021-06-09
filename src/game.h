@@ -40,7 +40,7 @@ public:
     const CParser& parser() const;
 
     //handle to sound obj with static lifetime
-    const CSound& sound() const;
+    const CSound& sound();
 
     //provides the mass of an object for possible outputs in scientific notation with the amount of shown decimals as parameter
     std::string massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const;

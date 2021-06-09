@@ -19,10 +19,14 @@ CMissle::CMissle(CGame* const pGame, objectTypes type, int mass, v2d pos, colors
 {
     addComponent(components::kinetics);
     eatable(true);
+
+    pGame->sound().playSound(sounds::SHOT0, false);
 }
 
 CMissle::~CMissle()
 {
+    if (isInView() && state() == objectStates::DESTROYED)
+        game()->sound().playSound(sounds::IMPACT0, false);
 }
 
 void CMissle::update(float deltaTime)
@@ -32,9 +36,9 @@ void CMissle::update(float deltaTime)
 
     if (isInView())
     {
-        game()->DrawCircle(xy(), m_radius + 1, color() * fogFactor() / 6, m_direction);
-        game()->DrawCircle(xy(), m_radius, color() * fogFactor() / 2, m_direction);
-        game()->DrawCircle(xy(), m_radius - 1, color() * fogFactor() / 6, m_direction);
+        game()->DrawCircle(xy(), m_radius + 1, color() * fogFactor() / 3, m_direction);
+        game()->DrawCircle(xy(), m_radius, color() * fogFactor(), m_direction);
+        game()->DrawCircle(xy(), m_radius - 1, color() * fogFactor() / 3, m_direction);
     }
 
     //debug
