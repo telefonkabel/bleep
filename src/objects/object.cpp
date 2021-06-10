@@ -22,8 +22,7 @@ CObject::CObject(CGame* const pGame, objectTypes type, v2d pos, int mass, colors
     m_eatable{ false },
     m_type{ type },
     m_pKinetics{},
-    m_pGraphics{},
-    m_pBlackHoles{game()->gameObjects().at(static_cast<int>(objectTypes::BLACKHOLE))}
+    m_pGraphics{}
 {
 }
 
@@ -103,11 +102,6 @@ const std::unique_ptr<CGraphics>& CObject::graphics() const
         return m_pGraphics;
     else
         throw CException{ "Tried to grab a nullptr.", INFO };
-}
-
-const std::list<std::shared_ptr<CObject>>& CObject::blackHoles() const
-{
-    return m_pBlackHoles;
 }
 
 bool CObject::isInView() const

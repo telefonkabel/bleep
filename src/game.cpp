@@ -58,6 +58,11 @@ std::filesystem::path CGame::currentPath() const { return m_currentPath; };
 const CParser& CGame::parser() const { return m_parser; };
 const CSound& CGame::sound() { return m_sound; };
 
+std::shared_ptr<CBHole> CGame::player() const
+{ 
+    return m_pPlayer.lock(); 
+};
+
 bool CGame::OnUserCreate()
 {
     try
@@ -102,8 +107,9 @@ bool CGame::OnUserUpdate(float deltaTime)
         if (m_velocity.mag2() > m_maxSpeed2)
             m_velocity = m_velocity.norm() * m_maxSpeed;
         //mouse input
-        if (GetMouse(static_cast<int>(mouse::LEFT)).bHeld)
-            m_pPlayer->fireHawking(getCursor(), deltaTime);
+        auto pPlayer{ player() };
+        if (GetMouse(static_cast<int>(mouse::LEFT)).bHeld && pPlayer)
+            pPlayer->fireHawking(getCursor(), deltaTime);
 
         ////objects update & display
         spawnDebris(deltaTime);
@@ -119,22 +125,17 @@ bool CGame::OnUserUpdate(float deltaTime)
         for (auto& objectType : m_objects)
             for (auto objItr = objectType.begin(); objItr != objectType.end(); ++objItr)
             {
-                if ((*objItr)->state() == objectStates::EATEN)
-                {
-                    objectType.erase(objItr++);
-                    m_effectEaten = m_effectEatenTime;
-                }
-                else if ((*objItr)->state() == objectStates::DELETED || (*objItr)->state() == objectStates::DESTROYED)
-                    objectType.erase(objItr++);
-                else
+                if ((*objItr)->state() == objectStates::ALIVE)
                     (*objItr)->update(deltaTime);
+                else
+                    objectType.erase(objItr++);
 
                 if (objItr == objectType.end())
                     break;
             }
 
         ////effects
-        effectEaten(deltaTime);
+        globalEffects(deltaTime);
 
         //olc - needs to be called after drawing
         SetPixelMode(olc::Pixel::NORMAL);
@@ -153,8 +154,9 @@ bool CGame::OnUserUpdate(float deltaTime)
     return true;
 }
 
-void CGame::effectEaten(float deltaTime)
+void CGame::globalEffects(float deltaTime)
 {
+    //jet-effect when something got devoured by a black hole
     m_effectEaten -= deltaTime;
     if (m_effectEaten > 0.0f)
     {
@@ -163,6 +165,12 @@ void CGame::effectEaten(float deltaTime)
         FillRect(0, 0, ScreenWidth(), ScreenHeight(), m_playerColor / 4);
         SetPixelMode(olc::Pixel::NORMAL);
     }
+}
+
+void CGame::effectEaten()
+{
+    m_effectEaten = m_effectEatenTime;
+    m_sound.playSound(sounds::JET, false);
 }
 
 olc::Pixel CGame::playerColor() const
@@ -230,11 +238,17 @@ void CGame::spawnDebris(float deltaTime)
 
 void CGame::drawUI(float deltaTime)
 {
+    auto pPlayer{ player() };
+
     //draw cursor
     drawCursor(deltaTime);
     //mass info
     DrawStringDecal(v2d(10, static_cast<float>(ScreenHeight() - 30)), "MASS:", olc::WHITE, v2d(1, 1));
-    DrawStringDecal(v2d(10, static_cast<float>(ScreenHeight() - 10)), massInfo(m_objects.at(static_cast<int>(objectTypes::BLACKHOLE)).front(), 5), olc::WHITE, v2d(1, 1));
+    DrawStringDecal(v2d(10, static_cast<float>(ScreenHeight() - 10)), massInfo(pPlayer, 5), olc::WHITE, v2d(1, 1));
+
+    //game over
+    if (!pPlayer)
+        DrawStringDecal(center() + v2d{-40, -10}, "Game Over!");
 }
 
 void CGame::drawCursor(float deltaTime)
@@ -261,6 +275,9 @@ v2d CGame::getCursor() const
 
 std::string CGame::massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const
 {
+    if (!obj)
+        return "0";
+
     int shownMass{ obj->mass() };
     int powerIndex{ 0 };
     while(shownMass >= pow(10, shownDecimals))

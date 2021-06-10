@@ -51,7 +51,7 @@
     <ClInclude Include="..\src\jsParser.h">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\objects\missle.h">
+    <ClInclude Include="..\src\objects\hawking.h">
       <Filter>objects</Filter>
     </ClInclude>
   </ItemGroup>
@@ -89,7 +89,7 @@
     <ClCompile Include="..\src\jsParser.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\objects\missle.cpp">
+    <ClCompile Include="..\src\objects\hawking.cpp">
       <Filter>objects</Filter>
     </ClCompile>
   </ItemGroup>

@@ -14,18 +14,19 @@ enum class octant { Q11 = 2, Q12 = 1, Q21 = 128, Q22 = 64, Q31 = 32, Q32 = 16, Q
 
 class CGame;
 
-class CMissle : public CObject
+class CHawking : public CObject
 {
 public:
-	CMissle(CGame* const pGame, objectTypes type, int mass = 0, v2d pos = { 0.0f, 0.0f }, colors color = olc::WHITE, int radius = 8);
-	~CMissle();
+	CHawking(CGame* const pGame, objectTypes type, int mass = 0, v2d pos = { 0.0f, 0.0f }, colors color = olc::WHITE);
+	~CHawking();
 
 	void update(float deltaTime) override;
 	float edge() override;
 
 
 private:
-	int m_radius;
+	static bool m_firstInit;
+	static int m_radius;
 
 	//for drawing direction related sprites - 8 possibilities
 	uint8_t m_direction;

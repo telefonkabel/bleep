@@ -4,6 +4,7 @@
 		"spawnReload": 0.2,
 		"speed": 600,
 		"mass": 1000,
+		"radius": 15,
 		"shot": "shot0.wav",
 		"impact": "impact0.wav"
 	}

@@ -68,8 +68,6 @@ public:
 	//handles to the components
 	const std::unique_ptr<CKinetics>& kinetics() const;
 	const std::unique_ptr<CGraphics>& graphics() const;
-	//handle to all black holes
-	const std::list<std::shared_ptr<CObject>>& blackHoles() const;
 
 	//checks whether the object (or a point as parameter) is in the viewable map
 	bool isInView() const;
@@ -96,7 +94,4 @@ private:
 	std::unique_ptr<CKinetics> m_pKinetics;
 	std::unique_ptr<CGraphics> m_pGraphics;
 	std::set<components> m_components;
-
-	//shortcut: handle to black holes as often needed objects
-	const std::list<std::shared_ptr<CObject>>& m_pBlackHoles;
 };

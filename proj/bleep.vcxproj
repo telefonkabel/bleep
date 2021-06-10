@@ -28,7 +28,7 @@
     <ClInclude Include="..\src\jsParser.h" />
     <ClInclude Include="..\src\objects\asteroid.h" />
     <ClInclude Include="..\src\objects\blackHole.h" />
-    <ClInclude Include="..\src\objects\missle.h" />
+    <ClInclude Include="..\src\objects\hawking.h" />
     <ClInclude Include="..\src\objects\object.h" />
     <ClInclude Include="..\src\objects\star.h" />
     <ClInclude Include="..\src\sound.h" />
@@ -42,7 +42,7 @@
     <ClCompile Include="..\src\jsParser.cpp" />
     <ClCompile Include="..\src\objects\asteroid.cpp" />
     <ClCompile Include="..\src\objects\blackHole.cpp" />
-    <ClCompile Include="..\src\objects\missle.cpp" />
+    <ClCompile Include="..\src\objects\hawking.cpp" />
     <ClCompile Include="..\src\objects\object.cpp" />
     <ClCompile Include="..\src\objects\star.cpp" />
     <ClCompile Include="..\src\sound.cpp" />

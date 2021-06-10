@@ -57,6 +57,12 @@ public:
     //add object to object container
     void addObject(const std::shared_ptr<CObject>&& object);
 
+    //play effect
+    void effectEaten();
+
+    //shortcut to player
+    std::shared_ptr<CBHole> player() const;
+
 private:
     //to measure game runtime
     std::chrono::time_point<std::chrono::steady_clock> m_startTime;
@@ -91,7 +97,7 @@ private:
 
     //init objects, player need to be first
     void initPlayer();
-    std::shared_ptr<CBHole> m_pPlayer; //shortcut to the player object
+    std::weak_ptr<CBHole> m_pPlayer; //shortcut to the player object
     void initStars();
     int m_starCardinality;
 
@@ -106,7 +112,7 @@ private:
     //effects
     float m_effectEaten;
     float m_effectEatenTime;
-    void effectEaten(float deltaTime);
+    void globalEffects(float deltaTime);
 
     ////needs to be overridden for olc game engine:
     //initialization

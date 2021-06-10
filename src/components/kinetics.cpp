@@ -46,9 +46,13 @@ v2d CKinetics::applyVelocities(float deltaTime)
 	if (object()->mass() != 0 && object()->type() != objectTypes::MISSLE)
 	{
 		//for now for only one black hole
-		v2d v2Player{ object()->blackHoles().front()->xy() - object()->xy() };
-		//calculate gravity magnitude
-		gravity = v2Player.norm() * (object()->blackHoles().front()->mass() / v2Player.mag2());
+		std::shared_ptr<CBHole> player{ object()->game()->player() };
+		if (player)
+		{
+			v2d v2Player{ player->xy() - object()->xy() };
+			//calculate gravity magnitude
+			gravity = v2Player.norm() * (player->mass() / v2Player.mag2());
+		}
 	}
 	//apply gravity
 	m_velocity += (m_acceleration + gravity) * deltaTime;
@@ -76,60 +80,70 @@ void CKinetics::collision()
 	//collsision with objects
 	for (int listID{ 0 }; listID < static_cast<int>(objectTypes::count); ++listID)
 	{
-		//collision with black holes
-		if (listID == static_cast<int>(objectTypes::BLACKHOLE))
+		switch (listID)
 		{
-			if (object()->isEatable())
-			{
+			//no collision with stars
+			case static_cast<int>(objectTypes::STAR) :
+				break;
+			//collision with black holes
+			case static_cast<int>(objectTypes::BLACKHOLE):
+				if (object()->isEatable())
+				{
+					for (auto& obj : m_pGameObjects.at(listID))
+						if ((thisPosition - obj->xy()).mag() <= object()->edge() + obj->edge())
+						{
+							object()->state(objectStates::EATEN);
+							obj->mass(obj->mass() + object()->mass());
+						}
+				}
+				break;
+			//collision with massive objects
+			case static_cast<int>(objectTypes::ENEMY) :
+			case static_cast<int>(objectTypes::DEBRIS) :
 				for (auto& obj : m_pGameObjects.at(listID))
-					if ((thisPosition - obj->xy()).mag() <= object()->edge() + obj->edge())
-						object()->state(objectStates::EATEN);
-			}
-		}
-		//collision with massive objects
-		else if (listID == static_cast<int>(objectTypes::DEBRIS) || listID == static_cast<int>(objectTypes::ENEMY))
-		{
-			for (auto& obj : m_pGameObjects.at(listID))
-			{
-				float distance{ (thisPosition - obj->xy()).mag() };
-				float touchDistance{ object()->edge() + obj->edge() };
-				//"> 0" excludes comparison with itself
-				if (distance > 0.1f && distance < touchDistance)
 				{
-					//set distance to touchDistance after first contact (or initialization) to stop unwanted "repetition" (there should be a better solution)
-					object()->xy(thisPosition + (thisPosition - obj->xy()).norm() * ((touchDistance - distance) / 2));
-					obj->xy(obj->xy() - (object()->xy() - obj->xy()).norm() * ((touchDistance - distance) / 2));
+					float distance{ (thisPosition - obj->xy()).mag() };
+					float touchDistance{ object()->edge() + obj->edge() };
+					//"> 0" excludes comparison with itself
+					if (distance > 0.1f && distance < touchDistance)
+					{
+						//set distance to touchDistance after first contact (or initialization) to stop unwanted "repetition" (there should be a better solution)
+						object()->xy(thisPosition + (thisPosition - obj->xy()).norm() * ((touchDistance - distance) / 2));
+						obj->xy(obj->xy() - (object()->xy() - obj->xy()).norm() * ((touchDistance - distance) / 2));
 
-					//apply collision velocities
-					v2d objVel{ obj->kinetics()->velocity() };
-					v2d velNeu{ maths::elasticDiskImpact(m_velocity, static_cast<float>(object()->mass()), objVel, static_cast<float>(obj->mass())) };
-					v2d objVelNeu{ maths::elasticDiskImpact(objVel, static_cast<float>(obj->mass()), m_velocity, static_cast<float>(object()->mass())) };
-					velocity(velNeu);
-					obj->kinetics()->velocity(objVelNeu);
+						//apply collision velocities
+						v2d objVel{ obj->kinetics()->velocity() };
+						v2d velNeu{ maths::elasticDiskImpact(m_velocity, static_cast<float>(object()->mass()), objVel, static_cast<float>(obj->mass())) };
+						v2d objVelNeu{ maths::elasticDiskImpact(objVel, static_cast<float>(obj->mass()), m_velocity, static_cast<float>(object()->mass())) };
+						velocity(velNeu);
+						obj->kinetics()->velocity(objVelNeu);
 
-					if(object()->isInView())
-						object()->game()->sound().playSound(sounds::CRASH0, false);
+						if (object()->isInView())
+							object()->game()->sound().playSound(sounds::CRASH0, false);
+					}
 				}
-			}
-		}
-		//collision with missle object
-		else if (listID == static_cast<int>(objectTypes::MISSLE))
-		{
-			for (auto& obj : m_pGameObjects.at(listID))
-			{
-				float distance{ (thisPosition - obj->xy()).mag() };
-				float touchDistance{ object()->edge() + obj->edge() };
-				//"> 0" excludes comparison with itself
-				if (distance > 0.1f && distance < touchDistance)
+				break;
+			//collision with missle object
+			case static_cast<int>(objectTypes::MISSLE) :
+				for (auto& obj : m_pGameObjects.at(listID))
 				{
-					//apply collision velocities//apply collision velocities
-					v2d objVel{ obj->kinetics()->velocity() };
-					v2d velNeu{ maths::inelasticDiskImpact(m_velocity, static_cast<float>(object()->mass()), objVel, static_cast<float>(obj->mass())) };
-					velocity(velNeu);
+					float distance{ (thisPosition - obj->xy()).mag() };
+					float touchDistance{ object()->edge() + obj->edge() };
+					//"> 0" excludes comparison with itself
+					if (distance > 0.1f && distance < touchDistance)
+					{
+						//apply collision velocities//apply collision velocities
+						v2d objVel{ obj->kinetics()->velocity() };
+						v2d velNeu{ maths::inelasticDiskImpact(m_velocity, static_cast<float>(object()->mass()), objVel, static_cast<float>(obj->mass())) };
+						velocity(velNeu);
 
-					obj->state(objectStates::DESTROYED);
+						obj->state(objectStates::DESTROYED);
+					}
 				}
-			}
+				break;
+			default:
+				throw CException{ listID + " is no handled object type ID - should not happen.", INFO };
+				break;
 		}
 	}
 }

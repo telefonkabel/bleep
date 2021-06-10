@@ -40,11 +40,7 @@ CAsteroid::CAsteroid(CGame* const pGame, objectTypes type, int mass, v2d pos, co
 CAsteroid::~CAsteroid()
 {
     if (state() == objectStates::EATEN)
-    {
-        //for now only for one black hole
-        blackHoles().front()->mass(blackHoles().front()->mass() + mass());
-        game()->sound().playSound(sounds::JET, false);
-    }
+        game()->effectEaten();
 }
 
 void CAsteroid::initAsteroid()

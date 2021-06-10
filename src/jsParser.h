@@ -50,6 +50,7 @@ namespace parser
 	struct SpawnReload { static constexpr const char* Key{ "spawnReload" }; };
 	struct SpawnTime { static constexpr const char* Key{ "spawnTime" }; };
 	struct Sprite { static constexpr const char* Key{ "sprite" }; };
+	struct Radius { static constexpr const char* Key{ "radius" }; };
 
 	//sound attributes
 	struct Music { static constexpr const char* Key{ "music" }; };

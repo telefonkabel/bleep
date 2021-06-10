@@ -5,31 +5,38 @@
 /// Missle game object.
 //==============================================================================
 
-#include "missle.h"
+#include "hawking.h"
 #include "game.h"
 #include "helper/maths.h"
 #include "components/graphics.h"
 #include "components/kinetics.h"
 
 
-CMissle::CMissle(CGame* const pGame, objectTypes type, int mass, v2d pos, colors color, int radius) :
+bool CHawking::m_firstInit{ true };
+int CHawking::m_radius{};
+
+CHawking::CHawking(CGame* const pGame, objectTypes type, int mass, v2d pos, colors color) :
     CObject{ pGame, type, pos, mass, color },
-    m_radius{ radius },
     m_direction{}
 {
+    if (m_firstInit)
+    {
+        m_firstInit = false;
+        m_radius = pGame->parser().getInt<parser::Missle, parser::Hawking, parser::Radius>();
+    }
+
     addComponent(components::kinetics);
-    eatable(true);
 
     pGame->sound().playSound(sounds::SHOT0, false);
 }
 
-CMissle::~CMissle()
+CHawking::~CHawking()
 {
     if (isInView() && state() == objectStates::DESTROYED)
         game()->sound().playSound(sounds::IMPACT0, false);
 }
 
-void CMissle::update(float deltaTime)
+void CHawking::update(float deltaTime)
 {
     CObject::update(deltaTime);
     calcDirection();
@@ -49,12 +56,13 @@ void CMissle::update(float deltaTime)
     }
 }
 
-float CMissle::edge()
+float CHawking::edge()
 {
-    return m_radius;
+    //for missles overlay is preferable
+    return 1;
 }
 
-void CMissle::calcDirection()
+void CHawking::calcDirection()
 {
     float angle{ maths::angle(kinetics()->velocity()) };
     float step{ maths::PI / 8 };

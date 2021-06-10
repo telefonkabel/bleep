@@ -7,10 +7,10 @@
 
 #include "blackHole.h"
 #include "game.h"
+#include "hawking.h"
 #include "components/graphics.h"
 #include "components/kinetics.h"
 
-#include "missle.h"
 
 //for now, there is only one black hole
 CBHole::CBHole(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
@@ -23,6 +23,11 @@ CBHole::CBHole(CGame* const pGame, objectTypes type, v2d pos, int mass, colors c
 	m_hawkingSpeed{ pGame->parser().getInt<parser::Missle, parser::Hawking, parser::Speed>() },
 	m_hawkingMass{ pGame->parser().getInt<parser::Missle, parser::Hawking, parser::Mass>() }
 {}
+
+CBHole::~CBHole()
+{
+	int i{ 1 };
+}
 
 void CBHole::update(float deltaTime)
 {
@@ -57,11 +62,11 @@ int CBHole::radiusGrav() const { return m_radiusGravity; };
 void CBHole::fireHawking(v2d direction, float deltaTime)
 {
 	m_hawkingTimer -= deltaTime;
-	if (m_hawkingTimer <= 0.0f && mass() > m_hawkingMass)
+	if (m_hawkingTimer <= 0.0f)
 	{
 		m_hawkingTimer = m_hawkingTimerReload;
-		v2d start{ xy() + (game()->getCursor() - xy()).norm() * static_cast<float>(m_radius)};
-		std::shared_ptr<CMissle> missle{ std::make_shared<CMissle>(game(), objectTypes::MISSLE,  m_hawkingMass, start, color()) };
+		v2d start{ xy() + (game()->getCursor() - xy()).norm() * static_cast<float>(m_radius + 3) };
+		std::shared_ptr<CHawking> missle{ std::make_shared<CHawking>(game(), objectTypes::MISSLE,  m_hawkingMass, start, color()) };
 		missle->kinetics()->velocity((game()->getCursor() - xy()).norm() * static_cast<float>(m_hawkingSpeed));
 		game()->addObject(std::move(missle));
 

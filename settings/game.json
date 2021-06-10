@@ -5,7 +5,7 @@
 	"screenHeight" : 480,
 	"pixelWidth" : 2,
 	"pixelHeight" : 2,
-	"fullScreen" : true
+	"fullScreen" : false
 },
 "game":{
 	"velocity": [0, 30],
@@ -15,7 +15,7 @@
 	"music" : "music0.wav"
 },
 "player" : {
-	"mass" : 1020000,
+	"mass" : 10000,
 	"color": "magenta",
 	"jet": "jet.wav"
 }

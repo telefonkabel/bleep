@@ -15,6 +15,7 @@ class CBHole : public CObject
 {
 public:
 	CBHole(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color);
+	~CBHole();
 
 	void update(float deltaTime) override;
 	float edge() override;
