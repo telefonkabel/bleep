@@ -1,5 +1,5 @@
 "window" - object with the settings for the game window
-"window":name" - name shown in the window (string)
+"window":name" - name shown in the window (string - empty string is OK)
 "window":screenWidth" - window width (int)
 "window":screenHeight" - window height (int)
 "window":pixelWidth" - ingame pixel width ratio to screen pixel width (int)
@@ -11,12 +11,8 @@
 "game":"acceleration" - acceleration applied by the movement keys (int, int)
 "game":"maxSpeed" - maximal movement speed (int)
 "game":"starCardinality" - amount of background stars (int)
-
-"sound" - object with the settings for each sound
-"sound":"music" - filename of the looped background music (string)
-"sound":"jet"- filename of the jet sound (string)
-"sound":"crash" - filename of the crash sound (string)
+"game":"music" - background music (string - empty string is OK)
 
 "player" - object with the player settings
 "player":"mass" - start mass (int)
-"player":"color" - player color (string of red, green, blue, yellow, magenta, cyan)
+"player":"color" - player color (string - red, green, blue, yellow, magenta, cyan)

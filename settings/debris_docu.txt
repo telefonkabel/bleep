@@ -5,6 +5,6 @@
 "debris":"asteroid" - object with the settings for all asteroid types
 "debris":"asteroid":"spawnChance" - Array of spawn chances of asteroid types relatively to each other (int)
 "debris":"asteroid":"spawnTime" - Array of time intervals in which each asteroid type could spawn in seconds (int, int) - for max interval use "-1" as value.
-"debris":"asteroid":"maxSpeed" - Array of max speeds of each asteroid type [int]
-"debris":"asteroid":"mass" - Array of masses of each asteroid type [int]
-"debris":"asteroid":"sprite" - Array of filenames for the graphics of each asteroid type [string]
+"debris":"asteroid":"maxSpeed" - Array of max speeds of each asteroid type (int)
+"debris":"asteroid":"mass" - Array of masses of each asteroid type (int)
+"debris":"asteroid":"sprite" - Array of filenames for the graphics of each asteroid type (string - empty string is OK)

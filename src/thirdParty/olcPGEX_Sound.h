@@ -221,10 +221,10 @@ namespace olc
 		{
 			char dump[4];
 			is.read(dump, sizeof(char) * 4); // Read "RIFF"
-			if (strncmp(dump, "RIFF", 4) != 0) return olc::FAIL;
+			if (strncmp(dump, "RIFF", 4) != 0) return olc::rcode::FAIL;
 			is.read(dump, sizeof(char) * 4); // Not Interested
 			is.read(dump, sizeof(char) * 4); // Read "WAVE"
-			if (strncmp(dump, "WAVE", 4) != 0) return olc::FAIL;
+			if (strncmp(dump, "WAVE", 4) != 0) return olc::rcode::FAIL;
 
 			// Read Wave description chunk
 			is.read(dump, sizeof(char) * 4); // Read "fmt "
@@ -236,7 +236,7 @@ namespace olc
 
 			// Just check if wave format is compatible with olcPGE
 			if (wavHeader.wBitsPerSample != 16 || wavHeader.nSamplesPerSec != 44100)
-				return olc::FAIL;
+				return olc::rcode::FAIL;
 
 			// Search for audio data chunk
 			uint32_t nChunksize = 0;
@@ -277,7 +277,7 @@ namespace olc
 
 			// All done, flag sound as valid
 			bSampleValid = true;
-			return olc::OK;
+			return olc::rcode::OK;
 		};
 
 		if (pack != nullptr)
@@ -295,7 +295,7 @@ namespace olc
 				return ReadWave(ifs);
 			}
 			else
-				return olc::FAIL;
+				return olc::rcode::FAIL;
 		}
 	}
 

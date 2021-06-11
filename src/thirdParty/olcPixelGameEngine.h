@@ -365,7 +365,7 @@ namespace olc
 	constexpr uint8_t  nMouseButtons = 5;
 	constexpr uint8_t  nDefaultAlpha = 0xFF;
 	constexpr uint32_t nDefaultPixel = (nDefaultAlpha << 24);
-	enum rcode { FAIL = 0, OK = 1, NO_FILE = -1 };
+	enum class rcode { FAIL = 0, OK = 1, NO_FILE = -1 };
 
 	// O------------------------------------------------------------------------------O
 	// | olc::Pixel - Represents a 32-Bit RGBA colour                                 |
@@ -1175,24 +1175,24 @@ namespace olc
 			if (ifs.is_open())
 			{
 				ReadData(ifs);
-				return olc::OK;
+				return olc::rcode::OK;
 			}
 			else
-				return olc::FAIL;
+				return olc::rcode::FAIL;
 		}
 		else
 		{
 			ResourceBuffer rb = pack->GetFileBuffer(sImageFile);
 			std::istream is(&rb);
 			ReadData(is);
-			return olc::OK;
+			return olc::rcode::OK;
 		}
-		return olc::FAIL;
+		return olc::rcode::FAIL;
 	}
 
 	olc::rcode Sprite::SaveToPGESprFile(const std::string& sImageFile)
 	{
-		if (pColData == nullptr) return olc::FAIL;
+		if (pColData == nullptr) return olc::rcode::FAIL;
 
 		std::ofstream ofs;
 		ofs.open(sImageFile, std::ifstream::binary);
@@ -1202,10 +1202,10 @@ namespace olc
 			ofs.write((char*)&height, sizeof(int32_t));
 			ofs.write((char*)pColData, (size_t)width * (size_t)height * sizeof(uint32_t));
 			ofs.close();
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
-		return olc::FAIL;
+		return olc::rcode::FAIL;
 	}
 
 	void Sprite::SetSampleMode(olc::Sprite::Mode mode)
@@ -1580,10 +1580,10 @@ namespace olc
 		vPixel = 2.0f / vScreenSize;
 
 		if (vPixelSize.x <= 0 || vPixelSize.y <= 0 || vScreenSize.x <= 0 || vScreenSize.y <= 0)
-			return olc::FAIL;
+			return olc::rcode::FAIL;
 
 
-		return olc::OK;
+		return olc::rcode::OK;
 	}
 
 
@@ -1608,10 +1608,10 @@ namespace olc
 #if !defined(PGE_USE_CUSTOM_START)
 	olc::rcode PixelGameEngine::Start()
 	{
-		if (platform->ApplicationStartUp() != olc::OK) return olc::FAIL;
+		if (platform->ApplicationStartUp() != olc::rcode::OK) return olc::rcode::FAIL;
 
 		// Construct the window
-		if (platform->CreateWindowPane({ 30,30 }, vWindowSize, bFullScreen) != olc::OK) return olc::FAIL;
+		if (platform->CreateWindowPane({ 30,30 }, vWindowSize, bFullScreen) != olc::rcode::OK) return olc::rcode::FAIL;
 		olc_UpdateWindowSize(vWindowSize.x, vWindowSize.y);
 
 		// Start the thread
@@ -1624,9 +1624,9 @@ namespace olc
 		// Wait for thread to be exited
 		t.join();
 
-		if (platform->ApplicationCleanUp() != olc::OK) return olc::FAIL;
+		if (platform->ApplicationCleanUp() != olc::rcode::OK) return olc::rcode::FAIL;
 
-		return olc::OK;
+		return olc::rcode::OK;
 	}
 #endif
 
@@ -2820,7 +2820,7 @@ namespace olc
 	{
 		// Allow platform to do stuff here if needed, since its now in the
 		// context of this thread
-		if (platform->ThreadStartUp() == olc::FAIL)	return;
+		if (platform->ThreadStartUp() == olc::rcode::FAIL)	return;
 
 		// Do engine context specific initialisation
 		olc_PrepareEngine();
@@ -2847,7 +2847,7 @@ namespace olc
 	void PixelGameEngine::olc_PrepareEngine()
 	{
 		// Start OpenGL, the context is owned by the game thread
-		if (platform->CreateGraphics(bFullScreen, bEnableVSYNC, vViewPos, vViewSize) == olc::FAIL) return;
+		if (platform->CreateGraphics(bFullScreen, bEnableVSYNC, vViewPos, vViewSize) == olc::rcode::FAIL) return;
 
 		// Construct default font sheet
 		olc_ConstructFontSheet();
@@ -3132,10 +3132,10 @@ namespace olc
 			};
 
 			int pf = 0;
-			if (!(pf = ChoosePixelFormat(glDeviceContext, &pfd))) return olc::FAIL;
+			if (!(pf = ChoosePixelFormat(glDeviceContext, &pfd))) return olc::rcode::FAIL;
 			SetPixelFormat(glDeviceContext, pf, &pfd);
 
-			if (!(glRenderContext = wglCreateContext(glDeviceContext))) return olc::FAIL;
+			if (!(glRenderContext = wglCreateContext(glDeviceContext))) return olc::rcode::FAIL;
 			wglMakeCurrent(glDeviceContext, glRenderContext);
 
 			// Remove Frame cap
@@ -3707,7 +3707,7 @@ namespace olc
 		{
 			renderer->DestroyDevice();
 			PostMessage(olc_hWnd, WM_DESTROY, 0, 0);
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode CreateGraphics(bool bFullScreen, bool bEnableVSYNC, const olc::vi2d& vViewPos, const olc::vi2d& vViewSize) override
@@ -3807,7 +3807,7 @@ namespace olc
 			mapKeys[VK_OEM_MINUS] = Key::MINUS;		// the minus key on any keyboard
 			mapKeys[VK_OEM_PERIOD] = Key::PERIOD;	// the period key on any keyboard
 			mapKeys[VK_CAPITAL] = Key::CAPS_LOCK;
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode SetWindowTitle(const std::string& s) override
@@ -3817,7 +3817,7 @@ namespace olc
 #else
 			SetWindowText(olc_hWnd, s.c_str());
 #endif
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode StartSystemEventLoop() override
@@ -3828,7 +3828,7 @@ namespace olc
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode HandleSystemEvent() override { return olc::rcode::FAIL; }
@@ -3912,7 +3912,7 @@ namespace olc
 		virtual olc::rcode ThreadCleanUp() override
 		{
 			renderer->DestroyDevice();
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode CreateGraphics(bool bFullScreen, bool bEnableVSYNC, const olc::vi2d& vViewPos, const olc::vi2d& vViewSize) override
@@ -4026,18 +4026,18 @@ namespace olc
 
 			mapKeys[XK_Caps_Lock] = Key::CAPS_LOCK;
 
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode SetWindowTitle(const std::string& s) override
 		{
 			X11::XStoreName(olc_Display, olc_Window, s.c_str());
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode StartSystemEventLoop() override
 		{
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode HandleSystemEvent() override
@@ -4116,7 +4116,7 @@ namespace olc
 					ptrPGE->olc_Terminate();
 				}
 			}
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 	};
 }
@@ -4163,7 +4163,7 @@ namespace olc {
 		virtual olc::rcode ThreadCleanUp() override
 		{
 			renderer->DestroyDevice();
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode CreateGraphics(bool bFullScreen, bool bEnableVSYNC, const olc::vi2d& vViewPos, const olc::vi2d& vViewSize) override
@@ -4213,7 +4213,7 @@ namespace olc {
 
 			if (vWindowSize.x > glutGet(GLUT_SCREEN_WIDTH) || vWindowSize.y > glutGet(GLUT_SCREEN_HEIGHT)) {
 				perror("ERROR: The specified window dimensions do not fit on your screen\n");
-				return olc::FAIL;
+				return olc::rcode::FAIL;
 			}
 
 			// Create Keyboard Mapping
@@ -4328,23 +4328,23 @@ namespace olc {
 			glutDisplayFunc(DrawFunct);
 			glutIdleFunc(ThreadFunct);
 
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode SetWindowTitle(const std::string& s) override
 		{
 			glutSetWindowTitle(s.c_str());
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode StartSystemEventLoop() override {
 			glutMainLoop();
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 
 		virtual olc::rcode HandleSystemEvent() override
 		{
-			return olc::OK;
+			return olc::rcode::OK;
 		}
 	};
 
@@ -4353,18 +4353,18 @@ namespace olc {
 	//Custom Start
 	olc::rcode PixelGameEngine::Start()
 	{
-		if (platform->ApplicationStartUp() != olc::OK) return olc::FAIL;
+		if (platform->ApplicationStartUp() != olc::rcode::OK) return olc::rcode::FAIL;
 
 		// Construct the window
-		if (platform->CreateWindowPane({ 30,30 }, vWindowSize, bFullScreen) != olc::OK) return olc::FAIL;
+		if (platform->CreateWindowPane({ 30,30 }, vWindowSize, bFullScreen) != olc::rcode::OK) return olc::rcode::FAIL;
 		olc_UpdateWindowSize(vWindowSize.x, vWindowSize.y);
 
 
-		if (platform->ThreadStartUp() == olc::FAIL)  return olc::FAIL;
+		if (platform->ThreadStartUp() == olc::rcode::FAIL)  return olc::rcode::FAIL;
 
 		olc_PrepareEngine();
 
-		if (!OnUserCreate()) return olc::FAIL;
+		if (!OnUserCreate()) return olc::rcode::FAIL;
 
 		Platform_GLUT::bActiveRef = &bAtomActive;
 
@@ -4375,9 +4375,9 @@ namespace olc {
 		platform->StartSystemEventLoop();
 
 		//This code will not even be run but why not
-		if (platform->ApplicationCleanUp() != olc::OK) return olc::FAIL;
+		if (platform->ApplicationCleanUp() != olc::rcode::OK) return olc::rcode::FAIL;
 
-		return olc::OK;
+		return olc::rcode::OK;
 	}
 }
 
