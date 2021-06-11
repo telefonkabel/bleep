@@ -54,6 +54,7 @@
     <ClInclude Include="..\src\objects\hawking.h">
       <Filter>objects</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\components\kinetics.cpp">
@@ -92,5 +93,11 @@
     <ClCompile Include="..\src\objects\hawking.cpp">
       <Filter>objects</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="bleep.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\graphics\logo.ico" />
   </ItemGroup>
 </Project>

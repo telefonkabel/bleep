@@ -32,6 +32,7 @@
     <ClInclude Include="..\src\objects\object.h" />
     <ClInclude Include="..\src\objects\star.h" />
     <ClInclude Include="..\src\sound.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\bleep.cpp" />
@@ -46,6 +47,12 @@
     <ClCompile Include="..\src\objects\object.cpp" />
     <ClCompile Include="..\src\objects\star.cpp" />
     <ClCompile Include="..\src\sound.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="bleep.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\graphics\logo.ico" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -1,3 +1,5 @@
-https://opengameart.org/content/brown-asteroid
-http://pixelartmaker.com/art/b0d28fcc8a7f281
-http://pixelartmaker.com/art/87cc071fa03e96d
+logo	- http://pixelartmaker.com/art/4db56de0228b12f
+astr0 	- https://www.pngjoy.com/preview/x2d6k5k8v0l2d8_asteroids-pixel-asteroid-png-jpg-transparent-png/
+astr1	- http://pixelartmaker.com/art/87cc071fa03e96d
+astr2	- https://opengameart.org/content/brown-asteroid
+astr3 	- https://opengameart.org/content/a-layered-asteroid-rock
