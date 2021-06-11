@@ -104,12 +104,12 @@ void CKinetics::collision()
 				{
 					float distance{ (thisPosition - obj->xy()).mag() };
 					float touchDistance{ object()->edge() + obj->edge() };
-					//"> 0" excludes comparison with itself
-					if (distance > 0.1f && distance < touchDistance)
+					if (distance < touchDistance && object() != obj.get())
 					{
-						//set distance to touchDistance after first contact (or initialization) to stop unwanted "repetition" (there should be a better solution)
-						object()->xy(thisPosition + (thisPosition - obj->xy()).norm() * ((touchDistance - distance) / 2));
-						obj->xy(obj->xy() - (object()->xy() - obj->xy()).norm() * ((touchDistance - distance) / 2));
+						//set distance to touchDistance after first contact (or initialization) to stop unwanted "repetition"
+						v2d offset{ (thisPosition - obj->xy()).norm() * ((touchDistance - distance) / 1.9f) };
+						object()->xy(thisPosition + offset);
+						obj->xy(obj->xy() - offset);
 
 						//apply collision velocities
 						v2d objVel{ obj->kinetics()->velocity() };
