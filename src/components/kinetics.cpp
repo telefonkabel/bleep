@@ -24,7 +24,7 @@ CKinetics::CKinetics(CObject* pObject) :
 void CKinetics::update(float deltaTime)
 {
 	if(object()->type() != objectTypes::STAR)
-		collision();
+		collusion();
 	calcVelocity(deltaTime);
 }
 
@@ -66,16 +66,15 @@ void CKinetics::calcVelocity(float deltaTime)
 	object()->xy(object()->xy() + (applyVelocities(deltaTime) * speedFactor() * deltaTime));
 }
 
-void CKinetics::collision()
+void CKinetics::collusion()
 {
 	//missles are processed through other objects
 	if (object()->type() == objectTypes::MISSLE)
 		return;
 
-	////check vor collision
-	v2d thisPosition{ object()->xy() };
+	////check for collision
 	//collision with outer boundaries
-	if((thisPosition - object()->game()->center()).mag() > object()->game()->radiusMap())
+	if((object()->xy() - object()->game()->center()).mag() > object()->game()->radiusMap())
 		object()->state(objectStates::DELETED);
 	//collsision with objects
 	for (int listID{ 0 }; listID < static_cast<int>(objectTypes::count); ++listID)
@@ -90,11 +89,13 @@ void CKinetics::collision()
 				if (object()->isEatable())
 				{
 					for (auto& obj : m_pGameObjects.at(listID))
-						if ((thisPosition - obj->xy()).mag() <= object()->edge() + obj->edge())
+					{
+						if (isCollusion(obj))
 						{
 							object()->state(objectStates::EATEN);
 							obj->mass(obj->mass() + object()->mass());
 						}
+					}
 				}
 				break;
 			//collision with massive objects
@@ -102,13 +103,11 @@ void CKinetics::collision()
 			case static_cast<int>(objectTypes::DEBRIS) :
 				for (auto& obj : m_pGameObjects.at(listID))
 				{
-					float distance{ (thisPosition - obj->xy()).mag() };
-					float touchDistance{ object()->edge() + obj->edge() };
-					if (distance < touchDistance && object() != obj.get())
+					if (isCollusion(obj))
 					{
 						//set distance to touchDistance after first contact (or initialization) to stop unwanted "repetition"
-						v2d offset{ (thisPosition - obj->xy()).norm() * ((touchDistance - distance) / 1.9f) };
-						object()->xy(thisPosition + offset);
+						v2d offset{ (object()->xy() - obj->xy()).norm() * (collusionOverlap(obj) / 1.9f) };
+						object()->xy(object()->xy() + offset);
 						obj->xy(obj->xy() - offset);
 
 						//apply collision velocities
@@ -127,10 +126,7 @@ void CKinetics::collision()
 			case static_cast<int>(objectTypes::MISSLE) :
 				for (auto& obj : m_pGameObjects.at(listID))
 				{
-					float distance{ (thisPosition - obj->xy()).mag() };
-					float touchDistance{ object()->edge() + obj->edge() };
-					//"> 0" excludes comparison with itself
-					if (distance > 0.1f && distance < touchDistance)
+					if (isCollusion(obj))
 					{
 						//apply collision velocities//apply collision velocities
 						v2d objVel{ obj->kinetics()->velocity() };
@@ -146,4 +142,15 @@ void CKinetics::collision()
 				break;
 		}
 	}
+}
+
+bool CKinetics::isCollusion(const std::shared_ptr<CObject>& const obj) const
+{
+	return (collusionOverlap(obj) > 0 && object() != obj.get());
+}
+
+float CKinetics::collusionOverlap(const std::shared_ptr<CObject>& const obj) const
+{
+	//differene of should-be touch distance with actual distance (positive if touchDistance > distance)
+	return (object()->edge() + obj->edge()) - (object()->xy() - obj->xy()).mag();
 }

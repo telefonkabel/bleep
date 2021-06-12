@@ -40,8 +40,12 @@ private:
 	//brings inertia and other velocities/accelerations together
 	void calcVelocity(float deltaTime);
 
-	//makeshift function which handels all kinds of collision -> should be reworked
-	void collision();
+	//makeshift function which handels all kinds of collision
+	void collusion();
+	//helper fct to determine if collusion happened
+	bool isCollusion(const std::shared_ptr<CObject>& const obj) const;
+	//helper fct which calculates possible collusion overlap
+	float collusionOverlap(const std::shared_ptr<CObject>& const obj) const;
 
 	//helper function to apply gravity and game velocity
 	v2d applyVelocities(float deltaTime);
