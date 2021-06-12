@@ -1,4 +1,4 @@
-logo	- http://pixelartmaker.com/art/4db56de0228b12f
+logo	- self
 astr0 	- https://www.pngjoy.com/preview/x2d6k5k8v0l2d8_asteroids-pixel-asteroid-png-jpg-transparent-png/
 astr1	- http://pixelartmaker.com/art/87cc071fa03e96d
 astr2	- https://opengameart.org/content/brown-asteroid
