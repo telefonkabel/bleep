@@ -1,12 +1,13 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// bleep.cpp
-/// Provides the main function for this game.
+/// \file bleep.cpp
+/// \brief Provides main function for this game.
 //==============================================================================
 
-//defines for third party
+/// \brief Header guard for olcPixelGameEngine.
 #define OLC_PGE_APPLICATION
+/// \brief Header guard for olcPGEX_Sound.
 #define OLC_PGEX_SOUND
 
 //crossplatform
@@ -37,6 +38,7 @@
 #include <filesystem>
 
 
+/// \brief Main function.
 int main()
 {
     try

@@ -1,8 +1,8 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// kinetics.h
-/// Component class which handles all object kinetics.
+/// \file kinetics.h
+/// \brief Component class which handles all object kinetics.
 //==============================================================================
 
 #pragma once
@@ -41,11 +41,11 @@ private:
 	void calcVelocity(float deltaTime);
 
 	//makeshift function which handels all kinds of collision
-	void collusion();
-	//helper fct to determine if collusion happened
-	bool isCollusion(const std::shared_ptr<CObject>& const obj) const;
-	//helper fct which calculates possible collusion overlap
-	float collusionOverlap(const std::shared_ptr<CObject>& const obj) const;
+	void collision();
+	//helper fct to determine if collision happened
+	bool isCollision(const std::shared_ptr<CObject>& const obj) const;
+	//helper fct which calculates possible collision overlap
+	float collisionOverlap(const std::shared_ptr<CObject>& const obj) const;
 
 	//helper function to apply gravity and game velocity
 	v2d applyVelocities(float deltaTime);

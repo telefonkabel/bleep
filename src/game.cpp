@@ -1,8 +1,8 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// game.cpp
-/// Central game class - manages the game flow based on the settings provided by the parser.
+/// \file game.cpp
+/// \brief Central game class - manages the game flow based on the settings provided by the parser.
 //==============================================================================
 
 #include "game.h"
@@ -119,7 +119,7 @@ bool CGame::OnUserUpdate(float deltaTime)
         SetPixelMode(olc::Pixel::MASK);
 
         //User interface
-        drawUI(deltaTime);
+        drawGUI(deltaTime);
 
         //objects update & clean up
         for (auto& objectType : m_objects)
@@ -236,7 +236,7 @@ void CGame::spawnDebris(float deltaTime)
     }
 }
 
-void CGame::drawUI(float deltaTime)
+void CGame::drawGUI(float deltaTime)
 {
     auto pPlayer{ player() };
 

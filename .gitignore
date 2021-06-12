@@ -10,7 +10,8 @@ Thumbs.db
 # VS
 .vs/
 Debug/
-Release
+Release/
+docu/
 dist/
 
 bleep

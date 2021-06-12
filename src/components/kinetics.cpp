@@ -1,8 +1,8 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// kinetics.cpp
-/// Component class which handles all object kinetics.
+/// \file kinetics.cpp
+/// \brief Component class which handles all object kinetics.
 //==============================================================================
 
 #include "kinetics.h"
@@ -24,7 +24,7 @@ CKinetics::CKinetics(CObject* pObject) :
 void CKinetics::update(float deltaTime)
 {
 	if(object()->type() != objectTypes::STAR)
-		collusion();
+		collision();
 	calcVelocity(deltaTime);
 }
 
@@ -66,7 +66,7 @@ void CKinetics::calcVelocity(float deltaTime)
 	object()->xy(object()->xy() + (applyVelocities(deltaTime) * speedFactor() * deltaTime));
 }
 
-void CKinetics::collusion()
+void CKinetics::collision()
 {
 	//missles are processed through other objects
 	if (object()->type() == objectTypes::MISSLE)
@@ -90,7 +90,7 @@ void CKinetics::collusion()
 				{
 					for (auto& obj : m_pGameObjects.at(listID))
 					{
-						if (isCollusion(obj))
+						if (isCollision(obj))
 						{
 							object()->state(objectStates::EATEN);
 							obj->mass(obj->mass() + object()->mass());
@@ -103,10 +103,10 @@ void CKinetics::collusion()
 			case static_cast<int>(objectTypes::DEBRIS) :
 				for (auto& obj : m_pGameObjects.at(listID))
 				{
-					if (isCollusion(obj))
+					if (isCollision(obj))
 					{
 						//set distance to touchDistance after first contact (or initialization) to stop unwanted "repetition"
-						v2d offset{ (object()->xy() - obj->xy()).norm() * (collusionOverlap(obj) / 1.9f) };
+						v2d offset{ (object()->xy() - obj->xy()).norm() * (collisionOverlap(obj) / 1.9f) };
 						object()->xy(object()->xy() + offset);
 						obj->xy(obj->xy() - offset);
 
@@ -126,7 +126,7 @@ void CKinetics::collusion()
 			case static_cast<int>(objectTypes::MISSLE) :
 				for (auto& obj : m_pGameObjects.at(listID))
 				{
-					if (isCollusion(obj))
+					if (isCollision(obj))
 					{
 						//apply collision velocities//apply collision velocities
 						v2d objVel{ obj->kinetics()->velocity() };
@@ -144,12 +144,12 @@ void CKinetics::collusion()
 	}
 }
 
-bool CKinetics::isCollusion(const std::shared_ptr<CObject>& const obj) const
+bool CKinetics::isCollision(const std::shared_ptr<CObject>& const obj) const
 {
-	return (collusionOverlap(obj) > 0 && object() != obj.get());
+	return (collisionOverlap(obj) > 0 && object() != obj.get());
 }
 
-float CKinetics::collusionOverlap(const std::shared_ptr<CObject>& const obj) const
+float CKinetics::collisionOverlap(const std::shared_ptr<CObject>& const obj) const
 {
 	//differene of should-be touch distance with actual distance (positive if touchDistance > distance)
 	return (object()->edge() + obj->edge()) - (object()->xy() - obj->xy()).mag();
