@@ -27,7 +27,7 @@ class CGame : public olc::PixelGameEngine
 {
 public:
     /// \brief Constructor of game class.
-    /// @param Execution path of the application.
+    /// @param currentPath Execution path of the application.
     CGame(std::filesystem::path& currentPath);
 
     //===== getter =====
@@ -65,9 +65,9 @@ public:
     const CSound& sound();
 
     /// \brief Models mass info of an object.
-    /// Models the mass in scientific notation with a given amout of decimals. 
+    /// Models the mass in scientific notation with a given amount of decimals. 
     /// @param obj The object which mass should be modeled.
-    /// @param shownDecimals The amout of shown decimals
+    /// @param shownDecimals The amount of shown decimals
     /// @returns Mass as string in desired notation.
     std::string massInfo(const std::shared_ptr<CObject>& obj, int shownDecimals) const;
 
@@ -112,7 +112,7 @@ private:
     /// Each item is a shared pointer to the game object, classified in a list with its object type.
     std::array<std::list<std::shared_ptr<CObject>>, static_cast<int>(objectTypes::count)> m_objects;
 
-    //===== world attributes applying to all (moveable) objects =====
+    //===== world attributes applying to all (movable) objects =====
     /// \brief Overall game velocity.
     /// Parsed in the settings.
     /// This is relatively to the player.
@@ -133,7 +133,7 @@ private:
     /// Radius of area where game objects are shown - calculated as half of screen height.
     int m_radiusView;
     /// \brief Map radius.
-    /// Radius of area where game objects could exist - alculated as 1.5 * screen height.
+    /// Radius of area where game objects could exist - calculated as 1.5 * screen height.
     int m_radiusMap;
     /// \brief Fog of war density.
     /// Calculated as 0.2 * view radius.
@@ -159,7 +159,7 @@ private:
     std::weak_ptr<CBHole> m_pPlayer;
     /// \brief Initialize background star objects.
     void initStars();
-    /// \brief Amout of background stars.
+    /// \brief Amount of background stars.
     /// Parsed in settings.
     int m_starCardinality;
 
@@ -181,7 +181,7 @@ private:
     void spawnDebris(float deltaTime);
 
     //===== effects =====
-    /// \brief Helps to determe when the next effect could be shown.
+    /// \brief Helps to determine when the next effect could be shown.
     /// This gets counted down by deltaTime. Once 0 this will be set back to CGame::m_effectEatenTime.
     float m_effectEaten;
     /// \brief The time interval in which one debris could spawn.

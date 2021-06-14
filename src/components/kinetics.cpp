@@ -68,7 +68,7 @@ void CKinetics::calcVelocity(float deltaTime)
 
 void CKinetics::collision()
 {
-	//missles are processed through other objects
+	//missiles are processed through other objects
 	if (object()->type() == objectTypes::MISSLE)
 		return;
 
@@ -76,7 +76,7 @@ void CKinetics::collision()
 	//collision with outer boundaries
 	if((object()->xy() - object()->game()->center()).mag() > object()->game()->radiusMap())
 		object()->state(objectStates::DELETED);
-	//collsision with objects
+	//collision with objects
 	for (int listID{ 0 }; listID < static_cast<int>(objectTypes::count); ++listID)
 	{
 		switch (listID)
@@ -122,7 +122,7 @@ void CKinetics::collision()
 					}
 				}
 				break;
-			//collision with missle object
+			//collision with missile object
 			case static_cast<int>(objectTypes::MISSLE) :
 				for (auto& obj : m_pGameObjects.at(listID))
 				{
@@ -151,6 +151,6 @@ bool CKinetics::isCollision(const std::shared_ptr<CObject>& const obj) const
 
 float CKinetics::collisionOverlap(const std::shared_ptr<CObject>& const obj) const
 {
-	//differene of should-be touch distance with actual distance (positive if touchDistance > distance)
+	//difference of should-be touch distance with actual distance (positive if touchDistance > distance)
 	return (object()->edge() + obj->edge()) - (object()->xy() - obj->xy()).mag();
 }
