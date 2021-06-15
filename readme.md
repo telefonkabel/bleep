@@ -1,3 +1,5 @@
+![](graphics/logo.png)
+
 Bleep is a small pixeled shoot'em up, where you play a hungry black hole.
 All your necessities center around eating and becoming bigger.
 But be aware: In future updates there will be enemies and you'll have to fight back.
