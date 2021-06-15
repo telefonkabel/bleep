@@ -17,3 +17,6 @@ For Linux call "make" in the main directory
 
 Engine:
 OneLoneCoder.com - Pixel Game Engine
+
+Documentation:
+[bleep GitHub page](https://telefonkabel.github.io/bleep/)
