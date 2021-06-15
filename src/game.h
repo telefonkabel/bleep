@@ -19,6 +19,8 @@
 
 class CObject;
 class CBHole;
+/// \brief Enum for mouse button IDs used by olc.
+/// \note To reflect the right olc IDs this mustn't have initializers.
 enum class mouse {LEFT, RIGHT, MIDDLE};
 
 /// \brief Central game class.

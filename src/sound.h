@@ -15,7 +15,9 @@
 
 class CGame;
 
-//must not have initializers (and will be replaced in the future)
+/// \brief Enum for audio IDs.
+/// This is used for a more readable way to call an audio file.
+/// \note For proper counting this enum mustn't have initializers.
 enum class sounds { MUSIC0, JET, CRASH0, SHOT0, IMPACT0, count};
 
 class CSound

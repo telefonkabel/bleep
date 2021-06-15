@@ -10,10 +10,12 @@
 #include "objects/object.h"
 
 
+/// \brief Kinetics class.
+/// This is concrete component class and overwrites the update fct.
 class CKinetics : public CComponent
 {
 public:
-	/// \brief Constructor of sound class.
+	/// \brief Constructor of kinetics class.
 	/// @param pObject Handle to the corresponding object.
 	CKinetics(CObject* pObject);
 
@@ -68,13 +70,13 @@ private:
 	/// \brief Determines if a collision happened.
 	/// Helper fct to determine if collision happened with a specific object.
     /// @param obj The object which could have collided with this object.
-	bool isCollision(const std::shared_ptr<CObject>& const obj) const;
+	bool isCollision(const std::shared_ptr<CObject>& obj) const;
 	//helper fct which calculates possible collision overlap
 
 	/// \brief Calculates the overlapping of a collision.
 	/// Since deltaTime is not infinitesimal small, there will be always an overlap when something collides.
 	/// @param obj The object which has collided with this object.
-	float collisionOverlap(const std::shared_ptr<CObject>& const obj) const;
+	float collisionOverlap(const std::shared_ptr<CObject>& obj) const;
 
 	/// \brief Apply all kinds of velocities.
 	/// This applies global vectors like gravity or player movement.

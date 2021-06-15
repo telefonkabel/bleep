@@ -43,7 +43,7 @@ v2d CKinetics::applyVelocities(float deltaTime)
 {
 	////calculate gravity (for one black hole for now)
 	v2d gravity{};
-	if (object()->mass() != 0 && object()->type() != objectTypes::MISSLE)
+	if (object()->mass() != 0 && object()->type() != objectTypes::MISSILE)
 	{
 		//for now for only one black hole
 		std::shared_ptr<CBHole> player{ object()->game()->player() };
@@ -69,7 +69,7 @@ void CKinetics::calcVelocity(float deltaTime)
 void CKinetics::collision()
 {
 	//missiles are processed through other objects
-	if (object()->type() == objectTypes::MISSLE)
+	if (object()->type() == objectTypes::MISSILE)
 		return;
 
 	////check for collision
@@ -123,7 +123,7 @@ void CKinetics::collision()
 				}
 				break;
 			//collision with missile object
-			case static_cast<int>(objectTypes::MISSLE) :
+			case static_cast<int>(objectTypes::MISSILE) :
 				for (auto& obj : m_pGameObjects.at(listID))
 				{
 					if (isCollision(obj))
@@ -144,12 +144,12 @@ void CKinetics::collision()
 	}
 }
 
-bool CKinetics::isCollision(const std::shared_ptr<CObject>& const obj) const
+bool CKinetics::isCollision(const std::shared_ptr<CObject>& obj) const
 {
 	return (collisionOverlap(obj) > 0 && object() != obj.get());
 }
 
-float CKinetics::collisionOverlap(const std::shared_ptr<CObject>& const obj) const
+float CKinetics::collisionOverlap(const std::shared_ptr<CObject>& obj) const
 {
 	//difference of should-be touch distance with actual distance (positive if touchDistance > distance)
 	return (object()->edge() + obj->edge()) - (object()->xy() - obj->xy()).mag();

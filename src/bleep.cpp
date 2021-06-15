@@ -10,7 +10,7 @@
 /// \brief Header guard for olcPGEX_Sound.
 #define OLC_PGEX_SOUND
 
-//crossplatform
+//cross-platform
 #ifdef _WIN32
     #define USE_WINDOWS
     #include <codeanalysis\warnings.h>

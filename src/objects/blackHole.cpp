@@ -19,9 +19,9 @@ CBHole::CBHole(CGame* const pGame, objectTypes type, v2d pos, int mass, colors c
 	m_radiusGravity{},
 	m_radius{},
 	m_hawkingTimer{},
-	m_hawkingTimerReload{ pGame->parser().getFloat<parser::Missle, parser::Hawking, parser::SpawnReload>() },
-	m_hawkingSpeed{ pGame->parser().getInt<parser::Missle, parser::Hawking, parser::Speed>() },
-	m_hawkingMass{ pGame->parser().getInt<parser::Missle, parser::Hawking, parser::Mass>() }
+	m_hawkingTimerReload{ pGame->parser().getFloat<parser::Missile, parser::Hawking, parser::SpawnReload>() },
+	m_hawkingSpeed{ pGame->parser().getInt<parser::Missile, parser::Hawking, parser::Speed>() },
+	m_hawkingMass{ pGame->parser().getInt<parser::Missile, parser::Hawking, parser::Mass>() }
 {}
 
 CBHole::~CBHole()
@@ -66,11 +66,11 @@ void CBHole::fireHawking(v2d direction, float deltaTime)
 	{
 		m_hawkingTimer = m_hawkingTimerReload;
 		v2d start{ xy() + (game()->getCursor() - xy()).norm() * static_cast<float>(m_radius + 3) };
-		std::shared_ptr<CHawking> missle{ std::make_shared<CHawking>(game(), objectTypes::MISSLE,  m_hawkingMass, start, color()) };
-		missle->kinetics()->velocity((game()->getCursor() - xy()).norm() * static_cast<float>(m_hawkingSpeed));
-		game()->addObject(std::move(missle));
+		std::shared_ptr<CHawking> missile{ std::make_shared<CHawking>(game(), objectTypes::MISSILE,  m_hawkingMass, start, color()) };
+		missile->kinetics()->velocity((game()->getCursor() - xy()).norm() * static_cast<float>(m_hawkingSpeed));
+		game()->addObject(std::move(missile));
 
-		//pay price for missle
+		//pay price for missile
 		mass(mass() - m_hawkingMass);
 	}
 }

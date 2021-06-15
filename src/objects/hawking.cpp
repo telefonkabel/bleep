@@ -1,8 +1,8 @@
 //==============================================================================
 /// 2021, Benedikt Michael
 //==============================================================================
-/// missle.cpp
-/// Missle game object.
+/// hawking.cpp
+/// Hawking missile game object.
 //==============================================================================
 
 #include "hawking.h"
@@ -22,7 +22,7 @@ CHawking::CHawking(CGame* const pGame, objectTypes type, int mass, v2d pos, colo
     if (m_firstInit)
     {
         m_firstInit = false;
-        m_radius = pGame->parser().getInt<parser::Missle, parser::Hawking, parser::Radius>();
+        m_radius = pGame->parser().getInt<parser::Missile, parser::Hawking, parser::Radius>();
     }
 
     addComponent(components::kinetics);
@@ -58,7 +58,7 @@ void CHawking::update(float deltaTime)
 
 float CHawking::edge()
 {
-    //for missles overlay is preferable
+    //for missiles overlay is preferable
     return 1;
 }
 

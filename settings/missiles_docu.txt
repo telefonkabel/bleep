@@ -1,0 +1,9 @@
+"missile" - object with the settings of all missile types
+
+"missile":"hawking" - object with the settings for hawking radiation
+"missile":"hawking":"spawnReload" - cooldown (float)
+"missile":"hawking":"speed" - missile speed (int)
+"missile":"hawking":"mass" - missile mass (int)
+"missile":"hawking":"radius" - missile radius (int)
+"missile":"hawking":"shot" - file with shooting sound (string - empty string is OK)
+"missile":"hawking":"impact" - file with impact sound (string - empty string is OK)

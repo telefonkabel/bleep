@@ -1,8 +1,8 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// graphics.cpp
-/// Component class which handles all object graphics.
+/// \file graphics.cpp
+/// \brief Component class which handles all object graphics.
 //==============================================================================
 
 #include "graphics.h"
@@ -32,7 +32,7 @@ void CGraphics::update(float deltaTime)
 	draw();
 }
 
-void CGraphics::sprite(objectTypes type, std::string file)
+void CGraphics::sprite(std::string file)
 {
 	std::filesystem::path filepath{ m_graphicPath / file };
 	if (std::filesystem::exists(filepath))
@@ -41,14 +41,13 @@ void CGraphics::sprite(objectTypes type, std::string file)
 		throw CException{ filepath.string() + " doesn't exist.", INFO };
 }
 
-bool CGraphics::draw() const
+void CGraphics::draw() const
 {
-	if (!object()->isInView())
-		return true;
-	v2d v2center{ v2centroid() };
-	object()->game()->DrawDecal(object()->xy() - v2center, m_renderable.Decal(), v2d{ 1,1 }, object()->color() * object()->fogFactor());
-
-	return true;
+	if (object()->isInView())
+	{
+		v2d v2center{ v2centroid() };
+		object()->game()->DrawDecal(object()->xy() - v2center, m_renderable.Decal(), v2d{ 1,1 }, object()->color() * object()->fogFactor());
+	}
 }
 
 v2d CGraphics::v2centroid() const

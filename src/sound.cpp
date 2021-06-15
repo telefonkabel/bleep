@@ -24,8 +24,8 @@ CSound::CSound(CGame* const pGame, std::filesystem::path currentPath) :
 	initSound(sounds::MUSIC0, pGame->parser().getString<parser::Game, parser::Music>());
 	initSound(sounds::JET, pGame->parser().getString<parser::Player, parser::Jet>());
 	initSound(sounds::CRASH0, pGame->parser().getString<parser::Debris, parser::Asteroid, parser::Crash>());
-	initSound(sounds::SHOT0, pGame->parser().getString<parser::Missle, parser::Hawking, parser::Shot>());
-	initSound(sounds::IMPACT0, pGame->parser().getString<parser::Missle, parser::Hawking, parser::Impact>());
+	initSound(sounds::SHOT0, pGame->parser().getString<parser::Missile, parser::Hawking, parser::Shot>());
+	initSound(sounds::IMPACT0, pGame->parser().getString<parser::Missile, parser::Hawking, parser::Impact>());
 }
 
 CSound::~CSound()

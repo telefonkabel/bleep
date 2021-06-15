@@ -157,9 +157,9 @@ bool CGame::OnUserUpdate(float deltaTime)
 void CGame::globalEffects(float deltaTime)
 {
     //jet-effect when something got devoured by a black hole
-    m_effectEaten -= deltaTime;
     if (m_effectEaten > 0.0f)
     {
+        m_effectEaten -= deltaTime;
         SetPixelMode(olc::Pixel::ALPHA);
         SetPixelBlend(0.5f * maths::fadeInOut((m_effectEatenTime - m_effectEaten) / m_effectEatenTime));
         FillRect(0, 0, ScreenWidth(), ScreenHeight(), m_playerColor / 4);

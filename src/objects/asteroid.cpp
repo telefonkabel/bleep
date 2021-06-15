@@ -89,7 +89,7 @@ void CAsteroid::initAsteroid()
         m_maxStartSpeed = m_speeds[itr];
         gfx = m_sprites[itr];
 
-        graphics()->sprite(objectTypes::DEBRIS, gfx);
+        graphics()->sprite(gfx);
 
         //start point
         if(xy() == v2d{})

@@ -1,9 +1,0 @@
-"missle" - object with the settings of all missle types
-
-"missle":"hawking" - object with the settings for hawking radiation
-"missle":"hawking":"spawnReload" - cooldown (float)
-"missle":"hawking":"speed" - missle speed (int)
-"missle":"hawking":"mass" - missle mass (int)
-"missle":"hawking":"radius" - missle radius (int)
-"missle":"hawking":"shot" - file with shooting sound (string - empty string is OK)
-"missle":"hawking":"impact" - file with impact sound (string - empty string is OK)

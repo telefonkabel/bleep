@@ -1,8 +1,8 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// maths.cpp
-/// Provides often used mathematical calculations.
+/// \file maths.cpp
+/// \brief Provides often used mathematical calculations.
 //==============================================================================
 
 #include "maths.h"
@@ -44,7 +44,7 @@ void maths::rotate(v2d& vec, float angle)
 
 v2d maths::pointReflection(const v2d& center, const v2d& point, float radius)
 {
-    return radius == 0.0f ? (2 * center - point) : (center + (center - point).norm() * radius);
+    return radius == -1.0f ? (2 * center - point) : (center + (center - point).norm() * radius);
 }
 
 v2d maths::elasticDiskImpact(v2d& v1, float m1, v2d& v2, float m2)

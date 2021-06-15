@@ -1,8 +1,8 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// jsParser.cpp
-/// Loads & checks the settings.
+/// \file jsParser.cpp
+/// \brief Loads & checks the settings.
 //==============================================================================
 
 #include "jsParser.h"
@@ -90,7 +90,7 @@ void CParser::merge(rapidjson::Document& settings, rapidjson::Document& document
 			settings.AddMember(key, value, ac);
 
 		if (settings.FindMember(name.c_str()) == settings.MemberEnd())
-			throw CException { "Object named " + name + " coudn't be added to the settings.", INFO };
+			throw CException { "Object named " + name + " couldn't be added to the settings.", INFO };
 	}
 }
 
