@@ -17,7 +17,7 @@
 #include <vector>
 
 
-//helper objects for rapidjson wrapper, and for having one place to define all setting keys
+//helper objects for RapidJSON wrapper, and for having one place to define all setting keys
 namespace parser
 {
 	//objects
@@ -81,12 +81,12 @@ class CParser
 public:
 	CParser(std::filesystem::path& currentPath);
 
-	//////wrapper to get a ref to the rapidjason generic object for a specific nested key (implemented depth: 3)
-	//////the first key must always refere to an object
+	//////wrapper to get a ref to the RapidJSON generic object for a specific nested key (implemented depth: 3)
+	//////the first key must always refer to an object
 	//////e.g. syntax for depth 2, asking for a float:  ParserObject.getFloat<parser::base, parser::base::child>()
 
 	////depth 2
-	//wrapped rapidjson getter
+	//wrapped RapidJSON getter
 	template <typename PARENTKEY, typename CHILDKEY>
 	float getFloat() const
 	{
@@ -202,7 +202,7 @@ public:
 		}
 		return vec;
 	}
-	//json getter for own types
+	//JSON getter for own types
 	template <typename PARENTKEY, typename CHILDKEY>
 	v2d getV2D() const
 	{
@@ -231,7 +231,7 @@ public:
 	}
 
 	////depth 3
-	//wrapped rapidjson getter
+	//wrapped RapidJSON getter
 	template <typename PARENTKEY, typename CHILDKEY, typename GRANDCHILDKEY>
 	float getFloat() const
 	{
@@ -347,7 +347,7 @@ public:
 		}
 		return vec;
 	}
-	//json getter for own types
+	//JSON getter for own types
 	template <typename PARENTKEY, typename CHILDKEY, typename GRANDCHILDKEY>
 	v2d getV2D() const
 	{
@@ -420,7 +420,7 @@ private:
 	//settings path
 	std::filesystem::path m_SettingsPath;
 
-	//the rapidjson object where all settings are beeing parsed to
+	//the RapidJSON object where all settings are being parsed to
 	rapidjson::Document m_settings;
 
 	//start of parsing
