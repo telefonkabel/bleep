@@ -6,6 +6,6 @@ var searchData=
   ['playercolor_407',['playerColor',['../class_c_game.html#a5c660c5f7e553acff9069eb4d56d41eb',1,'CGame']]],
   ['playsound_408',['playSound',['../class_c_sound.html#ae0271fc07f3f0e6a13b04ad73007253e',1,'CSound']]],
   ['playtime_409',['playtime',['../class_c_game.html#a2960b0d56525ce0d87203334cee3d54e',1,'CGame']]],
-  ['pointreflection_410',['pointReflection',['../namespacemaths.html#a6994a1fc2f37714348f10e9036938c57',1,'maths']]],
+  ['pointreflection_410',['pointReflection',['../namespacemaths.html#ac56e16787cfe30635eb3f80739aad1fe',1,'maths']]],
   ['print_411',['print',['../class_c_exception.html#a1cf6e3ee9f7ceadcc129c673ad3d1174',1,'CException']]]
 ];

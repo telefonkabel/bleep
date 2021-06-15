@@ -5,7 +5,7 @@ var namespaceparser =
     [ "Player", "structparser_1_1_player.html", "structparser_1_1_player" ],
     [ "Debris", "structparser_1_1_debris.html", "structparser_1_1_debris" ],
     [ "Asteroid", "structparser_1_1_asteroid.html", "structparser_1_1_asteroid" ],
-    [ "Missle", "structparser_1_1_missle.html", "structparser_1_1_missle" ],
+    [ "Missile", "structparser_1_1_missile.html", "structparser_1_1_missile" ],
     [ "Hawking", "structparser_1_1_hawking.html", "structparser_1_1_hawking" ],
     [ "ScreenWidth", "structparser_1_1_screen_width.html", "structparser_1_1_screen_width" ],
     [ "ScreenHeight", "structparser_1_1_screen_height.html", "structparser_1_1_screen_height" ],

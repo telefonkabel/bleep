@@ -33,7 +33,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">bleep
    </div>
-   <div id="projectbrief">Small shoot &#39;em up for coding practice</div>
+   <div id="projectbrief">A small shoot &#39;em up with an unconventional protagonist.</div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -102,6 +102,9 @@ $(document).ready(function(){initNavTree('class_c_exception.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 
+<p>Custom exception class derived from standard exception.  
+ <a href="class_c_exception.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="exception_8h_source.html">exception.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CException:</div>
@@ -113,20 +116,25 @@ Inheritance diagram for CException:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a77d19461f501b040e30b46d8d297bc4a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_exception.html#a77d19461f501b040e30b46d8d297bc4a">CException</a> (std::string msg, std::string info)</td></tr>
+<tr class="memdesc:a77d19461f501b040e30b46d8d297bc4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of exception class.  <a href="class_c_exception.html#a77d19461f501b040e30b46d8d297bc4a">More...</a><br /></td></tr>
 <tr class="separator:a77d19461f501b040e30b46d8d297bc4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d52405a9573fceaabfe251d88d92536"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_exception.html#a8d52405a9573fceaabfe251d88d92536">~CException</a> ()  throw ()</td></tr>
+<tr class="memdesc:a8d52405a9573fceaabfe251d88d92536"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of exception class - noexcept.  <a href="class_c_exception.html#a8d52405a9573fceaabfe251d88d92536">More...</a><br /></td></tr>
 <tr class="separator:a8d52405a9573fceaabfe251d88d92536"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cf6e3ee9f7ceadcc129c673ad3d1174"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_exception.html#a1cf6e3ee9f7ceadcc129c673ad3d1174">print</a> ()  throw ()</td></tr>
+<tr class="memdesc:a1cf6e3ee9f7ceadcc129c673ad3d1174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the string stream - noexcept.  <a href="class_c_exception.html#a1cf6e3ee9f7ceadcc129c673ad3d1174">More...</a><br /></td></tr>
 <tr class="separator:a1cf6e3ee9f7ceadcc129c673ad3d1174"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a4f3761804c39d42001903d1f556083fa"><td class="memItemLeft" align="right" valign="top">std::stringstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">m_sStream</a></td></tr>
+<tr class="memdesc:a4f3761804c39d42001903d1f556083fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">The string stream which could be filled with throw messages.  <a href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">More...</a><br /></td></tr>
 <tr class="separator:a4f3761804c39d42001903d1f556083fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00020">20</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
+<div class="textblock"><p>Custom exception class derived from standard exception. </p>
+
+<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00024">24</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a77d19461f501b040e30b46d8d297bc4a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a77d19461f501b040e30b46d8d297bc4a">&#9670;&nbsp;</a></span>CException()</h2>
@@ -162,7 +170,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00023">23</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
+<p>Constructor of exception class. </p>
+<p>This fills its string stream with an info msg. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The msg which is thrown. </td></tr>
+    <tr><td class="paramname">info</td><td>The through macros created info msg of the currently processed file and line. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00031">31</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
 
 </div>
 </div>
@@ -195,7 +212,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00027">27</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
+<p>Destructor of exception class - noexcept. </p>
+
+<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00036">36</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
 
 </div>
 </div>
@@ -229,7 +248,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00029">29</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
+<p>Prints the string stream - noexcept. </p>
+
+<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00039">39</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
 
 </div>
 </div>
@@ -254,7 +275,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00036">36</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
+<p>The string stream which could be filled with throw messages. </p>
+
+<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00047">47</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
 
 </div>
 </div>

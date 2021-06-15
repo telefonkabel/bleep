@@ -33,7 +33,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">bleep
    </div>
-   <div id="projectbrief">Small shoot &#39;em up for coding practice</div>
+   <div id="projectbrief">A small shoot &#39;em up with an unconventional protagonist.</div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -100,6 +100,9 @@ $(document).ready(function(){initNavTree('exception_8h.html',''); initResizable(
 <div class="title">exception.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Offers a catchable exception object what creates it's throw msg at initialization time.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;exception&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
@@ -110,19 +113,27 @@ $(document).ready(function(){initNavTree('exception_8h.html',''); initResizable(
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_exception.html">CException</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom exception class derived from standard exception.  <a href="class_c_exception.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ac4a3ed3432929804c708f7760fb79e28"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#ac4a3ed3432929804c708f7760fb79e28">S</a>(x)&#160;&#160;&#160;(std::string)(x)</td></tr>
-<tr class="memdesc:ac4a3ed3432929804c708f7760fb79e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">2021, Benedikt Michael  <a href="exception_8h.html#ac4a3ed3432929804c708f7760fb79e28">More...</a><br /></td></tr>
+<tr class="memdesc:ac4a3ed3432929804c708f7760fb79e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines to standard string.  <a href="exception_8h.html#ac4a3ed3432929804c708f7760fb79e28">More...</a><br /></td></tr>
 <tr class="separator:ac4a3ed3432929804c708f7760fb79e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae12c3bd6c06e949df3bc64aa89489e57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#ae12c3bd6c06e949df3bc64aa89489e57">TS</a>(x)&#160;&#160;&#160;(std::to_string)(x)</td></tr>
+<tr class="memdesc:ae12c3bd6c06e949df3bc64aa89489e57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Casts to standard string.  <a href="exception_8h.html#ae12c3bd6c06e949df3bc64aa89489e57">More...</a><br /></td></tr>
 <tr class="separator:ae12c3bd6c06e949df3bc64aa89489e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1103fea1e1b3c41ca3322d5389f7162"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exception_8h.html#ae1103fea1e1b3c41ca3322d5389f7162">INFO</a>&#160;&#160;&#160;(<a class="el" href="exception_8h.html#ac4a3ed3432929804c708f7760fb79e28">S</a>(&quot;File: &quot;) + __FILE__ + <a class="el" href="exception_8h.html#ac4a3ed3432929804c708f7760fb79e28">S</a>(&quot; Line: &quot;) + TS(__LINE__))</td></tr>
+<tr class="memdesc:ae1103fea1e1b3c41ca3322d5389f7162"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an info string with currently processed file and line.  <a href="exception_8h.html#ae1103fea1e1b3c41ca3322d5389f7162">More...</a><br /></td></tr>
 <tr class="separator:ae1103fea1e1b3c41ca3322d5389f7162"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Offers a catchable exception object what creates it's throw msg at initialization time. </p>
+<dl class="section copyright"><dt>Copyright</dt><dd>(c) 2021, Benedikt Michael </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ae1103fea1e1b3c41ca3322d5389f7162"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae1103fea1e1b3c41ca3322d5389f7162">&#9670;&nbsp;</a></span>INFO</h2>
 
@@ -135,7 +146,9 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00012">12</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
+<p>Creates an info string with currently processed file and line. </p>
+
+<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00015">15</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
 
 </div>
 </div>
@@ -155,10 +168,9 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>2021, Benedikt Michael </p>
-<p><a class="el" href="exception_8h.html">exception.h</a> Offers a catchable exception object what creates it's throw msg at initialization time. </p>
+<p>Defines to standard string. </p>
 
-<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00010">10</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00011">11</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
 
 </div>
 </div>
@@ -178,7 +190,9 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00011">11</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
+<p>Casts to standard string. </p>
+
+<p class="definition">Definition at line <a class="el" href="exception_8h_source.html#l00013">13</a> of file <a class="el" href="exception_8h_source.html">exception.h</a>.</p>
 
 </div>
 </div>

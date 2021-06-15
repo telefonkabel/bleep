@@ -17,7 +17,7 @@ var searchData=
   ['speed_238',['speed',['../class_c_kinetics.html#adfc6ca0ab16ccaa402f2be9464b19d09',1,'CKinetics']]],
   ['speedfactor_239',['speedFactor',['../class_c_kinetics.html#aff62cf6a12d7547066d9d5d20c3a177b',1,'CKinetics::speedFactor() const'],['../class_c_kinetics.html#adc987b9bfd5a2a2722dbe3ae730b8edf',1,'CKinetics::speedFactor(float fac)']]],
   ['sprite_240',['Sprite',['../structparser_1_1_sprite.html',1,'parser']]],
-  ['sprite_241',['sprite',['../class_c_graphics.html#a1c4b5f41975833b8d6c7011e08f1b67f',1,'CGraphics']]],
+  ['sprite_241',['sprite',['../class_c_graphics.html#a4a83dc205bf1b4c47303ed7e385f4e42',1,'CGraphics']]],
   ['star_242',['STAR',['../object_8h.html#a729216cb196373cd31c376c0150ae05ba8ab2630ada18b94a005a0c5399d9d483',1,'object.h']]],
   ['star_2ecpp_243',['star.cpp',['../star_8cpp.html',1,'']]],
   ['star_2eh_244',['star.h',['../star_8h.html',1,'']]],

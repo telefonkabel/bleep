@@ -33,7 +33,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">bleep
    </div>
-   <div id="projectbrief">Small shoot &#39;em up for coding practice</div>
+   <div id="projectbrief">A small shoot &#39;em up with an unconventional protagonist.</div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -102,40 +102,40 @@ $(document).ready(function(){initNavTree('exception_8h_source.html',''); initRes
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"></span><span class="comment">//==============================================================================</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//macro for info message</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="exception_8h.html#ac4a3ed3432929804c708f7760fb79e28">   10</a></span>&#160;<span class="preprocessor">#define S(x) (std::string)(x)</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="exception_8h.html#ae12c3bd6c06e949df3bc64aa89489e57">   11</a></span>&#160;<span class="preprocessor">#define TS(x) (std::to_string)(x)</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="exception_8h.html#ae1103fea1e1b3c41ca3322d5389f7162">   12</a></span>&#160;<span class="preprocessor">#define INFO (S(&quot;File: &quot;</span>) + __FILE__ + S(&quot; Line: &quot;) + TS(__LINE__))</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_c_exception.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_exception.html">CException</a> : <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_c_exception.html#a77d19461f501b040e30b46d8d297bc4a">   23</a></span>&#160;    <a class="code" href="class_c_exception.html#a77d19461f501b040e30b46d8d297bc4a">CException</a>(std::string msg, std::string info) : <a class="code" href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">m_sStream</a>{}</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">m_sStream</a> &lt;&lt; <span class="stringliteral">&quot;Exception: &quot;</span> &lt;&lt; msg &lt;&lt; std::endl &lt;&lt; info &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">&quot;Press return to continue.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_c_exception.html#a8d52405a9573fceaabfe251d88d92536">   27</a></span>&#160;    <a class="code" href="class_c_exception.html#a8d52405a9573fceaabfe251d88d92536">~CException</a>() throw () {}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_c_exception.html#a1cf6e3ee9f7ceadcc129c673ad3d1174">   29</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_exception.html#a1cf6e3ee9f7ceadcc129c673ad3d1174">print</a>() throw() </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    { </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        std::cerr &lt;&lt; <a class="code" href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">m_sStream</a>.str(); </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        std::cin.ignore();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">   36</a></span>&#160;    std::stringstream <a class="code" href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">m_sStream</a>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
-<div class="ttc" id="aclass_c_exception_html"><div class="ttname"><a href="class_c_exception.html">CException</a></div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00020">exception.h:21</a></div></div>
-<div class="ttc" id="aclass_c_exception_html_a1cf6e3ee9f7ceadcc129c673ad3d1174"><div class="ttname"><a href="class_c_exception.html#a1cf6e3ee9f7ceadcc129c673ad3d1174">CException::print</a></div><div class="ttdeci">void print()</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00029">exception.h:29</a></div></div>
-<div class="ttc" id="aclass_c_exception_html_a4f3761804c39d42001903d1f556083fa"><div class="ttname"><a href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">CException::m_sStream</a></div><div class="ttdeci">std::stringstream m_sStream</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00036">exception.h:36</a></div></div>
-<div class="ttc" id="aclass_c_exception_html_a77d19461f501b040e30b46d8d297bc4a"><div class="ttname"><a href="class_c_exception.html#a77d19461f501b040e30b46d8d297bc4a">CException::CException</a></div><div class="ttdeci">CException(std::string msg, std::string info)</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00023">exception.h:23</a></div></div>
-<div class="ttc" id="aclass_c_exception_html_a8d52405a9573fceaabfe251d88d92536"><div class="ttname"><a href="class_c_exception.html#a8d52405a9573fceaabfe251d88d92536">CException::~CException</a></div><div class="ttdeci">~CException()</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00027">exception.h:27</a></div></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//===== macro for info message =====</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="exception_8h.html#ac4a3ed3432929804c708f7760fb79e28">   11</a></span>&#160;<span class="comment"></span><span class="preprocessor">#define S(x) (std::string)(x)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="exception_8h.html#ae12c3bd6c06e949df3bc64aa89489e57">   13</a></span>&#160;<span class="preprocessor">#define TS(x) (std::to_string)(x)</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="exception_8h.html#ae1103fea1e1b3c41ca3322d5389f7162">   15</a></span>&#160;<span class="preprocessor">#define INFO (S(&quot;File: &quot;</span>) + __FILE__ + S(&quot; Line: &quot;) + TS(__LINE__))</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_c_exception.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_exception.html">CException</a> : <span class="keyword">public</span> std::exception</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_c_exception.html#a77d19461f501b040e30b46d8d297bc4a">   31</a></span>&#160;    <a class="code" href="class_c_exception.html#a77d19461f501b040e30b46d8d297bc4a">CException</a>(std::string msg, std::string info) : <a class="code" href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">m_sStream</a>{}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">m_sStream</a> &lt;&lt; <span class="stringliteral">&quot;Exception: &quot;</span> &lt;&lt; msg &lt;&lt; std::endl &lt;&lt; info &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">&quot;Press return to continue.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_c_exception.html#a8d52405a9573fceaabfe251d88d92536">   36</a></span>&#160;    <a class="code" href="class_c_exception.html#a8d52405a9573fceaabfe251d88d92536">~CException</a>() throw() {}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_c_exception.html#a1cf6e3ee9f7ceadcc129c673ad3d1174">   39</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_exception.html#a1cf6e3ee9f7ceadcc129c673ad3d1174">print</a>() throw() </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    { </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::cerr &lt;&lt; <a class="code" href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">m_sStream</a>.str(); </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        std::cin.ignore();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">   47</a></span>&#160;    std::stringstream <a class="code" href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">m_sStream</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="ttc" id="aclass_c_exception_html"><div class="ttname"><a href="class_c_exception.html">CException</a></div><div class="ttdoc">Custom exception class derived from standard exception.</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00024">exception.h:25</a></div></div>
+<div class="ttc" id="aclass_c_exception_html_a1cf6e3ee9f7ceadcc129c673ad3d1174"><div class="ttname"><a href="class_c_exception.html#a1cf6e3ee9f7ceadcc129c673ad3d1174">CException::print</a></div><div class="ttdeci">void print()</div><div class="ttdoc">Prints the string stream - noexcept.</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00039">exception.h:39</a></div></div>
+<div class="ttc" id="aclass_c_exception_html_a4f3761804c39d42001903d1f556083fa"><div class="ttname"><a href="class_c_exception.html#a4f3761804c39d42001903d1f556083fa">CException::m_sStream</a></div><div class="ttdeci">std::stringstream m_sStream</div><div class="ttdoc">The string stream which could be filled with throw messages.</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00047">exception.h:47</a></div></div>
+<div class="ttc" id="aclass_c_exception_html_a77d19461f501b040e30b46d8d297bc4a"><div class="ttname"><a href="class_c_exception.html#a77d19461f501b040e30b46d8d297bc4a">CException::CException</a></div><div class="ttdeci">CException(std::string msg, std::string info)</div><div class="ttdoc">Constructor of exception class.</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00031">exception.h:31</a></div></div>
+<div class="ttc" id="aclass_c_exception_html_a8d52405a9573fceaabfe251d88d92536"><div class="ttname"><a href="class_c_exception.html#a8d52405a9573fceaabfe251d88d92536">CException::~CException</a></div><div class="ttdeci">~CException()</div><div class="ttdoc">Destructor of exception class - noexcept.</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00036">exception.h:36</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

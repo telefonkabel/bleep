@@ -27,7 +27,7 @@ var hierarchy =
     [ "parser::Jet", "structparser_1_1_jet.html", null ],
     [ "parser::Mass", "structparser_1_1_mass.html", null ],
     [ "parser::MaxSpeed", "structparser_1_1_max_speed.html", null ],
-    [ "parser::Missle", "structparser_1_1_missle.html", null ],
+    [ "parser::Missile", "structparser_1_1_missile.html", null ],
     [ "parser::Music", "structparser_1_1_music.html", null ],
     [ "parser::Name", "structparser_1_1_name.html", null ],
     [ "olc::PixelGameEngine", null, [

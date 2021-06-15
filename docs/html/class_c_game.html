@@ -33,7 +33,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">bleep
    </div>
-   <div id="projectbrief">Small shoot &#39;em up for coding practice</div>
+   <div id="projectbrief">A small shoot &#39;em up with an unconventional protagonist.</div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -274,7 +274,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>Central game class. </p>
 <p>This class overwrites the functions of olcPGE for initialization <a class="el" href="class_c_game.html#a7b5809528c52c30ef4c2e95c40e6dde4" title="Initializes the game.">OnUserCreate()</a> and game flow <a class="el" href="class_c_game.html#ac89567df6763e9aea59e6c200fdf6b48" title="The actual game loop.">OnUserUpdate()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00026">26</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00028">28</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aae508be17dbbf4b9d7cb78bacc514815"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aae508be17dbbf4b9d7cb78bacc514815">&#9670;&nbsp;</a></span>CGame()</h2>
@@ -979,7 +979,7 @@ Private Attributes</h2></td></tr>
 <p>Overall game acceleration. </p>
 <p>Parsed in the settings. This is relatively to the player and is divided in its x and y component. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00123">123</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00125">125</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1006,7 +1006,7 @@ Private Attributes</h2></td></tr>
 <p>Center of the screen. </p>
 <p>This equals to the position of the player. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00143">143</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00145">145</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1033,7 +1033,7 @@ Private Attributes</h2></td></tr>
 <p>Helps printing the circling cursor. </p>
 <p>The value is in [0, 1[ and is counted up by deltaTime - once 1 it is set to back to 0. The value is then used to calculate a point around the cursor position. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00208">208</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00210">210</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1059,7 +1059,7 @@ Private Attributes</h2></td></tr>
 
 <p>Holds the path where the application has been started. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00103">103</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00105">105</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1086,7 +1086,7 @@ Private Attributes</h2></td></tr>
 <p>Chance that a debris is spawned. </p>
 <p>Parsed in settings. This should be in [0, 1]. It gets diced once per interval <a class="el" href="class_c_game.html#a226e9d5785024ee3318ce7f40e6d2472" title="The time interval in which one debris could spawn.">CGame::m_debrisTimerReload</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00171">171</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00173">173</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1113,7 +1113,7 @@ Private Attributes</h2></td></tr>
 <p>Helps determining when to dice next. </p>
 <p>This gets counted down by deltaTime. Once 0 a debris could spawn and this will be set back to <a class="el" href="class_c_game.html#a226e9d5785024ee3318ce7f40e6d2472" title="The time interval in which one debris could spawn.">CGame::m_debrisTimerReload</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00174">174</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00176">176</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1140,7 +1140,7 @@ Private Attributes</h2></td></tr>
 <p>The time interval in which one debris could spawn. </p>
 <p>Parsed in settings. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00177">177</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00179">179</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1167,7 +1167,7 @@ Private Attributes</h2></td></tr>
 <p>Helps to determine when the next effect could be shown. </p>
 <p>This gets counted down by deltaTime. Once 0 this will be set back to <a class="el" href="class_c_game.html#a5dc15708e8d1fd6059dd6e24869aea04" title="The time interval in which one debris could spawn.">CGame::m_effectEatenTime</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00186">186</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00188">188</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1194,7 +1194,7 @@ Private Attributes</h2></td></tr>
 <p>The time interval in which one debris could spawn. </p>
 <p>This effect is fixed to 0.2 seconds. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00189">189</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00191">191</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1221,7 +1221,7 @@ Private Attributes</h2></td></tr>
 <p>Fog of war density. </p>
 <p>Calculated as 0.2 * view radius. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00140">140</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00142">142</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1248,7 +1248,7 @@ Private Attributes</h2></td></tr>
 <p>Maximum player speed. </p>
 <p>Parsed in the settings. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00126">126</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00128">128</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1275,7 +1275,7 @@ Private Attributes</h2></td></tr>
 <p>Maximum player speed squared. </p>
 <p>Stored in an own var, since it's often needed. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00129">129</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00131">131</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1302,7 +1302,7 @@ Private Attributes</h2></td></tr>
 <p>Central array of all game objects. </p>
 <p>Each item is a shared pointer to the game object, classified in a list with its object type. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00113">113</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00115">115</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1328,7 +1328,7 @@ Private Attributes</h2></td></tr>
 
 <p>Parser object. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00106">106</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00108">108</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1355,7 +1355,7 @@ Private Attributes</h2></td></tr>
 <p>Player color. </p>
 <p>Parsed in settings. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00148">148</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00150">150</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1382,7 +1382,7 @@ Private Attributes</h2></td></tr>
 <p>Handle to the player object. </p>
 <p>Got an own handle, since it is the most used object. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00159">159</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00161">161</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1409,7 +1409,7 @@ Private Attributes</h2></td></tr>
 <p>Map radius. </p>
 <p>Radius of area where game objects could exist - calculated as 1.5 * screen height. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00137">137</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00139">139</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1436,7 +1436,7 @@ Private Attributes</h2></td></tr>
 <p>View radius. </p>
 <p>Radius of area where game objects are shown - calculated as half of screen height. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00134">134</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00136">136</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1462,7 +1462,7 @@ Private Attributes</h2></td></tr>
 
 <p>Sound object. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00109">109</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00111">111</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1489,7 +1489,7 @@ Private Attributes</h2></td></tr>
 <p>Amount of background stars. </p>
 <p>Parsed in settings. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00164">164</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00166">166</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1516,7 +1516,7 @@ Private Attributes</h2></td></tr>
 <p>Player start mass. </p>
 <p>Parsed in settings. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00151">151</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00153">153</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1542,7 +1542,7 @@ Private Attributes</h2></td></tr>
 
 <p>Holds the time of application start. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00100">100</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00102">102</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -1569,7 +1569,7 @@ Private Attributes</h2></td></tr>
 <p>Overall game velocity. </p>
 <p>Parsed in the settings. This is relatively to the player. </p>
 
-<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00119">119</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8h_source.html#l00121">121</a> of file <a class="el" href="game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>

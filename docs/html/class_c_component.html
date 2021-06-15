@@ -33,7 +33,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">bleep
    </div>
-   <div id="projectbrief">Small shoot &#39;em up for coding practice</div>
+   <div id="projectbrief">A small shoot &#39;em up with an unconventional protagonist.</div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -102,6 +102,9 @@ $(document).ready(function(){initNavTree('class_c_component.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 
+<p>Component class.  
+ <a href="class_c_component.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="component_8h_source.html">component.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CComponent:</div>
@@ -109,30 +112,37 @@ Inheritance diagram for CComponent:</div>
  <div class="center">
   <img src="class_c_component.png" usemap="#CComponent_map" alt=""/>
   <map id="CComponent_map" name="CComponent_map">
-<area href="class_c_graphics.html" title="2021, Benedikt Michael" alt="CGraphics" shape="rect" coords="0,56,84,80"/>
-<area href="class_c_kinetics.html" alt="CKinetics" shape="rect" coords="94,56,178,80"/>
+<area href="class_c_graphics.html" title="Graphics class." alt="CGraphics" shape="rect" coords="0,56,84,80"/>
+<area href="class_c_kinetics.html" title="Kinetics class." alt="CKinetics" shape="rect" coords="94,56,178,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5293e081878a470a69027b6f01bad118"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a5293e081878a470a69027b6f01bad118">CComponent</a> (<a class="el" href="class_c_object.html">CObject</a> *pObject)</td></tr>
+<tr class="memdesc:a5293e081878a470a69027b6f01bad118"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of component class.  <a href="class_c_component.html#a5293e081878a470a69027b6f01bad118">More...</a><br /></td></tr>
 <tr class="separator:a5293e081878a470a69027b6f01bad118"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2ad4d80f616aedbf6b08f33bdd9d2d5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#af2ad4d80f616aedbf6b08f33bdd9d2d5">~CComponent</a> ()=default</td></tr>
+<tr class="memdesc:af2ad4d80f616aedbf6b08f33bdd9d2d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual Destructor of component class.  <a href="class_c_component.html#af2ad4d80f616aedbf6b08f33bdd9d2d5">More...</a><br /></td></tr>
 <tr class="separator:af2ad4d80f616aedbf6b08f33bdd9d2d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfe24e5260c2fafdd9c10f97fd117f6d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#abfe24e5260c2fafdd9c10f97fd117f6d">update</a> (float deltaTime)=0</td></tr>
+<tr class="memdesc:abfe24e5260c2fafdd9c10f97fd117f6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual update fct which needs to be overwritten.  <a href="class_c_component.html#abfe24e5260c2fafdd9c10f97fd117f6d">More...</a><br /></td></tr>
 <tr class="separator:abfe24e5260c2fafdd9c10f97fd117f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6aa6445a3cb1b002a5ddcfdc66a5c7cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_object.html">CObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a6aa6445a3cb1b002a5ddcfdc66a5c7cd">object</a> () const</td></tr>
+<tr class="memdesc:a6aa6445a3cb1b002a5ddcfdc66a5c7cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the obj.  <a href="class_c_component.html#a6aa6445a3cb1b002a5ddcfdc66a5c7cd">More...</a><br /></td></tr>
 <tr class="separator:a6aa6445a3cb1b002a5ddcfdc66a5c7cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:aa74864d1e658244d5d1b4f1be4b17868"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_object.html">CObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#aa74864d1e658244d5d1b4f1be4b17868">m_pObject</a></td></tr>
+<tr class="memdesc:aa74864d1e658244d5d1b4f1be4b17868"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the object.  <a href="class_c_component.html#aa74864d1e658244d5d1b4f1be4b17868">More...</a><br /></td></tr>
 <tr class="separator:aa74864d1e658244d5d1b4f1be4b17868"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00013">13</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+<div class="textblock"><p>Component class. </p>
+<p>This is an abstract component class with pure virtual update fct. </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00016">16</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5293e081878a470a69027b6f01bad118"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5293e081878a470a69027b6f01bad118">&#9670;&nbsp;</a></span>CComponent()</h2>
@@ -158,7 +168,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00016">16</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+<p>Constructor of component class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pObject</td><td>Handle to the corresponding object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00021">21</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 
 </div>
 </div>
@@ -184,6 +202,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Virtual Destructor of component class. </p>
+<p>Improves code safety for not being able to be called directly. </p>
 
 </div>
 </div>
@@ -211,7 +232,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00020">20</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+<p>Handle to the obj. </p>
+<dl class="section return"><dt>Returns</dt><dd>A raw ptr to the obj: <a class="el" href="class_c_component.html#aa74864d1e658244d5d1b4f1be4b17868" title="Handle to the object.">CComponent::m_pObject</a>. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00030">30</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 
 </div>
 </div>
@@ -239,6 +263,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Pure virtual update fct which needs to be overwritten. </p>
+
 <p>Implemented in <a class="el" href="class_c_kinetics.html#a10b5f4ad526a2407b103070efaef0883">CKinetics</a>, and <a class="el" href="class_c_graphics.html#a0ed9856e26d2c689284ba35284781b15">CGraphics</a>.</p>
 
 </div>
@@ -264,7 +290,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00024">24</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+<p>Handle to the object. </p>
+<p>This needs to be raw, but is save, cause of composition </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00035">35</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 
 </div>
 </div>
