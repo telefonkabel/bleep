@@ -11,7 +11,7 @@ class CObject;
 /// \brief Enum for component types.
 enum class components { kinetics, graphics };
 
-/// \brief Component class.
+/// \brief Basic component class.
 /// This is an abstract component class with pure virtual update fct.
 class CComponent
 {
@@ -19,7 +19,7 @@ public:
 	/// \brief Constructor of component class.
 	/// @param pObject Handle to the corresponding object.
 	CComponent(CObject* pObject) : m_pObject{ pObject } {};
-	/// \brief Virtual Destructor of component class.
+	/// \brief Virtual destructor of component class.
 	/// Improves code safety for not being able to be called directly.
 	virtual ~CComponent() = default;
 

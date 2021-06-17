@@ -11,7 +11,7 @@
 
 
 /// \brief Kinetics class.
-/// This is concrete component class and overwrites the update fct.
+/// This is a concrete component class and overwrites the update fct.
 class CKinetics : public CComponent
 {
 public:
@@ -20,11 +20,12 @@ public:
 	CKinetics(CObject* pObject);
 
 	/// \brief Update fct.
-	/// This is called along the central update fct and calculates all of its object's motion related issues.
+	/// This is called by the update fct of its object and calculates all of its object's motion related issues.
     /// @param deltaTime Elapsed time since last frame.
 	void update(float deltaTime) override;
 
 	//===== getter & setter =====
+
 	/// \brief Getter for the current speed factor.
 	/// @returns float of CKinetics::m_speedFactor.
 	float speedFactor() const;

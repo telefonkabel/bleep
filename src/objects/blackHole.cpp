@@ -1,8 +1,8 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// blackHole.cpp
-/// Black hole game object.
+/// \file blackHole.cpp
+/// \brief Black hole game object.
 //==============================================================================
 
 #include "blackHole.h"
@@ -23,11 +23,6 @@ CBHole::CBHole(CGame* const pGame, objectTypes type, v2d pos, int mass, colors c
 	m_hawkingSpeed{ pGame->parser().getInt<parser::Missile, parser::Hawking, parser::Speed>() },
 	m_hawkingMass{ pGame->parser().getInt<parser::Missile, parser::Hawking, parser::Mass>() }
 {}
-
-CBHole::~CBHole()
-{
-	int i{ 1 };
-}
 
 void CBHole::update(float deltaTime)
 {
@@ -66,7 +61,7 @@ void CBHole::fireHawking(v2d direction, float deltaTime)
 	{
 		m_hawkingTimer = m_hawkingTimerReload;
 		v2d start{ xy() + (game()->getCursor() - xy()).norm() * static_cast<float>(m_radius + 3) };
-		std::shared_ptr<CHawking> missile{ std::make_shared<CHawking>(game(), objectTypes::MISSILE,  m_hawkingMass, start, color()) };
+		std::shared_ptr<CHawking> missile{ std::make_shared<CHawking>(game(), objectTypes::MISSILE, start, m_hawkingMass, color()) };
 		missile->kinetics()->velocity((game()->getCursor() - xy()).norm() * static_cast<float>(m_hawkingSpeed));
 		game()->addObject(std::move(missile));
 

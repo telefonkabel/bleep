@@ -37,7 +37,7 @@ public:
 	void playSound(sounds index, bool repeat) const;
 
 private:
-	/// \brief Handle to central game object.
+	/// \brief Handle to the central game object.
 	CGame* const m_pGame;
 	/// \brief Execution path of the application.
 	std::filesystem::path m_soundPath;

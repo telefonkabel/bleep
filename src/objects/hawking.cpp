@@ -1,8 +1,8 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// hawking.cpp
-/// Hawking missile game object.
+/// \file hawking.cpp
+/// \brief Hawking missile game object.
 //==============================================================================
 
 #include "hawking.h"
@@ -15,7 +15,7 @@
 bool CHawking::m_firstInit{ true };
 int CHawking::m_radius{};
 
-CHawking::CHawking(CGame* const pGame, objectTypes type, int mass, v2d pos, colors color) :
+CHawking::CHawking(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
     CObject{ pGame, type, pos, mass, color },
     m_direction{}
 {
@@ -47,18 +47,11 @@ void CHawking::update(float deltaTime)
         game()->DrawCircle(xy(), m_radius, color() * fogFactor(), m_direction);
         game()->DrawCircle(xy(), m_radius - 1, color() * fogFactor() / 3, m_direction);
     }
-
-    //debug
-    if (kinetics()->speed() < 300)
-    {
-        auto sp = kinetics()->speed();
-        auto test = type();
-    }
 }
 
 float CHawking::edge()
 {
-    //for missiles overlay is preferable
+    //edge of 1 is preferable for missile overlay
     return 1;
 }
 

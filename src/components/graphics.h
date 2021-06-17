@@ -24,7 +24,7 @@ public:
 	CGraphics(CObject* pObject);
 
 	/// \brief Update fct.
-	/// This is called along the central update fct and redraws the sprite.
+	/// This is called by the update fct of its object and handles the sprite.
 	/// @param deltaTime Elapsed time since last frame.
 	void update(float deltaTime) override;
 

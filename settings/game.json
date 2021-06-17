@@ -5,7 +5,7 @@
 	"screenHeight" : 480,
 	"pixelWidth" : 2,
 	"pixelHeight" : 2,
-	"fullScreen" : true
+	"fullScreen" : false
 },
 "game":{
 	"velocity": [0, 30],

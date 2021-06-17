@@ -1,8 +1,8 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// star.cpp
-/// Background star object.
+/// \file star.cpp
+/// \brief Background star object.
 //==============================================================================
 
 #include "star.h"
@@ -10,6 +10,7 @@
 #include "game.h"
 #include "components/graphics.h"
 #include "components/kinetics.h"
+
 
 CStar::CStar(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
 	CObject{ pGame, type, pos, mass, color },
@@ -23,7 +24,7 @@ CStar::CStar(CGame* const pGame, objectTypes type, v2d pos, int mass, colors col
 
 void CStar::update(float deltaTime)
 {
-	//recycle the star objects
+	//recycle the star object
 	if ((game()->center() - xy()).mag() > game()->radiusView())
 		xy(maths::pointReflection(game()->center(), xy(), static_cast<float>(game()->radiusView())));
 

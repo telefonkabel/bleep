@@ -116,15 +116,15 @@ private:
 
     //===== world attributes applying to all (movable) objects =====
     /// \brief Overall game velocity.
-    /// Parsed in the settings.
+    /// Parsed out of settings.
     /// This is relatively to the player.
     v2d m_velocity;
     /// \brief Overall game acceleration.
-    /// Parsed in the settings.
+    /// Parsed out of settings.
     /// This is relatively to the player and is divided in its x and y component.
     v2d m_acceleration;
     /// \brief Maximum player speed.
-    /// Parsed in the settings.
+    /// Parsed out of settings.
     float m_maxSpeed;
     /// \brief Maximum player speed squared.
     /// Stored in an own var, since it's often needed.
@@ -146,10 +146,10 @@ private:
 
     //===== player attributes =====
     /// \brief Player color.
-    /// Parsed in settings.
+    /// Parsed out of settings.
     olc::Pixel m_playerColor;
     /// \brief Player start mass.
-    /// Parsed in settings.
+    /// Parsed out of settings.
     int m_startMass;
 
     //===== init objects =====
@@ -162,12 +162,12 @@ private:
     /// \brief Initialize background star objects.
     void initStars();
     /// \brief Amount of background stars.
-    /// Parsed in settings.
+    /// Parsed out of settings.
     int m_starCardinality;
 
     //===== spawn objects =====
     /// \brief Chance that a debris is spawned.
-    /// Parsed in settings.
+    /// Parsed out of settings.
     /// This should be in [0, 1].
     /// It gets diced once per interval CGame::m_debrisTimerReload.
     float m_debrisChance;
@@ -175,7 +175,7 @@ private:
     /// This gets counted down by deltaTime. Once 0 a debris could spawn and this will be set back to CGame::m_debrisTimerReload.
     float m_debrisTimer;
     /// \brief The time interval in which one debris could spawn.
-    /// Parsed in settings.
+    /// Parsed out of settings.
     float m_debrisTimerReload;
     /// \brief Potentially spawns a debris.
     /// This gets influenced by CGame::m_debrisChance and CGame::m_debrisTimerReload.

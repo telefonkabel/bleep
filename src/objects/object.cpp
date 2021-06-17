@@ -1,8 +1,8 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// object.cpp
-/// Abstract class for all game objects.
+/// \file object.cpp
+/// \brief Abstract class for all game objects.
 //==============================================================================
 
 #include "object.h"

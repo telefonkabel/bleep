@@ -1,8 +1,8 @@
 //==============================================================================
-/// 2021, Benedikt Michael
+/// \copyright (c) 2021, Benedikt Michael
 //==============================================================================
-/// asteroid.cpp
-/// Asteroid game object.
+/// \file asteroid.cpp
+/// \brief Asteroid game object.
 //==============================================================================
 
 #include "asteroid.h"
@@ -24,7 +24,7 @@ std::vector<int> CAsteroid::m_speeds{};
 std::vector<std::vector<int>> CAsteroid::m_spawnTimes{};
 std::vector<std::string> CAsteroid::m_sprites{};
 
-CAsteroid::CAsteroid(CGame* const pGame, objectTypes type, int mass, v2d pos, colors color) :
+CAsteroid::CAsteroid(CGame* const pGame, objectTypes type, v2d pos, int mass, colors color) :
     CObject{ pGame, type, pos, mass, color },
     m_maxStartSpeed{},
     m_relevantSpawnChances{}
