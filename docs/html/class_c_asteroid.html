@@ -104,6 +104,9 @@ $(document).ready(function(){initNavTree('class_c_asteroid.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 
+<p>Asteroid class.  
+ <a href="class_c_asteroid.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="asteroid_8h_source.html">asteroid.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CAsteroid:</div>
@@ -111,107 +114,145 @@ Inheritance diagram for CAsteroid:</div>
  <div class="center">
   <img src="class_c_asteroid.png" usemap="#CAsteroid_map" alt=""/>
   <map id="CAsteroid_map" name="CAsteroid_map">
-<area href="class_c_object.html" alt="CObject" shape="rect" coords="0,0,68,24"/>
+<area href="class_c_object.html" title="Basic object class." alt="CObject" shape="rect" coords="0,0,68,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9814f093a407d09f0920787933381110"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#a9814f093a407d09f0920787933381110">CAsteroid</a> (<a class="el" href="class_c_game.html">CGame</a> *const pGame, <a class="el" href="object_8h.html#a729216cb196373cd31c376c0150ae05b">objectTypes</a> <a class="el" href="class_c_object.html#ad85e816b6b725e9243eda4b1d11bc18d">type</a>, int <a class="el" href="class_c_object.html#a0cf279c4390f32d385d0b6c0fbfe11e0">mass</a>=0, <a class="el" href="maths_8h.html#a520e8cee7ecba88ac13a885afb561b06">v2d</a> pos={ 0.0f, 0.0f }, <a class="el" href="object_8h.html#ae7fa488db6cd52b8613ecec8bfcab650">colors</a> <a class="el" href="class_c_object.html#a7a279da13cde9526d7f0ee31a2e6f658">color</a>=olc::WHITE)</td></tr>
-<tr class="separator:a9814f093a407d09f0920787933381110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4759413ae74e3896a4b829a9dfa8410f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#a4759413ae74e3896a4b829a9dfa8410f">CAsteroid</a> (<a class="el" href="class_c_game.html">CGame</a> *const pGame, <a class="el" href="object_8h.html#a729216cb196373cd31c376c0150ae05b">objectTypes</a> <a class="el" href="class_c_object.html#ad85e816b6b725e9243eda4b1d11bc18d">type</a>, <a class="el" href="maths_8h.html#a520e8cee7ecba88ac13a885afb561b06">v2d</a> pos={ 0.0f, 0.0f }, int <a class="el" href="class_c_object.html#a9fc33816716b408f198471a2aa2bf99b">mass</a>=0, <a class="el" href="object_8h.html#ae7fa488db6cd52b8613ecec8bfcab650">colors</a> <a class="el" href="class_c_object.html#adf7e5635a3a3577952659320c4811b00">color</a>=olc::WHITE)</td></tr>
+<tr class="memdesc:a4759413ae74e3896a4b829a9dfa8410f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of asteroid class.  <a href="class_c_asteroid.html#a4759413ae74e3896a4b829a9dfa8410f">More...</a><br /></td></tr>
+<tr class="separator:a4759413ae74e3896a4b829a9dfa8410f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67394c71612ad73386a0412e3bae78fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#a67394c71612ad73386a0412e3bae78fa">~CAsteroid</a> ()</td></tr>
+<tr class="memdesc:a67394c71612ad73386a0412e3bae78fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of asteroid class.  <a href="class_c_asteroid.html#a67394c71612ad73386a0412e3bae78fa">More...</a><br /></td></tr>
 <tr class="separator:a67394c71612ad73386a0412e3bae78fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc60e0af09168be4292f2f496ee30a3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#adc60e0af09168be4292f2f496ee30a3b">update</a> (float deltaTime) override</td></tr>
+<tr class="memdesc:adc60e0af09168be4292f2f496ee30a3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update fct.  <a href="class_c_asteroid.html#adc60e0af09168be4292f2f496ee30a3b">More...</a><br /></td></tr>
 <tr class="separator:adc60e0af09168be4292f2f496ee30a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26a828a2a745e2b5edc7c1130e41c9ef"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#a26a828a2a745e2b5edc7c1130e41c9ef">edge</a> () override</td></tr>
+<tr class="memdesc:a26a828a2a745e2b5edc7c1130e41c9ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the collision boundary of the obj.  <a href="class_c_asteroid.html#a26a828a2a745e2b5edc7c1130e41c9ef">More...</a><br /></td></tr>
 <tr class="separator:a26a828a2a745e2b5edc7c1130e41c9ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_c_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_c_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_c_object.html">CObject</a></td></tr>
-<tr class="memitem:a29d70da533c72d3e60c774cebe07efe5 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a29d70da533c72d3e60c774cebe07efe5">CObject</a> (<a class="el" href="class_c_game.html">CGame</a> *const pGame, <a class="el" href="object_8h.html#a729216cb196373cd31c376c0150ae05b">objectTypes</a> <a class="el" href="class_c_object.html#ad85e816b6b725e9243eda4b1d11bc18d">type</a>, <a class="el" href="maths_8h.html#a520e8cee7ecba88ac13a885afb561b06">v2d</a> pos={ 0.0f, 0.0f }, int <a class="el" href="class_c_object.html#a0cf279c4390f32d385d0b6c0fbfe11e0">mass</a>=0, <a class="el" href="object_8h.html#ae7fa488db6cd52b8613ecec8bfcab650">colors</a> <a class="el" href="class_c_object.html#a7a279da13cde9526d7f0ee31a2e6f658">color</a>=olc::WHITE)</td></tr>
-<tr class="memdesc:a29d70da533c72d3e60c774cebe07efe5 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">2021, Benedikt Michael  <a href="class_c_object.html#a29d70da533c72d3e60c774cebe07efe5">More...</a><br /></td></tr>
+<tr class="memitem:a29d70da533c72d3e60c774cebe07efe5 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a29d70da533c72d3e60c774cebe07efe5">CObject</a> (<a class="el" href="class_c_game.html">CGame</a> *const pGame, <a class="el" href="object_8h.html#a729216cb196373cd31c376c0150ae05b">objectTypes</a> <a class="el" href="class_c_object.html#ad85e816b6b725e9243eda4b1d11bc18d">type</a>, <a class="el" href="maths_8h.html#a520e8cee7ecba88ac13a885afb561b06">v2d</a> pos={ 0.0f, 0.0f }, int <a class="el" href="class_c_object.html#a9fc33816716b408f198471a2aa2bf99b">mass</a>=0, <a class="el" href="object_8h.html#ae7fa488db6cd52b8613ecec8bfcab650">colors</a> <a class="el" href="class_c_object.html#adf7e5635a3a3577952659320c4811b00">color</a>=olc::WHITE)</td></tr>
+<tr class="memdesc:a29d70da533c72d3e60c774cebe07efe5 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of object class.  <a href="class_c_object.html#a29d70da533c72d3e60c774cebe07efe5">More...</a><br /></td></tr>
 <tr class="separator:a29d70da533c72d3e60c774cebe07efe5 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75fc8a71d266f635f42955a16361036d inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a75fc8a71d266f635f42955a16361036d">~CObject</a> ()=default</td></tr>
+<tr class="memdesc:a75fc8a71d266f635f42955a16361036d inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor of object class.  <a href="class_c_object.html#a75fc8a71d266f635f42955a16361036d">More...</a><br /></td></tr>
 <tr class="separator:a75fc8a71d266f635f42955a16361036d inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a246c51d39ac37875cb16c93b40fc5850 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a246c51d39ac37875cb16c93b40fc5850">x</a> (float x)</td></tr>
-<tr class="separator:a246c51d39ac37875cb16c93b40fc5850 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1342ead70b495f4193add22bfeb24683 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a1342ead70b495f4193add22bfeb24683">y</a> (float y)</td></tr>
-<tr class="separator:a1342ead70b495f4193add22bfeb24683 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1128f9cb5aeb023924350905d5175b16 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a1128f9cb5aeb023924350905d5175b16">x</a> () const</td></tr>
+<tr class="memdesc:a1128f9cb5aeb023924350905d5175b16 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the current x coordinate.  <a href="class_c_object.html#a1128f9cb5aeb023924350905d5175b16">More...</a><br /></td></tr>
 <tr class="separator:a1128f9cb5aeb023924350905d5175b16 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abae79aab7aba8f75e050dfd945076779 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#abae79aab7aba8f75e050dfd945076779">y</a> () const</td></tr>
+<tr class="memdesc:abae79aab7aba8f75e050dfd945076779 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the current y coordinate.  <a href="class_c_object.html#abae79aab7aba8f75e050dfd945076779">More...</a><br /></td></tr>
 <tr class="separator:abae79aab7aba8f75e050dfd945076779 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c41fc5b148c074149ef7371f3c8c08b inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a5c41fc5b148c074149ef7371f3c8c08b">xy</a> (float <a class="el" href="class_c_object.html#a246c51d39ac37875cb16c93b40fc5850">x</a>, float <a class="el" href="class_c_object.html#a1342ead70b495f4193add22bfeb24683">y</a>)</td></tr>
+<tr class="memitem:a246c51d39ac37875cb16c93b40fc5850 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a246c51d39ac37875cb16c93b40fc5850">x</a> (float x)</td></tr>
+<tr class="memdesc:a246c51d39ac37875cb16c93b40fc5850 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for x coordinate.  <a href="class_c_object.html#a246c51d39ac37875cb16c93b40fc5850">More...</a><br /></td></tr>
+<tr class="separator:a246c51d39ac37875cb16c93b40fc5850 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1342ead70b495f4193add22bfeb24683 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a1342ead70b495f4193add22bfeb24683">y</a> (float y)</td></tr>
+<tr class="memdesc:a1342ead70b495f4193add22bfeb24683 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for y coordinate.  <a href="class_c_object.html#a1342ead70b495f4193add22bfeb24683">More...</a><br /></td></tr>
+<tr class="separator:a1342ead70b495f4193add22bfeb24683 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85768be23b7b2d13f6eef42317ab884a inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maths_8h.html#a520e8cee7ecba88ac13a885afb561b06">v2d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a85768be23b7b2d13f6eef42317ab884a">xy</a> () const</td></tr>
+<tr class="memdesc:a85768be23b7b2d13f6eef42317ab884a inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for its current coordinates.  <a href="class_c_object.html#a85768be23b7b2d13f6eef42317ab884a">More...</a><br /></td></tr>
+<tr class="separator:a85768be23b7b2d13f6eef42317ab884a inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c41fc5b148c074149ef7371f3c8c08b inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a5c41fc5b148c074149ef7371f3c8c08b">xy</a> (float <a class="el" href="class_c_object.html#a1128f9cb5aeb023924350905d5175b16">x</a>, float <a class="el" href="class_c_object.html#abae79aab7aba8f75e050dfd945076779">y</a>)</td></tr>
+<tr class="memdesc:a5c41fc5b148c074149ef7371f3c8c08b inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for its coordinates.  <a href="class_c_object.html#a5c41fc5b148c074149ef7371f3c8c08b">More...</a><br /></td></tr>
 <tr class="separator:a5c41fc5b148c074149ef7371f3c8c08b inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0a18a71c195fd4a1b98c5de1c564249 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#af0a18a71c195fd4a1b98c5de1c564249">xy</a> (<a class="el" href="maths_8h.html#a520e8cee7ecba88ac13a885afb561b06">v2d</a> point)</td></tr>
+<tr class="memdesc:af0a18a71c195fd4a1b98c5de1c564249 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for its coordinates.  <a href="class_c_object.html#af0a18a71c195fd4a1b98c5de1c564249">More...</a><br /></td></tr>
 <tr class="separator:af0a18a71c195fd4a1b98c5de1c564249 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85768be23b7b2d13f6eef42317ab884a inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maths_8h.html#a520e8cee7ecba88ac13a885afb561b06">v2d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a85768be23b7b2d13f6eef42317ab884a">xy</a> () const</td></tr>
-<tr class="separator:a85768be23b7b2d13f6eef42317ab884a inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a279da13cde9526d7f0ee31a2e6f658 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a7a279da13cde9526d7f0ee31a2e6f658">color</a> (<a class="el" href="object_8h.html#ae7fa488db6cd52b8613ecec8bfcab650">colors</a> color)</td></tr>
-<tr class="separator:a7a279da13cde9526d7f0ee31a2e6f658 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf7e5635a3a3577952659320c4811b00 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="object_8h.html#ae7fa488db6cd52b8613ecec8bfcab650">colors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#adf7e5635a3a3577952659320c4811b00">color</a> () const</td></tr>
+<tr class="memdesc:adf7e5635a3a3577952659320c4811b00 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for its current color.  <a href="class_c_object.html#adf7e5635a3a3577952659320c4811b00">More...</a><br /></td></tr>
 <tr class="separator:adf7e5635a3a3577952659320c4811b00 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cf279c4390f32d385d0b6c0fbfe11e0 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a0cf279c4390f32d385d0b6c0fbfe11e0">mass</a> (int mass)</td></tr>
-<tr class="separator:a0cf279c4390f32d385d0b6c0fbfe11e0 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a279da13cde9526d7f0ee31a2e6f658 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a7a279da13cde9526d7f0ee31a2e6f658">color</a> (<a class="el" href="object_8h.html#ae7fa488db6cd52b8613ecec8bfcab650">colors</a> color)</td></tr>
+<tr class="memdesc:a7a279da13cde9526d7f0ee31a2e6f658 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for its color.  <a href="class_c_object.html#a7a279da13cde9526d7f0ee31a2e6f658">More...</a><br /></td></tr>
+<tr class="separator:a7a279da13cde9526d7f0ee31a2e6f658 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fc33816716b408f198471a2aa2bf99b inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a9fc33816716b408f198471a2aa2bf99b">mass</a> () const</td></tr>
+<tr class="memdesc:a9fc33816716b408f198471a2aa2bf99b inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for its current mass.  <a href="class_c_object.html#a9fc33816716b408f198471a2aa2bf99b">More...</a><br /></td></tr>
 <tr class="separator:a9fc33816716b408f198471a2aa2bf99b inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af42ad52dc16adf54127d080e2f794a83 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#af42ad52dc16adf54127d080e2f794a83">state</a> (<a class="el" href="object_8h.html#a07b6107693a6455d91939a42e9ca6c20">objectStates</a> state)</td></tr>
-<tr class="separator:af42ad52dc16adf54127d080e2f794a83 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cf279c4390f32d385d0b6c0fbfe11e0 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a0cf279c4390f32d385d0b6c0fbfe11e0">mass</a> (int mass)</td></tr>
+<tr class="memdesc:a0cf279c4390f32d385d0b6c0fbfe11e0 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for its mass.  <a href="class_c_object.html#a0cf279c4390f32d385d0b6c0fbfe11e0">More...</a><br /></td></tr>
+<tr class="separator:a0cf279c4390f32d385d0b6c0fbfe11e0 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae180090a4e39195de093e2eee12abf62 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="object_8h.html#a07b6107693a6455d91939a42e9ca6c20">objectStates</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#ae180090a4e39195de093e2eee12abf62">state</a> () const</td></tr>
+<tr class="memdesc:ae180090a4e39195de093e2eee12abf62 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for its state.  <a href="class_c_object.html#ae180090a4e39195de093e2eee12abf62">More...</a><br /></td></tr>
 <tr class="separator:ae180090a4e39195de093e2eee12abf62 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af42ad52dc16adf54127d080e2f794a83 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#af42ad52dc16adf54127d080e2f794a83">state</a> (<a class="el" href="object_8h.html#a07b6107693a6455d91939a42e9ca6c20">objectStates</a> state)</td></tr>
+<tr class="memdesc:af42ad52dc16adf54127d080e2f794a83 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for its state.  <a href="class_c_object.html#af42ad52dc16adf54127d080e2f794a83">More...</a><br /></td></tr>
+<tr class="separator:af42ad52dc16adf54127d080e2f794a83 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad85e816b6b725e9243eda4b1d11bc18d inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="object_8h.html#a729216cb196373cd31c376c0150ae05b">objectTypes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#ad85e816b6b725e9243eda4b1d11bc18d">type</a> () const</td></tr>
+<tr class="memdesc:ad85e816b6b725e9243eda4b1d11bc18d inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for its type.  <a href="class_c_object.html#ad85e816b6b725e9243eda4b1d11bc18d">More...</a><br /></td></tr>
 <tr class="separator:ad85e816b6b725e9243eda4b1d11bc18d inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a767c750b489810c07fc9c5662b7ca6d4 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a767c750b489810c07fc9c5662b7ca6d4">isEatable</a> () const</td></tr>
+<tr class="memdesc:a767c750b489810c07fc9c5662b7ca6d4 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for its eatable flag.  <a href="class_c_object.html#a767c750b489810c07fc9c5662b7ca6d4">More...</a><br /></td></tr>
 <tr class="separator:a767c750b489810c07fc9c5662b7ca6d4 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ff5cf7c84b0ae529dfd4386df0982d0 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a2ff5cf7c84b0ae529dfd4386df0982d0">eatable</a> (bool eatable)</td></tr>
+<tr class="memdesc:a2ff5cf7c84b0ae529dfd4386df0982d0 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for its eatable flag.  <a href="class_c_object.html#a2ff5cf7c84b0ae529dfd4386df0982d0">More...</a><br /></td></tr>
 <tr class="separator:a2ff5cf7c84b0ae529dfd4386df0982d0 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abca58d1214eedecb83ab3f111a5ead4c inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_game.html">CGame</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#abca58d1214eedecb83ab3f111a5ead4c">game</a> () const</td></tr>
+<tr class="memdesc:abca58d1214eedecb83ab3f111a5ead4c inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the central game object.  <a href="class_c_object.html#abca58d1214eedecb83ab3f111a5ead4c">More...</a><br /></td></tr>
 <tr class="separator:abca58d1214eedecb83ab3f111a5ead4c inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4b25aa8d930ae2b4db1fa142872e2b8 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#aa4b25aa8d930ae2b4db1fa142872e2b8">addComponent</a> (<a class="el" href="component_8h.html#a34a2c423b3ea385bdb64e0dbba3f901b">components</a> component)</td></tr>
+<tr class="memdesc:aa4b25aa8d930ae2b4db1fa142872e2b8 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">This hooks a component onto this obj.  <a href="class_c_object.html#aa4b25aa8d930ae2b4db1fa142872e2b8">More...</a><br /></td></tr>
 <tr class="separator:aa4b25aa8d930ae2b4db1fa142872e2b8 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e5f5668bc17cd175932234b062a5b56 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">const std::unique_ptr&lt; <a class="el" href="class_c_kinetics.html">CKinetics</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a4e5f5668bc17cd175932234b062a5b56">kinetics</a> () const</td></tr>
+<tr class="memdesc:a4e5f5668bc17cd175932234b062a5b56 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the kinetics object.  <a href="class_c_object.html#a4e5f5668bc17cd175932234b062a5b56">More...</a><br /></td></tr>
 <tr class="separator:a4e5f5668bc17cd175932234b062a5b56 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25828e6ab4782810210f8a2aaf87d41e inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">const std::unique_ptr&lt; <a class="el" href="class_c_graphics.html">CGraphics</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a25828e6ab4782810210f8a2aaf87d41e">graphics</a> () const</td></tr>
+<tr class="memdesc:a25828e6ab4782810210f8a2aaf87d41e inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the graphics object.  <a href="class_c_object.html#a25828e6ab4782810210f8a2aaf87d41e">More...</a><br /></td></tr>
 <tr class="separator:a25828e6ab4782810210f8a2aaf87d41e inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e061c323f43f96c8997e5efd09f58b7 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a5e061c323f43f96c8997e5efd09f58b7">isInView</a> () const</td></tr>
+<tr class="memdesc:a5e061c323f43f96c8997e5efd09f58b7 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the obj is in the viewable map.  <a href="class_c_object.html#a5e061c323f43f96c8997e5efd09f58b7">More...</a><br /></td></tr>
 <tr class="separator:a5e061c323f43f96c8997e5efd09f58b7 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac58ebf3e7de932b0fd0e76d462e0578e inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#ac58ebf3e7de932b0fd0e76d462e0578e">isInView</a> (<a class="el" href="maths_8h.html#a520e8cee7ecba88ac13a885afb561b06">v2d</a> pos) const</td></tr>
+<tr class="memdesc:ac58ebf3e7de932b0fd0e76d462e0578e inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper to check if a given point is in the viewable map.  <a href="class_c_object.html#ac58ebf3e7de932b0fd0e76d462e0578e">More...</a><br /></td></tr>
 <tr class="separator:ac58ebf3e7de932b0fd0e76d462e0578e inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13257a5aba7ca5aee21220feddc6bd72 inherit pub_methods_class_c_object"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_object.html#a13257a5aba7ca5aee21220feddc6bd72">fogFactor</a> () const</td></tr>
+<tr class="memdesc:a13257a5aba7ca5aee21220feddc6bd72 inherit pub_methods_class_c_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper to determine the factor to diminish the obj near the viewable map.  <a href="class_c_object.html#a13257a5aba7ca5aee21220feddc6bd72">More...</a><br /></td></tr>
 <tr class="separator:a13257a5aba7ca5aee21220feddc6bd72 inherit pub_methods_class_c_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:adccddbedd03541efa3a57c95efb3e7e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#adccddbedd03541efa3a57c95efb3e7e5">initAsteroid</a> ()</td></tr>
+<tr class="memdesc:adccddbedd03541efa3a57c95efb3e7e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts init sequence of an asteroid.  <a href="class_c_asteroid.html#adccddbedd03541efa3a57c95efb3e7e5">More...</a><br /></td></tr>
 <tr class="separator:adccddbedd03541efa3a57c95efb3e7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a7cb690dd7d05a323eaedd243e30ae712"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#a7cb690dd7d05a323eaedd243e30ae712">m_maxStartSpeed</a></td></tr>
+<tr class="memdesc:a7cb690dd7d05a323eaedd243e30ae712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximal start speed.  <a href="class_c_asteroid.html#a7cb690dd7d05a323eaedd243e30ae712">More...</a><br /></td></tr>
 <tr class="separator:a7cb690dd7d05a323eaedd243e30ae712"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bfe31c186167c5eec8f27646d723212"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#a2bfe31c186167c5eec8f27646d723212">m_relevantSpawnChances</a></td></tr>
+<tr class="memdesc:a2bfe31c186167c5eec8f27646d723212"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper array which holds the relevant asteroid spawn chances at the moment of initialization.  <a href="class_c_asteroid.html#a2bfe31c186167c5eec8f27646d723212">More...</a><br /></td></tr>
 <tr class="separator:a2bfe31c186167c5eec8f27646d723212"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a19abf0a804085eae25196dee340ca7ff"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#a19abf0a804085eae25196dee340ca7ff">m_firstInit</a> { true }</td></tr>
-<tr class="memdesc:a19abf0a804085eae25196dee340ca7ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">2021, Benedikt Michael  <a href="class_c_asteroid.html#a19abf0a804085eae25196dee340ca7ff">More...</a><br /></td></tr>
+<tr class="memdesc:a19abf0a804085eae25196dee340ca7ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to check if this is the first asteroid instance.  <a href="class_c_asteroid.html#a19abf0a804085eae25196dee340ca7ff">More...</a><br /></td></tr>
 <tr class="separator:a19abf0a804085eae25196dee340ca7ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab100b5c3755ddffa2929d1b1ea69229a"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#ab100b5c3755ddffa2929d1b1ea69229a">m_spawnChances</a> {}</td></tr>
+<tr class="memdesc:ab100b5c3755ddffa2929d1b1ea69229a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of all asteroid type spawn chances.  <a href="class_c_asteroid.html#ab100b5c3755ddffa2929d1b1ea69229a">More...</a><br /></td></tr>
 <tr class="separator:ab100b5c3755ddffa2929d1b1ea69229a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f513728e4a652765d24b6e2369091c7"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#a0f513728e4a652765d24b6e2369091c7">m_masses</a> {}</td></tr>
+<tr class="memdesc:a0f513728e4a652765d24b6e2369091c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of all asteroid type masses.  <a href="class_c_asteroid.html#a0f513728e4a652765d24b6e2369091c7">More...</a><br /></td></tr>
 <tr class="separator:a0f513728e4a652765d24b6e2369091c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a714aaaf234741cff622f405e79ccbfb2"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#a714aaaf234741cff622f405e79ccbfb2">m_speeds</a> {}</td></tr>
+<tr class="memdesc:a714aaaf234741cff622f405e79ccbfb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of all asteroid type maximal start speeds.  <a href="class_c_asteroid.html#a714aaaf234741cff622f405e79ccbfb2">More...</a><br /></td></tr>
 <tr class="separator:a714aaaf234741cff622f405e79ccbfb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af386bb35a191b827bdb96a84a2246d64"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#af386bb35a191b827bdb96a84a2246d64">m_sprites</a> {}</td></tr>
+<tr class="memdesc:af386bb35a191b827bdb96a84a2246d64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of all asteroid type sprites.  <a href="class_c_asteroid.html#af386bb35a191b827bdb96a84a2246d64">More...</a><br /></td></tr>
 <tr class="separator:af386bb35a191b827bdb96a84a2246d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc4dca755dabd88f19a88351ecbcc239"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_asteroid.html#afc4dca755dabd88f19a88351ecbcc239">m_spawnTimes</a> {}</td></tr>
+<tr class="memdesc:afc4dca755dabd88f19a88351ecbcc239"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of all asteroid type spawn time intervals.  <a href="class_c_asteroid.html#afc4dca755dabd88f19a88351ecbcc239">More...</a><br /></td></tr>
 <tr class="separator:afc4dca755dabd88f19a88351ecbcc239"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00014">14</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
+<div class="textblock"><p>Asteroid class. </p>
+<p>This is a concrete object class and overwrites the edge and update fct. </p>
+
+<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00016">16</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9814f093a407d09f0920787933381110"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9814f093a407d09f0920787933381110">&#9670;&nbsp;</a></span>CAsteroid()</h2>
+<a id="a4759413ae74e3896a4b829a9dfa8410f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4759413ae74e3896a4b829a9dfa8410f">&#9670;&nbsp;</a></span>CAsteroid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,14 +272,14 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>mass</em> = <code>0</code>, </td>
+          <td class="paramtype"><a class="el" href="maths_8h.html#a520e8cee7ecba88ac13a885afb561b06">v2d</a>&#160;</td>
+          <td class="paramname"><em>pos</em> = <code>{&#160;0.0f,&#160;0.0f&#160;}</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="maths_8h.html#a520e8cee7ecba88ac13a885afb561b06">v2d</a>&#160;</td>
-          <td class="paramname"><em>pos</em> = <code>{&#160;0.0f,&#160;0.0f&#160;}</code>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mass</em> = <code>0</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -253,6 +294,18 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor of asteroid class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pGame</td><td>Handle to the central game object. </td></tr>
+    <tr><td class="paramname">type</td><td>Its object type. </td></tr>
+    <tr><td class="paramname">pos</td><td>Its start position. </td></tr>
+    <tr><td class="paramname">mass</td><td>Its start mass. </td></tr>
+    <tr><td class="paramname">color</td><td>Its color. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="asteroid_8cpp_source.html#l00027">27</a> of file <a class="el" href="asteroid_8cpp_source.html">asteroid.cpp</a>.</p>
 
@@ -272,6 +325,9 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destructor of asteroid class. </p>
+<p>This plays the eaten effect if applicable. </p>
 
 <p class="definition">Definition at line <a class="el" href="asteroid_8cpp_source.html#l00040">40</a> of file <a class="el" href="asteroid_8cpp_source.html">asteroid.cpp</a>.</p>
 
@@ -300,6 +356,9 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Calculates the collision boundary of the obj. </p>
+<p>This overwrites the edge fct of its base class. </p><dl class="section return"><dt>Returns</dt><dd>The average boundary - asteroid sprites should therefore have rough disc/square shape. </dd></dl>
 
 <p>Implements <a class="el" href="class_c_object.html#a783d00dd242e840078d23457462fc64f">CObject</a>.</p>
 
@@ -330,6 +389,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Starts init sequence of an asteroid. </p>
+
 <p class="definition">Definition at line <a class="el" href="asteroid_8cpp_source.html#l00046">46</a> of file <a class="el" href="asteroid_8cpp_source.html">asteroid.cpp</a>.</p>
 
 </div>
@@ -358,6 +419,14 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Update fct. </p>
+<p>This is called by the game update fct and calls the update fct of its base class. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deltaTime</td><td>Elapsed time since last frame. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Reimplemented from <a class="el" href="class_c_object.html#ae46154f13f39bd8957a9afc64283eab5">CObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="asteroid_8cpp_source.html#l00107">107</a> of file <a class="el" href="asteroid_8cpp_source.html">asteroid.cpp</a>.</p>
@@ -385,10 +454,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>2021, Benedikt Michael </p>
-<p><a class="el" href="asteroid_8cpp.html">asteroid.cpp</a> Asteroid game object. </p>
+<p>Flag to check if this is the first asteroid instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00029">29</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00048">48</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
 
 </div>
 </div>
@@ -412,7 +480,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00031">31</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
+<p>Array of all asteroid type masses. </p>
+<p>Parsed out of settings. </p><dl class="section note"><dt>Note</dt><dd>All asteroid type settings arrays need to have the same size (same amount of asteroid types) in the JSON file. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00056">56</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
 
 </div>
 </div>
@@ -436,7 +507,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00024">24</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
+<p>Maximal start speed. </p>
+<p>Parsed out of settings. </p>
+
+<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00042">42</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
 
 </div>
 </div>
@@ -460,7 +534,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00026">26</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
+<p>Helper array which holds the relevant asteroid spawn chances at the moment of initialization. </p>
+
+<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00044">44</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
 
 </div>
 </div>
@@ -484,7 +560,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00030">30</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
+<p>Array of all asteroid type spawn chances. </p>
+<p>Parsed out of settings. </p><dl class="section note"><dt>Note</dt><dd>All asteroid type settings arrays need to have the same size (same amount of asteroid types) in the JSON file. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00052">52</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
 
 </div>
 </div>
@@ -508,7 +587,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00034">34</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
+<p>Array of all asteroid type spawn time intervals. </p>
+<p>Parsed out of settings. </p><dl class="section note"><dt>Note</dt><dd>All asteroid type settings arrays need to have the same size (same amount of asteroid types) in the JSON file. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00068">68</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
 
 </div>
 </div>
@@ -532,7 +614,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00032">32</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
+<p>Array of all asteroid type maximal start speeds. </p>
+<p>Parsed out of settings. </p><dl class="section note"><dt>Note</dt><dd>All asteroid type settings arrays need to have the same size (same amount of asteroid types) in the JSON file. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00060">60</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
 
 </div>
 </div>
@@ -556,7 +641,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00033">33</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
+<p>Array of all asteroid type sprites. </p>
+<p>Parsed out of settings. </p><dl class="section note"><dt>Note</dt><dd>All asteroid type settings arrays need to have the same size (same amount of asteroid types) in the JSON file. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="asteroid_8h_source.html#l00064">64</a> of file <a class="el" href="asteroid_8h_source.html">asteroid.h</a>.</p>
 
 </div>
 </div>

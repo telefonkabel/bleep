@@ -113,7 +113,7 @@ Inheritance diagram for CKinetics:</div>
  <div class="center">
   <img src="class_c_kinetics.png" usemap="#CKinetics_map" alt=""/>
   <map id="CKinetics_map" name="CKinetics_map">
-<area href="class_c_component.html" title="Component class." alt="CComponent" shape="rect" coords="0,0,84,24"/>
+<area href="class_c_component.html" title="Basic component class." alt="CComponent" shape="rect" coords="0,0,84,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -151,7 +151,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5293e081878a470a69027b6f01bad118 inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of component class.  <a href="class_c_component.html#a5293e081878a470a69027b6f01bad118">More...</a><br /></td></tr>
 <tr class="separator:a5293e081878a470a69027b6f01bad118 inherit pub_methods_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2ad4d80f616aedbf6b08f33bdd9d2d5 inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#af2ad4d80f616aedbf6b08f33bdd9d2d5">~CComponent</a> ()=default</td></tr>
-<tr class="memdesc:af2ad4d80f616aedbf6b08f33bdd9d2d5 inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual Destructor of component class.  <a href="class_c_component.html#af2ad4d80f616aedbf6b08f33bdd9d2d5">More...</a><br /></td></tr>
+<tr class="memdesc:af2ad4d80f616aedbf6b08f33bdd9d2d5 inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor of component class.  <a href="class_c_component.html#af2ad4d80f616aedbf6b08f33bdd9d2d5">More...</a><br /></td></tr>
 <tr class="separator:af2ad4d80f616aedbf6b08f33bdd9d2d5 inherit pub_methods_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6aa6445a3cb1b002a5ddcfdc66a5c7cd inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_object.html">CObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a6aa6445a3cb1b002a5ddcfdc66a5c7cd">object</a> () const</td></tr>
 <tr class="memdesc:a6aa6445a3cb1b002a5ddcfdc66a5c7cd inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the obj.  <a href="class_c_component.html#a6aa6445a3cb1b002a5ddcfdc66a5c7cd">More...</a><br /></td></tr>
@@ -192,7 +192,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Kinetics class. </p>
-<p>This is concrete component class and overwrites the update fct. </p>
+<p>This is a concrete component class and overwrites the update fct. </p>
 
 <p class="definition">Definition at line <a class="el" href="kinetics_8h_source.html#l00015">15</a> of file <a class="el" href="kinetics_8h_source.html">kinetics.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -540,7 +540,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Update fct. </p>
-<p>This is called along the central update fct and calculates all of its object's motion related issues. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This is called by the update fct of its object and calculates all of its object's motion related issues. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">deltaTime</td><td>Elapsed time since last frame. </td></tr>
   </table>
@@ -627,7 +627,7 @@ Private Attributes</h2></td></tr>
 <p>Object velocity. </p>
 <p>Stores a possible object specific acceleration setting. </p>
 
-<p class="definition">Definition at line <a class="el" href="kinetics_8h_source.html#l00057">57</a> of file <a class="el" href="kinetics_8h_source.html">kinetics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kinetics_8h_source.html#l00058">58</a> of file <a class="el" href="kinetics_8h_source.html">kinetics.h</a>.</p>
 
 </div>
 </div>
@@ -654,7 +654,7 @@ Private Attributes</h2></td></tr>
 <p>Handle to all game objects. </p>
 <p>This Ref is save, cause the game array of all global objects has static lifetime. </p>
 
-<p class="definition">Definition at line <a class="el" href="kinetics_8h_source.html#l00088">88</a> of file <a class="el" href="kinetics_8h_source.html">kinetics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kinetics_8h_source.html#l00089">89</a> of file <a class="el" href="kinetics_8h_source.html">kinetics.h</a>.</p>
 
 </div>
 </div>
@@ -681,7 +681,7 @@ Private Attributes</h2></td></tr>
 <p>Speed factor of the obj. </p>
 <p>Stores a factor which gets applied after the overall velocity is calculated. Could be useful at some occasions. </p>
 
-<p class="definition">Definition at line <a class="el" href="kinetics_8h_source.html#l00061">61</a> of file <a class="el" href="kinetics_8h_source.html">kinetics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kinetics_8h_source.html#l00062">62</a> of file <a class="el" href="kinetics_8h_source.html">kinetics.h</a>.</p>
 
 </div>
 </div>
@@ -708,7 +708,7 @@ Private Attributes</h2></td></tr>
 <p>Object velocity. </p>
 <p>Stores the current velocity. </p>
 
-<p class="definition">Definition at line <a class="el" href="kinetics_8h_source.html#l00054">54</a> of file <a class="el" href="kinetics_8h_source.html">kinetics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kinetics_8h_source.html#l00055">55</a> of file <a class="el" href="kinetics_8h_source.html">kinetics.h</a>.</p>
 
 </div>
 </div>

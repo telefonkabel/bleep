@@ -1,7 +1,6 @@
 var class_c_b_hole =
 [
     [ "CBHole", "class_c_b_hole.html#a4ce86ee546c0e9cd617427c3f5c6c0f5", null ],
-    [ "~CBHole", "class_c_b_hole.html#a680a385575ed4e7f6c295f43415013a6", null ],
     [ "draw", "class_c_b_hole.html#a24f5e29708f8bc2634c86b470e433796", null ],
     [ "edge", "class_c_b_hole.html#aece5d8c14066a9628085bc43727b8095", null ],
     [ "fireHawking", "class_c_b_hole.html#ae8dfa80626e0142bba3da9cd3d5de833", null ],

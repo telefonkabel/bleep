@@ -65,7 +65,7 @@ var searchData=
   ['m_5ftype_166',['m_type',['../class_c_object.html#a56c360bd8116df6c76d1c0970cba206b',1,'CObject']]],
   ['m_5fvelocity_167',['m_velocity',['../class_c_kinetics.html#a19a144950a51f3ca945ff9a04fd10e2d',1,'CKinetics::m_velocity()'],['../class_c_game.html#ade3be6ec2b6a0c6c95c9ce83d585aeda',1,'CGame::m_velocity()']]],
   ['main_168',['main',['../bleep_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'bleep.cpp']]],
-  ['mass_169',['mass',['../class_c_object.html#a0cf279c4390f32d385d0b6c0fbfe11e0',1,'CObject::mass(int mass)'],['../class_c_object.html#a9fc33816716b408f198471a2aa2bf99b',1,'CObject::mass() const']]],
+  ['mass_169',['mass',['../class_c_object.html#a9fc33816716b408f198471a2aa2bf99b',1,'CObject::mass() const'],['../class_c_object.html#a0cf279c4390f32d385d0b6c0fbfe11e0',1,'CObject::mass(int mass)']]],
   ['mass_170',['Mass',['../structparser_1_1_mass.html',1,'parser']]],
   ['massinfo_171',['massInfo',['../class_c_game.html#a661fba1bdba14affcec5745beaad42a9',1,'CGame']]],
   ['maths_172',['maths',['../namespacemaths.html',1,'']]],

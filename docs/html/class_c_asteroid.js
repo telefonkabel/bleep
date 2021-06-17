@@ -1,6 +1,6 @@
 var class_c_asteroid =
 [
-    [ "CAsteroid", "class_c_asteroid.html#a9814f093a407d09f0920787933381110", null ],
+    [ "CAsteroid", "class_c_asteroid.html#a4759413ae74e3896a4b829a9dfa8410f", null ],
     [ "~CAsteroid", "class_c_asteroid.html#a67394c71612ad73386a0412e3bae78fa", null ],
     [ "edge", "class_c_asteroid.html#a26a828a2a745e2b5edc7c1130e41c9ef", null ],
     [ "initAsteroid", "class_c_asteroid.html#adccddbedd03541efa3a57c95efb3e7e5", null ],
