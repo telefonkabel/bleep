@@ -56,7 +56,7 @@ int main()
             } while (buffer.size() == len);
 
             if (len == 0)
-                throw CException{ "GetModuleFileName doesn't get any path.", INFO };
+                throw bleep::CException{ "GetModuleFileName doesn't get any path.", INFO };
             else
                 wPath = { buffer.data() };
 
@@ -85,7 +85,7 @@ int main()
         std::filesystem::path currentPath{ wPath };
         currentPath = currentPath.parent_path();
         if (!std::filesystem::exists(currentPath))
-            throw CException{ currentPath.string() + " doesn't exist.", INFO };
+            throw bleep::CException{ currentPath.string() + " doesn't exist.", INFO };
 
 
         //setting up rand() - that rng is good enough for this purpose
@@ -93,10 +93,10 @@ int main()
 
         //start game
         std::cout << "Starting game." << std::endl;
-        CGame game{ currentPath };
+        bleep::CGame game{ currentPath };
         game.Start();
     }
-    catch (CException& exception)
+    catch (bleep::CException& exception)
     {
         exception.print();
     }

@@ -20,29 +20,34 @@
 #include <iostream>
 
 
-/// \brief Custom exception class derived from standard exception.
-class CException : public std::exception
+namespace bleep
 {
-public:
-	/// \brief Constructor of exception class.
-	/// This fills its string stream with an info msg.
-	/// @param msg The msg which is thrown.
-	/// @param info The through macros created info msg of the currently processed file and line.
-	CException(std::string msg, std::string info) : m_sStream{}
+
+	/// \brief Custom exception class derived from standard exception.
+	class CException : public std::exception
 	{
-		m_sStream << "Exception: " << msg << std::endl << info << std::endl << "Press return to continue." << std::endl;
-	}
-	/// \brief Destructor of exception class - noexcept.
-	~CException() throw() {}
+	public:
+		/// \brief Constructor of exception class.
+		/// This fills its string stream with an info msg.
+		/// @param msg The msg which is thrown.
+		/// @param info The through macros created info msg of the currently processed file and line.
+		CException(std::string msg, std::string info) : m_sStream{}
+		{
+			m_sStream << "Exception: " << msg << std::endl << info << std::endl << "Press return to continue." << std::endl;
+		}
+		/// \brief Destructor of exception class - noexcept.
+		~CException() throw() {}
 
-	/// \brief Prints the string stream - noexcept.
-	void print() throw() 
-	{ 
-		std::cerr << m_sStream.str(); 
-		std::cin.ignore();
-	}
+		/// \brief Prints the string stream - noexcept.
+		void print() throw()
+		{
+			std::cerr << m_sStream.str();
+			std::cin.ignore();
+		}
 
-private:
-	/// \brief The string stream which could be filled with throw messages.
-	std::stringstream m_sStream;
-};
+	private:
+		/// \brief The string stream which could be filled with throw messages.
+		std::stringstream m_sStream;
+	};
+
+} //end of namespace bleep
