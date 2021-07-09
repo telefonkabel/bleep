@@ -8,9 +8,11 @@
 #pragma once
 
 #include "jsParser.h"
+
 #include "sound.h"
 #include "helper/maths.h"
 #include "objects/object.h"
+#include "components/graphics.h"
 #include "thirdParty/olcPixelGameEngine.h"
 
 #include <filesystem>

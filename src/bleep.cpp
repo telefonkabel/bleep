@@ -5,6 +5,8 @@
 /// \brief Provides main function for this game.
 //==============================================================================
 
+#include "jsParser.h"
+
 /// \brief Header guard for olcPixelGameEngine.
 #define OLC_PGE_APPLICATION
 /// \brief Header guard for olcPGEX_Sound.
@@ -74,7 +76,7 @@ int main()
             } while (buffer.size() == len);
 
             if (len == 0)
-                throw CException{ "readlink doesn't get any path.", INFO };
+                throw bleep::CException{ "readlink doesn't get any path.", INFO };
             else
             {
                 std::string path{ buffer.data() };

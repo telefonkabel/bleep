@@ -8,10 +8,11 @@
 
 #pragma once
 
+#include "thirdParty/rapidjson/document.h"
+
 #include "helper/maths.h"
 #include "helper/exception.h"
 #include "thirdParty/olcPixelGameEngine.h"
-#include "thirdParty/rapidjson/document.h"
 
 #include <filesystem>
 #include <vector>

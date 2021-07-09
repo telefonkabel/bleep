@@ -6,6 +6,9 @@
 //==============================================================================
 
 #pragma once
+
+#include "jsParser.h"
+
 #include "helper/maths.h"
 #include "helper/exception.h"
 

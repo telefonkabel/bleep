@@ -6,6 +6,9 @@
 //==============================================================================
 
 #pragma once
+
+#include "jsParser.h"
+
 #include "thirdParty/olcPixelGameEngine.h"
 #include "thirdParty/olcPGEX_Sound.h"
 
