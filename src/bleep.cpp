@@ -5,7 +5,6 @@
 /// \brief Provides main function for this game.
 //==============================================================================
 
-#include "jsParser.h"
 
 /// \brief Header guard for olcPixelGameEngine.
 #define OLC_PGE_APPLICATION
@@ -18,17 +17,19 @@
     #include <codeanalysis\warnings.h>
     #pragma warning(push)
     #pragma warning(disable: ALL_CODE_ANALYSIS_WARNINGS)
+        //for Linux rapidJSON has to be included before olc
+        #include "thirdParty/rapidjson/document.h"
         #include "thirdParty/olcPixelGameEngine.h"
         #include "thirdParty/olcPGEX_Sound.h"
-        #include "thirdParty/rapidjson/document.h"
 
         #include <locale>
         #include <codecvt>
     #pragma warning(pop)
 #else
+    //for Linux rapidJSON has to be included before olc
+    #include "thirdParty/rapidjson/document.h"
     #include "thirdParty/olcPixelGameEngine.h"
     #include "thirdParty/olcPGEX_Sound.h"
-    #include "thirdParty/rapidjson/document.h"
 
     #include <unistd.h>
 #endif

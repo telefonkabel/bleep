@@ -7,8 +7,8 @@
 
 #pragma once
 
+//for Linux rapidJSON has to be included before olc
 #include "jsParser.h"
-
 #include "thirdParty/olcPixelGameEngine.h"
 #include "thirdParty/olcPGEX_Sound.h"
 

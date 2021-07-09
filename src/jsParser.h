@@ -8,6 +8,8 @@
 
 #pragma once
 
+
+//for Linux rapidJSON has to be included before olc
 #include "thirdParty/rapidjson/document.h"
 
 #include "helper/maths.h"
